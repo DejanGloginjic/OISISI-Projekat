@@ -2,7 +2,6 @@ package entity;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 enum Status{B, S};
 
@@ -18,6 +17,6 @@ public class Student {
 	private int currentYearOfStudy;
 	private Status status;
 	private double averageGrade;
-	private HashMap<String, Integer> passedExams;
+	private ArrayList<Grade> passedExams;
 	private ArrayList<String> remainingExams;
 }
