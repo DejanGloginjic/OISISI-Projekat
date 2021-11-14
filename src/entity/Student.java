@@ -10,7 +10,7 @@ public class Student {
 	private String surname;
 	private String name;
 	private LocalDate dateOfBirth;
-	private String residentialAddress;
+	private Adress residentialAddress;
 	private int telephoneNumber;
 	private String eMail;
 	private String indexNumber;
