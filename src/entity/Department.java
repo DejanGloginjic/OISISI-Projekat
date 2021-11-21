@@ -1,11 +1,11 @@
 package entity;
 
-import java.awt.List;
+import java.util.ArrayList;
 
 public class Department {
 	private int code; 
 	private String name;
 	private String boss;
-	private List listOfProfessors;
+	private ArrayList<Professor> listOfProfessors;
 
 }
