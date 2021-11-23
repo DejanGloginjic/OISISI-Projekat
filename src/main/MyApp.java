@@ -1,6 +1,9 @@
 package main;
 
+import java.awt.BorderLayout;
+
 import functionalities.MyMainFrame;
+import functionalities.MyToolbar;
 
 public class MyApp {
 

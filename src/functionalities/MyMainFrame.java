@@ -1,5 +1,6 @@
 package functionalities;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -25,6 +26,9 @@ public class MyMainFrame extends JFrame{
 		
 		MyMenuBar mb=new MyMenuBar();
 		this.setJMenuBar(mb);
+		
+		MyToolbar tb=new MyToolbar();
+		add(tb, BorderLayout.NORTH);
 		
 		setVisible(true);
 		}
