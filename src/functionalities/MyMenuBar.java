@@ -63,14 +63,34 @@ public class MyMenuBar extends JMenuBar{
 		miEdit.setIcon(new ImageIcon("images/editf.png"));
 		miAbout.setIcon(new ImageIcon("images/aboutf.png"));
 		open.setIcon(new ImageIcon("images/openf.png"));
+		miStudenti.setIcon(new ImageIcon("images/studentf.png"));
+		miPredmeti.setIcon(new ImageIcon("images/predmetf.png"));
+		miProfesori.setIcon(new ImageIcon("images/profesorf.png"));
+		miKatedre.setIcon(new ImageIcon("images/katedraf.png"));
 		
 		file.setMnemonic('F');
 		edit.setMnemonic('E');
 		help.setMnemonic('H');
+		miNew.setMnemonic('N');
+		miSave.setMnemonic('S');
+		miClose.setMnemonic('C');
+		open.setMnemonic('O');
+		miHelp.setMnemonic('H');
+		miDelete.setMnemonic('D');
+		miEdit.setMnemonic('i');
+		miAbout.setMnemonic('A');
+		miStudenti.setMnemonic('u');
+		miProfesori.setMnemonic('P');
+		miPredmeti.setMnemonic('r');
+		miKatedre.setMnemonic('K');
 		
 		miNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		miSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
 		miClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
+		miStudenti.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, ActionEvent.CTRL_MASK));
+		miPredmeti.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
+		miProfesori.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.CTRL_MASK));
+		miKatedre.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_K, ActionEvent.CTRL_MASK));
 		
 		miEdit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 		miDelete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
