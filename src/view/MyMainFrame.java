@@ -33,6 +33,9 @@ public class MyMainFrame extends JFrame{
 		MyStatusBar sb = new MyStatusBar();
 		add(sb, BorderLayout.SOUTH);
 		
+		MyTabbedPane tp = new MyTabbedPane();
+		add(tp);
+		
 		setVisible(true);
 		}
 }

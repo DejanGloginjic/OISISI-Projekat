@@ -45,4 +45,8 @@ private static JLabel tabLabel = new JLabel("Studenti");
     	timer.start();
     }
 	
+	public static void setTabLabel(String tabName) {
+		tabLabel.setText(tabName);
+	}
+	
 }
