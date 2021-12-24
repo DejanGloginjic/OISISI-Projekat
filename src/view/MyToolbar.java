@@ -1,4 +1,4 @@
-package functionalities;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -15,12 +15,6 @@ import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 
 public class MyToolbar extends JToolBar{
-	
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1209699209668701828L;
 	
 	public MyToolbar(){
 		super(SwingConstants.HORIZONTAL);

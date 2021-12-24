@@ -1,4 +1,4 @@
-package functionalities;
+package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -10,10 +10,6 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
 public class MyMenuBar extends JMenuBar{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 3002850029195278353L;
 
 	public MyMenuBar() {
 		

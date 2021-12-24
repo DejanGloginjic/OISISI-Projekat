@@ -1,4 +1,4 @@
-package functionalities;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -29,6 +29,9 @@ public class MyMainFrame extends JFrame{
 		
 		MyToolbar tb=new MyToolbar();
 		add(tb, BorderLayout.NORTH);
+		
+		MyStatusBar sb = new MyStatusBar();
+		add(sb, BorderLayout.SOUTH);
 		
 		setVisible(true);
 		}
