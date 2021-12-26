@@ -5,10 +5,28 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
+import javax.swing.JTable;
 import javax.swing.WindowConstants;
 
+import model.StudentBase;
+
 public class MyMainFrame extends JFrame{
-	public MyMainFrame() {
+	
+	private static MyMainFrame instance = null;
+
+	public static MyMainFrame getInstance() {
+		if (instance == null) {
+			instance = new MyMainFrame();
+		}
+		return instance;
+	}
+	
+	private MyMenuBar mb=new MyMenuBar();
+	private MyToolbar tb=new MyToolbar();
+	private MyStatusBar sb = new MyStatusBar();
+	private MyTabbedPane tp = new MyTabbedPane();
+	
+	private MyMainFrame() {
 		super();
 		
 		setTitle("Studentska služba");
@@ -23,19 +41,15 @@ public class MyMainFrame extends JFrame{
 		
 		Image img=kit.getImage("images/ikonica.jpeg");
 		setIconImage(img);
-		
-		MyMenuBar mb=new MyMenuBar();
+	
 		this.setJMenuBar(mb);
 		
-		MyToolbar tb=new MyToolbar();
 		add(tb, BorderLayout.NORTH);
-		
-		MyStatusBar sb = new MyStatusBar();
 		add(sb, BorderLayout.SOUTH);
-		
-		MyTabbedPane tp = new MyTabbedPane();
 		add(tp);
 		
 		setVisible(true);
-		}
+	}
+	
+	
 }

@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.Box;
@@ -40,6 +41,20 @@ public class MyToolbar extends JToolBar{
 		
 		bSearch2.setPreferredSize(new Dimension(130,30));
 		bSearch2.setMaximumSize(new Dimension(130,30));
+		
+		bNew.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				switch(MyTabbedPane.getOpenTab()) {
+				case 0:
+					AddStudentDialog sd = AddStudentDialog.getInstance();
+					sd.setVisible(true);
+					
+				}
+				
+			}
+		});
 		
 		add(bNew);
 		addSeparator();

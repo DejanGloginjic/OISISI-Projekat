@@ -3,7 +3,8 @@ package model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-enum Status{B, S};
+import enumerations.Status;
+
 
 public class Student {
 	private String surname;
@@ -148,5 +149,11 @@ public class Student {
 		this.remainingExams = remainingExams;
 	}
 	
+	public static Status budget() {
+		return Status.B;
+	}
 	
+	public static Status selffinancing() {
+		return Status.S;
+	}
 }
