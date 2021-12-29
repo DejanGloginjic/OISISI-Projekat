@@ -6,20 +6,33 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import controller.ProfessorController;
 import view.MyStatusBar;
 
 public class MyTabbedPane extends JTabbedPane{
 	
 	StudentTable st = new StudentTable();
+	ProfessorTable pt=new ProfessorTable();
 	private static int openTab;
 	
-	public MyTabbedPane() {
+	private static MyTabbedPane instance = null;
+	
+	public static MyTabbedPane getInstance() {
+		if (instance == null) {
+			instance = new MyTabbedPane();
+		}
+		return instance;
+	}
+	
+	private MyTabbedPane() {
 		
 		JScrollPane scrollPane = new JScrollPane(st);
+		JScrollPane scrollPane1 = new JScrollPane(pt);
 		
 		addTab("Studenti", scrollPane);
 		updateViewStudent();
-		addTab("Profesori", new JPanel());
+		addTab("Profesori", scrollPane1);
+		updateViewProfessor();
 		addTab("Predmeti", new JPanel());
 		
 		ChangeListener changeListener = new ChangeListener() {
@@ -52,6 +65,13 @@ public class MyTabbedPane extends JTabbedPane{
 		model.fireTableDataChanged();
 		validate();
 	}
+	
+	public void updateViewProfessor() {
+		AbstractTableModelProfessor model = (AbstractTableModelProfessor) pt.getModel();
+		model.fireTableDataChanged();
+		validate();
+	}
+	
 	
 	public static int getOpenTab() {
 		return openTab;

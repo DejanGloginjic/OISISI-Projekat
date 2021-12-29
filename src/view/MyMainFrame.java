@@ -24,7 +24,6 @@ public class MyMainFrame extends JFrame{
 	private MyMenuBar mb=new MyMenuBar();
 	private MyToolbar tb=new MyToolbar();
 	private MyStatusBar sb = new MyStatusBar();
-	private MyTabbedPane tp = new MyTabbedPane();
 	
 	private MyMainFrame() {
 		super();
@@ -46,7 +45,7 @@ public class MyMainFrame extends JFrame{
 		
 		add(tb, BorderLayout.NORTH);
 		add(sb, BorderLayout.SOUTH);
-		add(tp);
+		add(MyTabbedPane.getInstance());
 		
 		setVisible(true);
 	}

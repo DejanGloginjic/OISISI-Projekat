@@ -50,7 +50,9 @@ public class MyToolbar extends JToolBar{
 				case 0:
 					AddStudentDialog sd = AddStudentDialog.getInstance();
 					sd.setVisible(true);
-					
+				case 1:
+					AddProfessorDialog pd = AddProfessorDialog.getInstance();
+					pd.setVisible(true);
 				}
 				
 			}
