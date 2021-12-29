@@ -1,4 +1,4 @@
-package view;
+package view.window;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -6,14 +6,24 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import view.MyStatusBar;
+import view.abstractTableModels.AbstractTableModelStudent;
+import view.tables.StudentTable;
 
 public class MyTabbedPane extends JTabbedPane{
 	
 	StudentTable st = new StudentTable();
 	private static int openTab;
 	
-	public MyTabbedPane() {
+	private static MyTabbedPane instance = null;
+	
+	public static MyTabbedPane getInstance() {
+		if (instance == null) {
+			instance = new MyTabbedPane();
+		}
+		return instance;
+	}
+	
+	private MyTabbedPane() {
 		
 		JScrollPane scrollPane = new JScrollPane(st);
 		

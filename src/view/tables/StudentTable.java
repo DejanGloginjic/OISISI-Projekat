@@ -1,4 +1,4 @@
-package view;
+package view.tables;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -6,6 +6,8 @@ import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
+
+import view.abstractTableModels.AbstractTableModelStudent;
 
 public class StudentTable extends JTable{
 	

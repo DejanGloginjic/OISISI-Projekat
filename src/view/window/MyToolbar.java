@@ -1,4 +1,4 @@
-package view;
+package view.window;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -14,6 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
+
+import controller.StudentController;
+import view.dialogs.AddStudentDialog;
 
 public class MyToolbar extends JToolBar{
 	
@@ -51,6 +54,19 @@ public class MyToolbar extends JToolBar{
 					AddStudentDialog sd = AddStudentDialog.getInstance();
 					sd.setVisible(true);
 					
+				}
+				
+			}
+		});
+		
+		bDelete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				switch(MyTabbedPane.getOpenTab()) {
+				case 0:
+					int rowSelected = MyTabbedPane.getInstance().st.getSelectedRow();
+					StudentController.getInstance().deleteStudent(rowSelected);					
 				}
 				
 			}

@@ -1,6 +1,8 @@
-package model;
+package model.entities;
 
-public class Adress {
+import java.io.Serializable;
+
+public class Adress implements Serializable{
 	private String street;
 	private int number;
 	private String city;
@@ -50,6 +52,10 @@ public class Adress {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Adress [street=" + street + ", number=" + number + ", city=" + city + ", country=" + country + "]";
+	}
 	
 }

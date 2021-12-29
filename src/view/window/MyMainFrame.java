@@ -1,4 +1,4 @@
-package view;
+package view.window;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 
-import model.StudentBase;
+import model.dataBase.StudentBase;
 
 public class MyMainFrame extends JFrame{
 	
@@ -24,12 +24,12 @@ public class MyMainFrame extends JFrame{
 	private MyMenuBar mb=new MyMenuBar();
 	private MyToolbar tb=new MyToolbar();
 	private MyStatusBar sb = new MyStatusBar();
-	private MyTabbedPane tp = new MyTabbedPane();
+	private MyTabbedPane tp = MyTabbedPane.getInstance();
 	
 	private MyMainFrame() {
 		super();
 		
-		setTitle("Studentska sluûba");
+		setTitle("Studentska slu≈æba");
 		
 		Toolkit kit=Toolkit.getDefaultToolkit();
 		Dimension dimension=kit.getScreenSize();

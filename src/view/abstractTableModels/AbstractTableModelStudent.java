@@ -1,8 +1,8 @@
-package view;
+package view.abstractTableModels;
 
 import javax.swing.table.AbstractTableModel;
 
-import model.StudentBase;
+import model.dataBase.StudentBase;
 
 public class AbstractTableModelStudent extends AbstractTableModel{
 

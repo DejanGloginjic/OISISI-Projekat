@@ -1,12 +1,11 @@
 package controller;
 
-import model.Student;
-import model.StudentBase;
-import view.MyTabbedPane;
+
+import model.dataBase.StudentBase;
+import model.entities.Student;
+import view.window.MyTabbedPane;
 
 public class StudentController {
-
-	private MyTabbedPane mtp = new MyTabbedPane();
 	
 	private static StudentController instance = null;
 	
@@ -20,8 +19,16 @@ public class StudentController {
 	private StudentController() {}
 	
 	
-	public void addStudent(Student s) {
+	public void addStudent(Student s){
 		StudentBase.getInstance().addStudent(s);
-		mtp.updateViewStudent();
+		MyTabbedPane.getInstance().updateViewStudent();
+	}
+	
+	public void deleteStudent(int rowSelected){
+		if(rowSelected < 0)
+			return;
+		Student s = StudentBase.getInstance().getRow(rowSelected);
+		StudentBase.getInstance().deleteStudent(s.getIndexNumber());
+		MyTabbedPane.getInstance().updateViewStudent();
 	}
 }
