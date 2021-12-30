@@ -135,7 +135,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(surnamePan);
 		
 		dateOfBirthPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		dateOfBirthLab = new JLabel("Datum rodjenja*");
+		dateOfBirthLab = new JLabel("Datum rođenja*");
 		dateOfBirthLab.setPreferredSize(dim);
 		dateOfBirthText = new JTextField();
 		dateOfBirthText.setPreferredSize(dim);
@@ -171,7 +171,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(cityPan);
 		
 		countryPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		countryLab = new JLabel("Dr�ava (stanovanja)*");
+		countryLab = new JLabel("Država (stanovanja)*");
 		countryLab.setPreferredSize(dim);
 		countryText = new JTextField();
 		countryText.setPreferredSize(dim);
@@ -225,7 +225,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(cityOfficePan);
 		
 		countryOfficePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		countryOfficeLab = new JLabel("Dr�ava (kancelarije)*");
+		countryOfficeLab = new JLabel("Država (kancelarije)*");
 		countryOfficeLab.setPreferredSize(dim);
 		countryOfficeText = new JTextField();
 		countryOfficeText.setPreferredSize(dim);
@@ -234,7 +234,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(countryOfficePan);
 		
 		IdNumberPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		IdNumberLab = new JLabel("Broj licne karte*");
+		IdNumberLab = new JLabel("Broj lične karte*");
 		IdNumberLab.setPreferredSize(dim);
 		IdNumberText = new JTextField();
 		IdNumberText.setPreferredSize(dim);

@@ -15,6 +15,7 @@ import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 
+import controller.CourseController;
 import controller.StudentController;
 import view.dialogs.AddProfessorDialog;
 import view.dialogs.AddStudentDialog;
@@ -54,9 +55,11 @@ public class MyToolbar extends JToolBar{
 				case 0:
 					AddStudentDialog sd = AddStudentDialog.getInstance();
 					sd.setVisible(true);
+					break;
 				case 1:
 					AddProfessorDialog pd = AddProfessorDialog.getInstance();
 					pd.setVisible(true);
+					break;
 				}
 				
 			}
@@ -69,7 +72,10 @@ public class MyToolbar extends JToolBar{
 				switch(MyTabbedPane.getOpenTab()) {
 				case 0:
 					int rowSelected = MyTabbedPane.getInstance().st.getSelectedRow();
-					StudentController.getInstance().deleteStudent(rowSelected);					
+					StudentController.getInstance().deleteStudent(rowSelected);	
+				case 2:
+					int rowSelected2 = MyTabbedPane.getInstance().ct.getSelectedRow();
+					CourseController.getInstance().deletCourse(rowSelected2);
 				}
 				
 			}

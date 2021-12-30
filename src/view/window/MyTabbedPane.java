@@ -6,8 +6,10 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import view.abstractTableModels.AbstractTableModelCourse;
 import view.abstractTableModels.AbstractTableModelProfessor;
 import view.abstractTableModels.AbstractTableModelStudent;
+import view.tables.CourseTable;
 import view.tables.ProfessorTable;
 import view.tables.StudentTable;
 
@@ -15,6 +17,8 @@ public class MyTabbedPane extends JTabbedPane{
 	
 	StudentTable st = new StudentTable();
 	ProfessorTable pt=new ProfessorTable();
+	CourseTable ct=new CourseTable();
+	
 	private static int openTab;
 	
 	private static MyTabbedPane instance = null;
@@ -30,12 +34,15 @@ public class MyTabbedPane extends JTabbedPane{
 		
 		JScrollPane scrollPane = new JScrollPane(st);
 		JScrollPane scrollPane1 = new JScrollPane(pt);
+		JScrollPane scrollPane2 = new JScrollPane(ct);
 		
 		addTab("Studenti", scrollPane);
 		updateViewStudent();
 		addTab("Profesori", scrollPane1);
 		updateViewProfessor();
-		addTab("Predmeti", new JPanel());
+		addTab("Predmeti", scrollPane2);
+		updateViewCourse();
+		
 		
 		ChangeListener changeListener = new ChangeListener() {
 		      public void stateChanged(ChangeEvent changeEvent) {
@@ -55,6 +62,9 @@ public class MyTabbedPane extends JTabbedPane{
 		        	MyStatusBar.setTabLabel("Predmeti");
 		        	openTab = 2;
 		        	break;
+		        case 3:
+		        	MyStatusBar.setTabLabel("Predmeti");
+		        	openTab = 3;
 		        }
 		      }
 		    };
@@ -70,6 +80,12 @@ public class MyTabbedPane extends JTabbedPane{
 	
 	public void updateViewProfessor() {
 		AbstractTableModelProfessor model = (AbstractTableModelProfessor) pt.getModel();
+		model.fireTableDataChanged();
+		validate();
+	}
+	
+	public void updateViewCourse() {
+		AbstractTableModelCourse model = (AbstractTableModelCourse) ct.getModel();
 		model.fireTableDataChanged();
 		validate();
 	}
