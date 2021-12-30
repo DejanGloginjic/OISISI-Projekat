@@ -1,4 +1,4 @@
-package view;
+package view.window;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -6,8 +6,10 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import controller.ProfessorController;
-import view.MyStatusBar;
+import view.abstractTableModels.AbstractTableModelProfessor;
+import view.abstractTableModels.AbstractTableModelStudent;
+import view.tables.ProfessorTable;
+import view.tables.StudentTable;
 
 public class MyTabbedPane extends JTabbedPane{
 	

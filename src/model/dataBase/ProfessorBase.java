@@ -1,8 +1,11 @@
-package model;
+package model.dataBase;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import model.entities.Adress;
+import model.entities.Professor;
 
 public class ProfessorBase {
 	

@@ -1,4 +1,4 @@
-package view;
+package view.dialogs;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -15,11 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.ProfessorController;
-import controller.StudentController;
-import model.Adress;
-import model.Course;
-import model.Grade;
-import model.Professor;
+import model.entities.Adress;
+import model.entities.Course;
+import model.entities.Professor;
+import view.window.MyMainFrame;
 
 public class AddProfessorDialog extends JDialog{
 	
@@ -172,7 +171,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(cityPan);
 		
 		countryPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		countryLab = new JLabel("Država (stanovanja)*");
+		countryLab = new JLabel("Drï¿½ava (stanovanja)*");
 		countryLab.setPreferredSize(dim);
 		countryText = new JTextField();
 		countryText.setPreferredSize(dim);
@@ -226,7 +225,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(cityOfficePan);
 		
 		countryOfficePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		countryOfficeLab = new JLabel("Država (kancelarije)*");
+		countryOfficeLab = new JLabel("Drï¿½ava (kancelarije)*");
 		countryOfficeLab.setPreferredSize(dim);
 		countryOfficeText = new JTextField();
 		countryOfficeText.setPreferredSize(dim);

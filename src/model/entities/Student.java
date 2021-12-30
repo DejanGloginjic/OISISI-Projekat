@@ -1,12 +1,13 @@
-package model;
+package model.entities;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 import enumerations.Status;
 
 
-public class Student {
+public class Student implements Serializable{
 	private String surname;
 	private String name;
 	private LocalDate dateOfBirth;
@@ -156,4 +157,14 @@ public class Student {
 	public static Status selffinancing() {
 		return Status.S;
 	}
+
+	@Override
+	public String toString() {
+		return "Student [surname=" + surname + ", name=" + name + ", dateOfBirth=" + dateOfBirth
+				+ ", residentialAddress=" + residentialAddress + ", telephoneNumber=" + telephoneNumber + ", eMail="
+				+ eMail + ", indexNumber=" + indexNumber + ", yearOfEnrollment=" + yearOfEnrollment
+				+ ", currentYearOfStudy=" + currentYearOfStudy + ", status=" + status + ", averageGrade=" + averageGrade
+				+ ", passedExams=" + passedExams + ", remainingExams=" + remainingExams + "]";
+	}
+	
 }

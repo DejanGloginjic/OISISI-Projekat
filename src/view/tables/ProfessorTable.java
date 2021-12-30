@@ -1,4 +1,4 @@
-package view;
+package view.tables;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -7,15 +7,16 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
-public class StudentTable extends JTable{
+import view.abstractTableModels.AbstractTableModelProfessor;
+
+public class ProfessorTable extends JTable{
 	
-	public StudentTable() {
+	public ProfessorTable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.setModel(new AbstractTableModelStudent());
+		this.setModel(new AbstractTableModelProfessor());
 	}
-	
 	@Override
 	public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
 		Component c = super.prepareRenderer(renderer, row, column);
@@ -25,5 +26,5 @@ public class StudentTable extends JTable{
 			c.setBackground(Color.WHITE);
 		}
 		return c;
-	}
+	}	
 }

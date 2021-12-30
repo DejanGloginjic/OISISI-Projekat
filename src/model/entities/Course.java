@@ -1,10 +1,10 @@
-package model;
+package model.entities;
 
 import java.util.ArrayList;
 
 enum Semester {SUMMER, WINTER};
 
-public class Course {
+public class Course{
 	private int code;
 	private String name;
 	private Semester semester;

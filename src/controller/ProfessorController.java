@@ -1,8 +1,8 @@
 package controller;
 
-import model.Professor;
-import view.MyTabbedPane;
-import model.ProfessorBase;
+import model.dataBase.ProfessorBase;
+import model.entities.Professor;
+import view.window.MyTabbedPane;
 
 public class ProfessorController {
 	

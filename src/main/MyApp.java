@@ -1,16 +1,13 @@
 package main;
 
-import java.awt.BorderLayout;
-
 import controller.ProfessorController;
-import model.ProfessorBase;
-import model.Student;
-import model.StudentBase;
-import view.MyMainFrame;
+import model.dataBase.ProfessorBase;
+import model.dataBase.StudentBase;
+import view.window.MyMainFrame;
 
 public class MyApp {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
 	
 		MyMainFrame mf = MyMainFrame.getInstance();
 		StudentBase sb = StudentBase.getInstance();

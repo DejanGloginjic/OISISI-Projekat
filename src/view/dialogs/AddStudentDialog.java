@@ -1,4 +1,4 @@
-package view;
+package view.dialogs;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -20,9 +20,11 @@ import javax.swing.JTextField;
 
 import controller.StudentController;
 import enumerations.Status;
-import model.Adress;
-import model.Grade;
-import model.Student;
+import model.entities.Adress;
+import model.entities.Grade;
+import model.entities.Student;
+import view.listeners.MyActionListenerCofirmStudent;
+import view.window.MyMainFrame;
 import enumerations.Status;
 
 public class AddStudentDialog extends JDialog{
@@ -167,7 +169,7 @@ public class AddStudentDialog extends JDialog{
 		panelCenter.add(cityPan);
 		
 		countryPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		countryLab = new JLabel("Drûava*");
+		countryLab = new JLabel("Dr≈æava*");
 		countryLab.setPreferredSize(dim);
 		countryText = new JTextField();
 		countryText.setPreferredSize(dim);
@@ -213,16 +215,16 @@ public class AddStudentDialog extends JDialog{
 		
 		
 		cyosPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		cyosLab = new JLabel("Godina upisa*");
+		cyosLab = new JLabel("Trenutna godina studija*");
 		cyosLab.setPreferredSize(dim);
 		year = new JComboBox<String>();
 		yearModel = new DefaultComboBoxModel<String>();
 		yearModel.addElement("I (prva)");
 		yearModel.addElement("II (druga)");
-		yearModel.addElement("III (treÊa)");
-		yearModel.addElement("IV (Ëetvrta)");
+		yearModel.addElement("III (treƒáa)");
+		yearModel.addElement("IV (ƒçetvrta)");
 		yearModel.addElement("V (peta)");
-		yearModel.addElement("IV (öesta)");
+		yearModel.addElement("VI (≈°esta)");
 		year.setModel(yearModel);
 		year.setSelectedIndex(0);
 		year.setPreferredSize(dim);
@@ -235,7 +237,7 @@ public class AddStudentDialog extends JDialog{
 		statusLab.setPreferredSize(dim);
 		status = new JComboBox<String>();
 		statusModel = new DefaultComboBoxModel<String>();
-		statusModel.addElement("Budûet");
+		statusModel.addElement("Bud≈æet");
 		statusModel.addElement("Samofinansiranje");
 		status.setModel(statusModel);
 		status.setSelectedIndex(0);
@@ -246,34 +248,7 @@ public class AddStudentDialog extends JDialog{
 		
 		buttonPanel = new JPanel();
 		confirm = new JButton("Potvrdi");
-		confirm.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String surname = AddStudentDialog.getInstance().getSurnameText().getText();
-				String name = AddStudentDialog.getInstance().getNameText().getText();
-				LocalDate dateOfBirth = LocalDate.parse(AddStudentDialog.getInstance().getDobText().getText());
-				String street = AddStudentDialog.getInstance().getCityText().getText();
-				int number = Integer.parseInt(AddStudentDialog.getInstance().getNosText().getText());
-				String city = AddStudentDialog.getInstance().getCityText().getText();
-				String country = AddStudentDialog.getInstance().getCountryText().getText();
-				Adress residentialAddress = new Adress(street, number, city, country);
-				int telephoneNumber = Integer.parseInt(AddStudentDialog.getInstance().getTelText().getText());
-				String eMail = AddStudentDialog.getInstance().getMailText().getText();
-				String indexNumber = AddStudentDialog.getInstance().getIndexText().getText();
-				int yearOfEnrollment = Integer.parseInt(AddStudentDialog.getInstance().getYoeText().getText());
-				int currentYearOfStudy = 1;
-				Status status = AddStudentDialog.getInstance().getStatus().getSelectedItem() == "Budûet" ? Status.B : Status.S;
-				double averageGrade = 0.00;
-				ArrayList<Grade> passedExams = null;
-				ArrayList<String> remainingExams = null;
-				
-				Student student = new Student(surname, name, dateOfBirth, residentialAddress, telephoneNumber, eMail, indexNumber, yearOfEnrollment, currentYearOfStudy,
-						status, averageGrade, passedExams, remainingExams);
-				
-				StudentController.getInstance().addStudent(student);
-			}
-		});
+		confirm.addActionListener(new MyActionListenerCofirmStudent());
 		cancel = new JButton("Odustani");
 		buttonPanel.add(confirm);
 		buttonPanel.add(cancel);

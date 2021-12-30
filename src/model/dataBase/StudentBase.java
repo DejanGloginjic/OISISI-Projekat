@@ -1,28 +1,26 @@
-package model;
+package model.dataBase;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import enumerations.Status;
-import model.Student;
+import model.entities.Student;
 
 public class StudentBase {
 	
 	private static StudentBase instance = null;
 
-	public static StudentBase getInstance() {
+	public static StudentBase getInstance(){
 		if (instance == null) {
 			instance = new StudentBase();
 		}
 		return instance;
 	}
 	
-	private List<Student> studentList;
+	private List<Student> studentList = new ArrayList<>();
 	private List<String> columnList;
 
 	private StudentBase(){
-		initStudents();
+		
 		
 		columnList = new ArrayList<>();
 		this.getColumnList().add("Indeks");
@@ -31,20 +29,6 @@ public class StudentBase {
 		this.getColumnList().add("Godina studija");
 		this.getColumnList().add("Status");
 		this.getColumnList().add("Prosjek");
-	}
-	
-	private void initStudents() {
-		this.studentList = new ArrayList<>();
-		
-		Adress adresa1 = new Adress("Sportska ulica", 12, "Novi Sad", "Srbija");
-		studentList.add(new Student("Nikoliæ", "Nikola", LocalDate.of(1997, 1, 1), adresa1, 111, "nikola@hotmail.com", "ra-178-2016", 2016, 1, Status.B, 9.15, null, null));
-		Adress adresa2 = new Adress("Strazilovska", 2, "Novi Sad", "Srbija");
-		studentList.add(new Student("Lukiæ", "Luka", LocalDate.of(1997, 2, 2), adresa2, 222, "luka@hotmail.com", "ra-102-2016", 2016, 4, Status.B, 8.25, null, null));
-		Adress adresa3 = new Adress("Ulica kralja Petra", 16, "Novi Sad", "Srbija");
-		studentList.add(new Student("Miniæ", "Mina", LocalDate.of(1995, 8, 12), adresa3, 333, "mina@hotmail.com", "sw-25-2014", 2014, 1, Status.S, 7.80, null, null));
-		Adress adresa4 = new Adress("Bulevar oslobodjenja", 6, "Novi Sad", "Srbija");
-		studentList.add(new Student("Markoviæ", "Marko", LocalDate.of(1999, 4, 9), adresa4, 444, "marko@hotmail.com", "sw-10-2018", 2018, 2, Status.B, 9.25, null, null));
-		
 	}
 	
 	public List<Student> getStudentList() {
@@ -105,7 +89,18 @@ public class StudentBase {
 	
 	public void addStudent(Student student) {
 		this.studentList.add(student);
-		
+		/*try {	
+			DatabaseWriterAndReader.getInstance().writeStudentToFile(this.studentList);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}*/
 	}
 	
+	public void deleteStudent(String index) {
+		for(Student s : studentList) {
+			if(s.getIndexNumber().equals(index))
+				studentList.remove(index);
+				break;
+		}
+	}
 }
