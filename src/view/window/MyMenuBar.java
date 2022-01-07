@@ -9,6 +9,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+import view.listeners.MyActionListenerAddStudent;
+
 public class MyMenuBar extends JMenuBar{
 
 	public MyMenuBar() {
@@ -93,6 +95,8 @@ public class MyMenuBar extends JMenuBar{
 		
 		miHelp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
 		miAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
+		
+		miNew.addActionListener(new MyActionListenerAddStudent());
 		
 		add(file);
 		add(edit);

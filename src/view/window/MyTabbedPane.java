@@ -15,9 +15,9 @@ import view.tables.StudentTable;
 
 public class MyTabbedPane extends JTabbedPane{
 	
-	StudentTable st = new StudentTable();
-	ProfessorTable pt=new ProfessorTable();
-	CourseTable ct=new CourseTable();
+	private StudentTable st = new StudentTable();
+	private ProfessorTable pt= new ProfessorTable();
+	private CourseTable ct= new CourseTable();
 	
 	private static int openTab;
 	
@@ -94,5 +94,30 @@ public class MyTabbedPane extends JTabbedPane{
 	public static int getOpenTab() {
 		return openTab;
 	}
+
+	public StudentTable getSt() {
+		return this.st;
+	}
+
+	public void setSt(StudentTable st) {
+		this.st = st;
+	}
+
+	public ProfessorTable getPt() {
+		return pt;
+	}
+
+	public void setPt(ProfessorTable pt) {
+		this.pt = pt;
+	}
+
+	public CourseTable getCt() {
+		return ct;
+	}
+
+	public void setCt(CourseTable ct) {
+		this.ct = ct;
+	}
+	
 	
 }

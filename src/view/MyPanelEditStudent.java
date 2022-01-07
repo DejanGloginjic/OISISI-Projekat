@@ -1,54 +1,33 @@
-package view.dialogs;
+package view;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Frame;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import controller.StudentController;
-import enumerations.Status;
-import model.entities.Adress;
-import model.entities.Grade;
-import model.entities.Student;
+import view.dialogs.AddStudentDialog;
 import view.listeners.MyActionListenerCancelStudent;
 import view.listeners.MyActionListenerCofirmStudent;
+import view.listeners.MyActionListenerConfirmEditStudent;
+import view.listeners.MyActionListenerEditStudent;
 import view.listeners.MyFocusListenerCityValidation;
 import view.listeners.MyFocusListenerCountyValidation;
 import view.listeners.MyFocusListenerDateValidation;
-import view.listeners.MyFocusListenerEmailValidation;
 import view.listeners.MyFocusListenerIndexValidation;
 import view.listeners.MyFocusListenerNOSValidation;
 import view.listeners.MyFocusListenerNameValidation;
-import view.listeners.MyFocusListenerStreetValidation;
 import view.listeners.MyFocusListenerSurnameValidation;
 import view.listeners.MyFocusListenerTelValidation;
 import view.listeners.MyFocusListenerYOEValidation;
 import view.window.MyMainFrame;
-import enumerations.Status;
 
-public class AddStudentDialog extends JDialog{
-	
-	private static AddStudentDialog instance = null;
-
-	public static AddStudentDialog getInstance() {
-		if (instance == null) {
-			instance = new AddStudentDialog();
-		}
-		return instance;
-	}
+public class MyPanelEditStudent extends JPanel{
 	
 	private JPanel panelCenter;
 	private BoxLayout boxLayout;
@@ -111,13 +90,7 @@ public class AddStudentDialog extends JDialog{
 	private JButton cancel;
 	private JButton confirm;
 	
-	
-	private AddStudentDialog(){
-		
-		setTitle("Dodavanje studenta");
-		setSize(450, 600);
-		setLocationRelativeTo(MyMainFrame.getInstance());
-		setModal(true);
+	public MyPanelEditStudent(){
 		
 		Dimension dim = new Dimension(150, 20);
 		
@@ -161,7 +134,7 @@ public class AddStudentDialog extends JDialog{
 		streetLab.setPreferredSize(dim);
 		streetText = new JTextField();
 		streetText.setPreferredSize(dim);
-		streetText.addFocusListener(new MyFocusListenerStreetValidation());
+		//streetText.addFocusListener(new MyFocusListenerStreetValidation());
 		streetPan.add(streetLab);
 		streetPan.add(streetText);
 		panelCenter.add(streetPan);
@@ -211,7 +184,7 @@ public class AddStudentDialog extends JDialog{
 		mailLab.setPreferredSize(dim);
 		mailText = new JTextField();
 		mailText.setPreferredSize(dim);
-		mailText.addFocusListener(new MyFocusListenerEmailValidation());
+		//mailText.addFocusListener(new MyFocusListenerEmailValidation());
 		mailPan.add(mailLab);
 		mailPan.add(mailText);
 		panelCenter.add(mailPan);
@@ -271,477 +244,378 @@ public class AddStudentDialog extends JDialog{
 		
 		buttonPanel = new JPanel();
 		confirm = new JButton("Potvrdi");
-		confirm.addActionListener(new MyActionListenerCofirmStudent());
-		//confirm.setEnabled(false);
+		confirm.addActionListener(new MyActionListenerConfirmEditStudent());
 		cancel = new JButton("Odustani");
-		cancel.addActionListener(new MyActionListenerCancelStudent());
+		//cancel.addActionListener(new MyActionListenerCancelStudent());
 		buttonPanel.add(confirm);
 		buttonPanel.add(cancel);
 		panelCenter.add(buttonPanel);
-	}
-	
-	public boolean areAllFieldFull() {
-		if(nameText.getText().isEmpty() || surnameText.getText().isEmpty() || dobText.getText().toString().isEmpty() || streetText.getText().isEmpty()
-				|| nosText.getText().isEmpty() || cityText.getText().isEmpty() || countryText.getText().isEmpty()) {
-			return true;
-		}
-		return false;
+		
 	}
 
 	public JPanel getPanelCenter() {
 		return panelCenter;
 	}
 
-
 	public void setPanelCenter(JPanel panelCenter) {
 		this.panelCenter = panelCenter;
 	}
-
 
 	public BoxLayout getBoxLayout() {
 		return boxLayout;
 	}
 
-
 	public void setBoxLayout(BoxLayout boxLayout) {
 		this.boxLayout = boxLayout;
 	}
-
 
 	public JPanel getSurnamePan() {
 		return surnamePan;
 	}
 
-
 	public void setSurnamePan(JPanel surnamePan) {
 		this.surnamePan = surnamePan;
 	}
-
 
 	public JLabel getSurnameLab() {
 		return surnameLab;
 	}
 
-
 	public void setSurnameLab(JLabel surnameLab) {
 		this.surnameLab = surnameLab;
 	}
-
 
 	public JTextField getSurnameText() {
 		return surnameText;
 	}
 
-
 	public void setSurnameText(JTextField surnameText) {
 		this.surnameText = surnameText;
 	}
-
 
 	public JPanel getNamePan() {
 		return namePan;
 	}
 
-
 	public void setNamePan(JPanel namePan) {
 		this.namePan = namePan;
 	}
-
 
 	public JLabel getNameLab() {
 		return nameLab;
 	}
 
-
 	public void setNameLab(JLabel nameLab) {
 		this.nameLab = nameLab;
 	}
-
 
 	public JTextField getNameText() {
 		return nameText;
 	}
 
-
 	public void setNameText(JTextField nameText) {
 		this.nameText = nameText;
 	}
-
 
 	public JPanel getDobPan() {
 		return dobPan;
 	}
 
-
 	public void setDobPan(JPanel dobPan) {
 		this.dobPan = dobPan;
 	}
-
 
 	public JLabel getDobLab() {
 		return dobLab;
 	}
 
-
 	public void setDobLab(JLabel dobLab) {
 		this.dobLab = dobLab;
 	}
-
 
 	public JTextField getDobText() {
 		return dobText;
 	}
 
-
 	public void setDobText(JTextField dobText) {
 		this.dobText = dobText;
 	}
-
 
 	public JPanel getStreetPan() {
 		return streetPan;
 	}
 
-
 	public void setStreetPan(JPanel streetPan) {
 		this.streetPan = streetPan;
 	}
-
 
 	public JLabel getStreetLab() {
 		return streetLab;
 	}
 
-
 	public void setStreetLab(JLabel streetLab) {
 		this.streetLab = streetLab;
 	}
-
 
 	public JTextField getStreetText() {
 		return streetText;
 	}
 
-
 	public void setStreetText(JTextField streetText) {
 		this.streetText = streetText;
 	}
-
 
 	public JPanel getNosPan() {
 		return nosPan;
 	}
 
-
 	public void setNosPan(JPanel nosPan) {
 		this.nosPan = nosPan;
 	}
-
 
 	public JLabel getNosLab() {
 		return nosLab;
 	}
 
-
 	public void setNosLab(JLabel nosLab) {
 		this.nosLab = nosLab;
 	}
-
 
 	public JTextField getNosText() {
 		return nosText;
 	}
 
-
 	public void setNosText(JTextField nosText) {
 		this.nosText = nosText;
 	}
-
 
 	public JPanel getCityPan() {
 		return cityPan;
 	}
 
-
 	public void setCityPan(JPanel cityPan) {
 		this.cityPan = cityPan;
 	}
-
 
 	public JLabel getCityLab() {
 		return cityLab;
 	}
 
-
 	public void setCityLab(JLabel cityLab) {
 		this.cityLab = cityLab;
 	}
-
 
 	public JTextField getCityText() {
 		return cityText;
 	}
 
-
 	public void setCityText(JTextField cityText) {
 		this.cityText = cityText;
 	}
-
 
 	public JPanel getCountryPan() {
 		return countryPan;
 	}
 
-
 	public void setCountryPan(JPanel countryPan) {
 		this.countryPan = countryPan;
 	}
-
 
 	public JLabel getCountryLab() {
 		return countryLab;
 	}
 
-
 	public void setCountryLab(JLabel countryLab) {
 		this.countryLab = countryLab;
 	}
-
 
 	public JTextField getCountryText() {
 		return countryText;
 	}
 
-
 	public void setCountryText(JTextField countryText) {
 		this.countryText = countryText;
 	}
-
 
 	public JPanel getTelPan() {
 		return telPan;
 	}
 
-
 	public void setTelPan(JPanel telPan) {
 		this.telPan = telPan;
 	}
-
 
 	public JLabel getTelLab() {
 		return telLab;
 	}
 
-
 	public void setTelLab(JLabel telLab) {
 		this.telLab = telLab;
 	}
-
 
 	public JTextField getTelText() {
 		return telText;
 	}
 
-
 	public void setTelText(JTextField telText) {
 		this.telText = telText;
 	}
-
 
 	public JPanel getMailPan() {
 		return mailPan;
 	}
 
-
 	public void setMailPan(JPanel mailPan) {
 		this.mailPan = mailPan;
 	}
-
 
 	public JLabel getMailLab() {
 		return mailLab;
 	}
 
-
 	public void setMailLab(JLabel mailLab) {
 		this.mailLab = mailLab;
 	}
-
 
 	public JTextField getMailText() {
 		return mailText;
 	}
 
-
 	public void setMailText(JTextField mailText) {
 		this.mailText = mailText;
 	}
-
 
 	public JPanel getIndexPan() {
 		return indexPan;
 	}
 
-
 	public void setIndexPan(JPanel indexPan) {
 		this.indexPan = indexPan;
 	}
-
 
 	public JLabel getIndexLab() {
 		return indexLab;
 	}
 
-
 	public void setIndexLab(JLabel indexLab) {
 		this.indexLab = indexLab;
 	}
-
 
 	public JTextField getIndexText() {
 		return indexText;
 	}
 
-
 	public void setIndexText(JTextField indexText) {
 		this.indexText = indexText;
 	}
-
 
 	public JPanel getYoePan() {
 		return yoePan;
 	}
 
-
 	public void setYoePan(JPanel yoePan) {
 		this.yoePan = yoePan;
 	}
-
 
 	public JLabel getYoeLab() {
 		return yoeLab;
 	}
 
-
 	public void setYoeLab(JLabel yoeLab) {
 		this.yoeLab = yoeLab;
 	}
-
 
 	public JTextField getYoeText() {
 		return yoeText;
 	}
 
-
 	public void setYoeText(JTextField yoeText) {
 		this.yoeText = yoeText;
 	}
-
 
 	public JPanel getCyosPan() {
 		return cyosPan;
 	}
 
-
 	public void setCyosPan(JPanel cyosPan) {
 		this.cyosPan = cyosPan;
 	}
-
 
 	public JLabel getCyosLab() {
 		return cyosLab;
 	}
 
-
 	public void setCyosLab(JLabel cyosLab) {
 		this.cyosLab = cyosLab;
 	}
-
 
 	public JComboBox<String> getYear() {
 		return year;
 	}
 
-
 	public void setYear(JComboBox<String> year) {
 		this.year = year;
 	}
-
 
 	public DefaultComboBoxModel<String> getYearModel() {
 		return yearModel;
 	}
 
-
 	public void setYearModel(DefaultComboBoxModel<String> yearModel) {
 		this.yearModel = yearModel;
 	}
-
 
 	public JPanel getStatusPan() {
 		return statusPan;
 	}
 
-
 	public void setStatusPan(JPanel statusPan) {
 		this.statusPan = statusPan;
 	}
-
 
 	public JLabel getStatusLab() {
 		return statusLab;
 	}
 
-
 	public void setStatusLab(JLabel statusLab) {
 		this.statusLab = statusLab;
 	}
-
 
 	public JComboBox<String> getStatus() {
 		return status;
 	}
 
-
 	public void setStatus(JComboBox<String> status) {
 		this.status = status;
 	}
-
 
 	public DefaultComboBoxModel<String> getStatusModel() {
 		return statusModel;
 	}
 
-
 	public void setStatusModel(DefaultComboBoxModel<String> statusModel) {
 		this.statusModel = statusModel;
 	}
-
 
 	public JPanel getButtonPanel() {
 		return buttonPanel;
 	}
 
-
 	public void setButtonPanel(JPanel buttonPanel) {
 		this.buttonPanel = buttonPanel;
 	}
-
 
 	public JButton getCancel() {
 		return cancel;
 	}
 
-
 	public void setCancel(JButton cancel) {
 		this.cancel = cancel;
 	}
 
-
 	public JButton getConfirm() {
 		return confirm;
 	}
-
 
 	public void setConfirm(JButton confirm) {
 		this.confirm = confirm;

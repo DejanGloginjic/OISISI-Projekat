@@ -1,3 +1,4 @@
+
 package view.window;
 
 import java.awt.Dimension;
@@ -16,6 +17,9 @@ import controller.ProfessorController;
 import controller.StudentController;
 import view.dialogs.AddProfessorDialog;
 import view.dialogs.AddStudentDialog;
+import view.listeners.MyActionListenerAddStudent;
+import view.listeners.MyActionListenerDeleteStudent;
+import view.listeners.MyActionListenerEditStudent;
 
 public class MyToolbar extends JToolBar{
 	
@@ -49,42 +53,10 @@ public class MyToolbar extends JToolBar{
 		bSearch2.setPreferredSize(new Dimension(130,30));
 		bSearch2.setMaximumSize(new Dimension(130,30));
 		
-		bNew.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				switch(MyTabbedPane.getOpenTab()) {
-				case 0:
-					AddStudentDialog sd = AddStudentDialog.getInstance();
-					sd.setVisible(true);
-					break;
-				case 1:
-					AddProfessorDialog pd = AddProfessorDialog.getInstance();
-					pd.setVisible(true);
-					break;
-				}
-				
-			}
-		});
-		
-		bDelete.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				switch(MyTabbedPane.getOpenTab()) {
-				case 0:
-					int rowSelected = MyTabbedPane.getInstance().st.getSelectedRow();
-					StudentController.getInstance().deleteStudent(rowSelected);	
-				case 1:
-					int rowSelected1 = MyTabbedPane.getInstance().pt.getSelectedRow();
-					ProfessorController.getInstance().deleteProfessor(rowSelected1);
-				case 2:
-					int rowSelected2 = MyTabbedPane.getInstance().ct.getSelectedRow();
-					CourseController.getInstance().deletCourse(rowSelected2);
-				}
-				
-			}
-		});
+		bNew.addActionListener(new MyActionListenerAddStudent());
+		bEdit.addActionListener(new MyActionListenerEditStudent());
+		bDelete.addActionListener(new MyActionListenerDeleteStudent());
+
 		
 		add(bNew);
 		addSeparator();

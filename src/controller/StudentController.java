@@ -29,4 +29,9 @@ public class StudentController {
 		StudentBase.getInstance().deleteStudent(s.getIndexNumber());
 		MyTabbedPane.getInstance().updateViewStudent();
 	}
+	
+	public void editStudent(Student s) {
+		StudentBase.getInstance().editStudent(s);
+		MyTabbedPane.getInstance().updateViewStudent();
+	}
 }

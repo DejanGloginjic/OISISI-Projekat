@@ -99,8 +99,29 @@ public class StudentBase {
 	public void deleteStudent(String index) {
 		for(Student s : studentList) {
 			if(s.getIndexNumber().equals(index))
-				studentList.remove(index);
+				studentList.remove(s);
 				break;
+		}
+	}
+	
+	public void editStudent(Student s) {
+		for(Student student : studentList) {
+			if(student.getIndexNumber().equals(s.getIndexNumber())) {
+				student.setName(s.getName());
+				student.setSurname(s.getSurname());
+				student.setDateOfBirth(s.getDateOfBirth());
+				student.getResidentialAddress().setCity(s.getResidentialAddress().getCity());
+				student.getResidentialAddress().setCountry(s.getResidentialAddress().getCountry());
+				student.getResidentialAddress().setNumber(s.getResidentialAddress().getNumber());
+				student.getResidentialAddress().setStreet(s.getResidentialAddress().getStreet());
+				student.setTelephoneNumber(s.getTelephoneNumber());
+				student.seteMail(s.geteMail());
+				student.setIndexNumber(s.getIndexNumber());
+				student.setYearOfEnrollment(s.getYearOfEnrollment());
+				student.setAverageGrade(s.getAverageGrade());
+				student.setCurrentYearOfStudy(s.getCurrentYearOfStudy());
+				student.setStatus(s.getStatus());
+			}
 		}
 	}
 }
