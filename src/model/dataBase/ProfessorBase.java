@@ -39,10 +39,10 @@ public class ProfessorBase {
 		Adress adresa3 = new Adress("Ulica kralja Petra", 16, "Novi Sad", "Srbija");
 		Adress adresa4 = new Adress("Bulevar oslobodjenja", 6, "Novi Sad", "Srbija");
 		
-		professorList.add(new Professor("Milan","Rapaic", LocalDate.of(1970, 1, 1),adresa1,12,"brankakukic@yahoo.com",adresa1,"2","Diplomirani inzenjer elektrotehnike",10,null));
+		professorList.add(new Professor("Milan","Rapaic", LocalDate.of(1970, 1, 1),adresa1,12,"brankakukic@yahoo.com",adresa1,"1","Diplomirani inzenjer elektrotehnike",10,null));
 		professorList.add(new Professor("Zoran","Jelicic", LocalDate.of(1960, 1, 1),adresa2,56,"zoranjelicic@yahoo.com",adresa2,"2","Diplomirani inzenjer elektrotehnike",10,null));
-		professorList.add(new Professor("Milan","Vidakovic", LocalDate.of(1952, 1, 1),adresa3,24,"milanvidakovic@yahoo.com",adresa3,"2","Diplomirani inzenjer elektrotehnike",10,null));
-		professorList.add(new Professor("Nebojsa","Ralevic", LocalDate.of(1959, 1, 1),adresa4,15,"nebojsaralevic@yahoo.com",adresa4,"2","Diplomirani inzenjer elektrotehnike",10,null));
+		professorList.add(new Professor("Milan","Vidakovic", LocalDate.of(1952, 1, 1),adresa3,24,"milanvidakovic@yahoo.com",adresa3,"3","Diplomirani inzenjer elektrotehnike",10,null));
+		professorList.add(new Professor("Nebojsa","Ralevic", LocalDate.of(1959, 1, 1),adresa4,15,"nebojsaralevic@yahoo.com",adresa4,"4","Diplomirani inzenjer elektrotehnike",10,null));
 	}
 
 	public List<Professor> getProfessorList() {
@@ -91,7 +91,24 @@ public class ProfessorBase {
 		}
 	}
 	
+	public boolean checkIfUnique(String idNumber) {
+		for(Professor p:professorList) {
+			if(idNumber.equals(p.getIdNumber())) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	public void addProfessor(Professor professor) {
 		this.professorList.add(professor);
+	}
+	
+	public void deleteProfessor(String idNum) {
+		for(Professor p : professorList) {
+			if(p.getIdNumber().equals(idNum))
+				professorList.remove(p);
+				break;
+		}
 	}
 }

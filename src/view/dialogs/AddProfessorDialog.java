@@ -18,6 +18,19 @@ import controller.ProfessorController;
 import model.entities.Adress;
 import model.entities.Course;
 import model.entities.Professor;
+import view.listeners.MyActionListenerCancleProfessor;
+import view.listeners.MyActionListenerConfirmProfessor;
+import view.listeners.MyFocusListenerCityValidationForProfessor;
+import view.listeners.MyFocusListenerCountryValidationForProfessor;
+import view.listeners.MyFocusListenerDateValidationForProfessor;
+import view.listeners.MyFocusListenerEmailValidationForProfessor;
+import view.listeners.MyFocusListenerIdNumberValidationForProfessor;
+import view.listeners.MyFocusListenerNameValidationForProfessor;
+import view.listeners.MyFocusListenerNosValidationForProfessor;
+import view.listeners.MyFocusListenerStreetValidationForProfessor;
+import view.listeners.MyFocusListenerSurnameValidationForProfessor;
+import view.listeners.MyFocusListenerTelephoneValidationForProfessor;
+import view.listeners.MyFocusListenerYearsValidationForProfessor;
 import view.window.MyMainFrame;
 
 public class AddProfessorDialog extends JDialog{
@@ -119,6 +132,7 @@ public class AddProfessorDialog extends JDialog{
 		nameLab = new JLabel("Ime*");
 		nameLab.setPreferredSize(dim);
 		nameText = new JTextField();
+		nameText.addFocusListener(new MyFocusListenerNameValidationForProfessor());
 		nameText.setPreferredSize(dim);
 		
 		namePan.add(nameLab);
@@ -129,6 +143,7 @@ public class AddProfessorDialog extends JDialog{
 		surnameLab = new JLabel("Prezime*");
 		surnameLab.setPreferredSize(dim);
 		surnameText = new JTextField();
+		surnameText.addFocusListener(new MyFocusListenerSurnameValidationForProfessor());
 		surnameText.setPreferredSize(dim);
 		surnamePan.add(surnameLab);
 		surnamePan.add(surnameText);
@@ -138,6 +153,7 @@ public class AddProfessorDialog extends JDialog{
 		dateOfBirthLab = new JLabel("Datum rođenja*");
 		dateOfBirthLab.setPreferredSize(dim);
 		dateOfBirthText = new JTextField();
+		dateOfBirthText.addFocusListener(new MyFocusListenerDateValidationForProfessor());
 		dateOfBirthText.setPreferredSize(dim);
 		dateOfBirthPan.add(dateOfBirthLab);
 		dateOfBirthPan.add(dateOfBirthText);
@@ -147,6 +163,7 @@ public class AddProfessorDialog extends JDialog{
 		streetLab = new JLabel("Ulica*");
 		streetLab.setPreferredSize(dim);
 		streetText = new JTextField();
+		streetText.addFocusListener(new MyFocusListenerStreetValidationForProfessor());
 		streetText.setPreferredSize(dim);
 		streetPan.add(streetLab);
 		streetPan.add(streetText);
@@ -157,6 +174,7 @@ public class AddProfessorDialog extends JDialog{
 		nosLab.setPreferredSize(dim);
 		nosText = new JTextField();
 		nosText.setPreferredSize(dim);
+		nosText.addFocusListener(new MyFocusListenerNosValidationForProfessor());
 		nosPan.add(nosLab);
 		nosPan.add(nosText);
 		panelCenter.add(nosPan);
@@ -165,6 +183,7 @@ public class AddProfessorDialog extends JDialog{
 		cityLab = new JLabel("Grad (stanovanja)*");
 		cityLab.setPreferredSize(dim);
 		cityText = new JTextField();
+		cityText.addFocusListener(new MyFocusListenerCityValidationForProfessor());
 		cityText.setPreferredSize(dim);
 		cityPan.add(cityLab);
 		cityPan.add(cityText);
@@ -174,6 +193,7 @@ public class AddProfessorDialog extends JDialog{
 		countryLab = new JLabel("Država (stanovanja)*");
 		countryLab.setPreferredSize(dim);
 		countryText = new JTextField();
+		countryText.addFocusListener(new MyFocusListenerCountryValidationForProfessor());
 		countryText.setPreferredSize(dim);
 		countryPan.add(countryLab);
 		countryPan.add(countryText);
@@ -184,6 +204,7 @@ public class AddProfessorDialog extends JDialog{
 		telephoneNumberLab.setPreferredSize(dim);
 		telephoneNumberText = new JTextField();
 		telephoneNumberText.setPreferredSize(dim);
+		telephoneNumberText.addFocusListener(new MyFocusListenerTelephoneValidationForProfessor());
 		telephoneNumberPan.add(telephoneNumberLab);
 		telephoneNumberPan.add(telephoneNumberText);
 		panelCenter.add(telephoneNumberPan);
@@ -193,6 +214,7 @@ public class AddProfessorDialog extends JDialog{
 		eMailLab.setPreferredSize(dim);
 		eMailText = new JTextField();
 		eMailText.setPreferredSize(dim);
+		eMailText.addFocusListener(new MyFocusListenerEmailValidationForProfessor());
 		eMailPan.add(eMailLab);
 		eMailPan.add(eMailText);
 		panelCenter.add(eMailPan);
@@ -238,6 +260,7 @@ public class AddProfessorDialog extends JDialog{
 		IdNumberLab.setPreferredSize(dim);
 		IdNumberText = new JTextField();
 		IdNumberText.setPreferredSize(dim);
+		IdNumberText.addFocusListener(new MyFocusListenerIdNumberValidationForProfessor());
 		IdNumberPan.add(IdNumberLab);
 		IdNumberPan.add(IdNumberText);
 		panelCenter.add(IdNumberPan);
@@ -256,40 +279,16 @@ public class AddProfessorDialog extends JDialog{
 		yearOfTrailLab.setPreferredSize(dim);
 		yearOfTrailText = new JTextField();
 		yearOfTrailText.setPreferredSize(dim);
+		yearOfTrailText.addFocusListener(new MyFocusListenerYearsValidationForProfessor());
 		yearOfTrailPan.add(yearOfTrailLab);
 		yearOfTrailPan.add(yearOfTrailText);
 		panelCenter.add(yearOfTrailPan);
 		
 		buttonPanel = new JPanel();
 		confirm = new JButton("Potvrdi");
-		//confirm.set
-		confirm.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String surname=getSurnameText().getText();
-				String name=getNameText().getText();
-				LocalDate dateOfBirth = LocalDate.parse(AddProfessorDialog.getInstance().getDateOfBirthText().getText());
-				String street = AddProfessorDialog.getInstance().getStreetText().getText();
-				int number = Integer.parseInt(AddProfessorDialog.getInstance().getNosText().getText());
-				String city = AddProfessorDialog.getInstance().getCityText().getText();
-				String country = AddProfessorDialog.getInstance().getCountryText().getText();
-				Adress residentialAddress = new Adress(street, number, city, country);
-				int telephoneNumber=Integer.parseInt(AddProfessorDialog.getInstance().getTelephoneNumberText().getText());	
-				String eMail = AddProfessorDialog.getInstance().geteMailText().getText();
-				String streetOffice = AddProfessorDialog.getInstance().getStreetOfficeText().getText();
-				int numberOffice = Integer.parseInt(AddProfessorDialog.getInstance().getNosOfficeText().getText());
-				String cityOffice = AddProfessorDialog.getInstance().getCityOfficeText().getText();
-				String countryOffice = AddProfessorDialog.getInstance().getCountryOfficeText().getText();
-				Adress officeAddress = new Adress(streetOffice, numberOffice, cityOffice, countryOffice);
-				String idNumber=AddProfessorDialog.getInstance().getIdNumberText().getText();
-				String title=AddProfessorDialog.getInstance().getTitleText().getText();
-				int yearOfTrail=Integer.parseInt(AddProfessorDialog.getInstance().getYearOfTrailText().getText());
-				ArrayList<Course> listOfSubjects = null;
-				
-				Professor professor=new Professor(surname,name,dateOfBirth,residentialAddress,telephoneNumber,eMail,officeAddress,idNumber,title,yearOfTrail,listOfSubjects);
-				ProfessorController.getInstance().addProfessor(professor);
-			}
-		});
+		confirm.addActionListener(new MyActionListenerConfirmProfessor());
 		cancel = new JButton("Odustani");
+		cancel.addActionListener(new MyActionListenerCancleProfessor());
 		buttonPanel.add(confirm);
 		buttonPanel.add(cancel);
 		panelCenter.add(buttonPanel);

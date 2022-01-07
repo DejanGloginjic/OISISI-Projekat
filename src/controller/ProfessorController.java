@@ -21,4 +21,11 @@ public class ProfessorController {
 		ProfessorBase.getInstance().addProfessor(p);
 		MyTabbedPane.getInstance().updateViewProfessor();
 	}
+	public void deleteProfessor(int rowSelected){
+		if(rowSelected < 0)
+			return;
+		Professor p = ProfessorBase.getInstance().getRow(rowSelected);
+		ProfessorBase.getInstance().deleteProfessor(p.getIdNumber());
+		MyTabbedPane.getInstance().updateViewProfessor();
+	}
 }

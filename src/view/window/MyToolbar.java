@@ -1,27 +1,29 @@
 package view.window;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
-import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 
 import controller.CourseController;
+import controller.ProfessorController;
 import controller.StudentController;
 import view.dialogs.AddProfessorDialog;
 import view.dialogs.AddStudentDialog;
 
 public class MyToolbar extends JToolBar{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public MyToolbar(){
 		super(SwingConstants.HORIZONTAL);
 		
@@ -73,6 +75,9 @@ public class MyToolbar extends JToolBar{
 				case 0:
 					int rowSelected = MyTabbedPane.getInstance().st.getSelectedRow();
 					StudentController.getInstance().deleteStudent(rowSelected);	
+				case 1:
+					int rowSelected1 = MyTabbedPane.getInstance().pt.getSelectedRow();
+					ProfessorController.getInstance().deleteProfessor(rowSelected1);
 				case 2:
 					int rowSelected2 = MyTabbedPane.getInstance().ct.getSelectedRow();
 					CourseController.getInstance().deletCourse(rowSelected2);
