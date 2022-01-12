@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.dataBase.CourseBase;
+import model.dataBase.PassedExamsBase;
 import model.dataBase.StudentBase;
 import model.entities.Course;
 import model.entities.Student;
@@ -11,6 +12,7 @@ import view.dialogs.AddProfessorDialog;
 import view.dialogs.AddStudentDialog;
 import view.dialogs.EditCourseDialog;
 import view.dialogs.EditStudentDialog;
+import view.panels.MyPanelPassedExams;
 import view.window.MyTabbedPane;
 import view.window.MyTabbedPaneStudentEdit;
 
@@ -22,6 +24,9 @@ public class MyActionListenerEditStudent implements ActionListener{
 		case 0:
 			int rowSelected1 = MyTabbedPane.getInstance().getSt().getSelectedRow();
 			Student s = StudentBase.getInstance().getRow(rowSelected1);
+			PassedExamsBase.getInstance().setGradeList(s.getPassedExams());
+			MyPanelPassedExams.getInstance().getGrade().setText(String.valueOf(s.getAverageGrade()));
+			PassedExamsBase.getInstance().setNumberOfESPB();
 			
 			MyTabbedPaneStudentEdit.getInstance().getMpes().getNameText().setText(s.getName());
 			MyTabbedPaneStudentEdit.getInstance().getMpes().getSurnameText().setText(s.getSurname());

@@ -2,11 +2,13 @@ package view.window;
 
 import javax.swing.JTabbedPane;
 
-import view.MyPanelEditStudent;
+import view.panels.MyPanelEditStudent;
+import view.panels.MyPanelPassedExams;
 
 public class MyTabbedPaneStudentEdit extends JTabbedPane{
 	
 	private MyPanelEditStudent mpes = new MyPanelEditStudent();
+	MyPanelPassedExams mppe = MyPanelPassedExams.getInstance();
 	
 	private static MyTabbedPaneStudentEdit instance = null;
 	
@@ -20,6 +22,7 @@ public class MyTabbedPaneStudentEdit extends JTabbedPane{
 	private MyTabbedPaneStudentEdit() {
 		
 		addTab("Informacije", mpes);
+		addTab("Položeni", mppe);
 	}
 
 	public MyPanelEditStudent getMpes() {

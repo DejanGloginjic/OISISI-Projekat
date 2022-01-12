@@ -4,8 +4,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import enumerations.Semester;
 import model.entities.Adress;
+import model.entities.Course;
 import model.entities.Grade;
+import model.entities.Professor;
 import model.entities.Student;
 
 public class StudentBase {
@@ -37,18 +40,34 @@ public class StudentBase {
 	private void initStudents() {
 		Adress a1 = new Adress("Sportska", 2, "Mkronjic Grad", "BiH");
 		LocalDate date = LocalDate.of(2020, 1, 8);
+
 		List<Grade> g1 = new ArrayList<>();
-		Student s1 = new Student("Gloginjic", "Dejan", date, a1, 2, "deki555@hotmail.com", "ra-241-2020", 2019, 2, enumerations.Status.B, 7, g1, null);
+		List<Grade> g3 = new ArrayList<>();
+		
+		Student s = new Student();
+		
+		Professor p1 = new Professor();
+		Course c = new Course("1","Baze podataka",Semester.WINTER,3,p1,10,null,null);
+		Grade g2 = new Grade(s, c, 10, date);
+		g1.add(g2);
+		
+		Professor p2 = new Professor();
+		Course c1 = new Course("2","OISISI",Semester.WINTER,3,p2,8,null,null);
+		Grade g4 = new Grade(s, c1, 12, date);
+		g3.add(g4);
+		g1.add(g4);
+		
+		Student s1 = new Student("Gloginjic", "Dejan", date, a1, 2, "deki555@hotmail.com", "ra-241-2020", 2019, 2, enumerations.Status.B, g1, null);
 		
 		Adress a2 = new Adress("Sportska", 2, "Mkronjic Grad", "BiH");
 		LocalDate date1 = LocalDate.of(2020, 1, 8);
-		Student s2 = new Student("Antic", "Tamara", date1, a1, 2, "tamara555@hotmail.com", "sw-1-2019", 2019, 2, enumerations.Status.B, 8, g1, null);
+		Student s2 = new Student("Antic", "Tamara", date1, a1, 2, "tamara555@hotmail.com", "sw-1-2019", 2019, 2, enumerations.Status.B, g1, null);
 		
 		Adress a3 = new Adress("Sportska", 2, "Mkronjic Grad", "BiH");
-		Student s3 = new Student("Tesanovic", "Ivana", date1, a1, 2, "ivana555@hotmail.com", "ra-24-2020", 2019, 2, enumerations.Status.B, 9, g1, null);
+		Student s3 = new Student("Tesanovic", "Ivana", date1, a1, 2, "ivana555@hotmail.com", "ra-24-2020", 2019, 2, enumerations.Status.B, g3, null);
 		
 		Adress a4 = new Adress("Sportska", 2, "Mkronjic Grad", "BiH");
-		Student s4 = new Student("Boskic", "Slavko", date1, a1, 2, "ivana555@hotmail.com", "ra-2-2020", 2019, 2, enumerations.Status.B, 10, g1, null);
+		Student s4 = new Student("Boskic", "Slavko", date1, a1, 2, "ivana555@hotmail.com", "ra-2-2020", 2019, 2, enumerations.Status.B, g3, null);
 		
 		this.studentList.add(s1);
 		this.studentList.add(s2);

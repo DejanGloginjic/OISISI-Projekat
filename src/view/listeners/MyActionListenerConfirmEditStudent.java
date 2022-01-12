@@ -56,12 +56,11 @@ public class MyActionListenerConfirmEditStudent implements ActionListener{
 		}
 		
 		Status status = MyTabbedPaneStudentEdit.getInstance().getMpes().getStatus().getSelectedItem() == "Budžet" ? Status.B : Status.S;
-		double averageGrade = 0.00;
 		ArrayList<Grade> passedExams = null;
 		ArrayList<String> remainingExams = null;
 		
 		Student student = new Student(surname, name, dob, residentialAddress, telephoneNumber, eMail, indexNumber, yearOfEnrollment, currentYearOfStudy,
-				status, averageGrade, passedExams, remainingExams);
+				status,passedExams, remainingExams);
 		
 		StudentController.getInstance().editStudent(student);
 		

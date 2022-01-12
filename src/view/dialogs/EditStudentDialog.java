@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 
 import model.dataBase.StudentBase;
 import model.entities.Student;
+import view.panels.MyPanelPassedExams;
 import view.window.MyMainFrame;
 import view.window.MyTabbedPane;
 import view.window.MyTabbedPaneStudentEdit;
@@ -31,7 +32,7 @@ public class EditStudentDialog extends JDialog{
 	
 	private EditStudentDialog() {
 		setTitle("Izmjena studenta");
-		setSize(450, 515);
+		setSize(500, 575);
 		setLocationRelativeTo(MyMainFrame.getInstance());
 		setModal(true);
 		
