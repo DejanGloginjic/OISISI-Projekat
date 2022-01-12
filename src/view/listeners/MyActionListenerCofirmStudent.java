@@ -52,12 +52,11 @@ public class MyActionListenerCofirmStudent implements ActionListener{
 		}
 		
 		Status status = AddStudentDialog.getInstance().getStatus().getSelectedItem() == "Budžet" ? Status.B : Status.S;
-		double averageGrade = 0.00;
 		ArrayList<Grade> passedExams = null;
 		ArrayList<String> remainingExams = null;
 		
 		Student student = new Student(surname, name, dateOfBirth, residentialAddress, telephoneNumber, eMail, indexNumber, yearOfEnrollment, currentYearOfStudy,
-				status, averageGrade, passedExams, remainingExams);
+				status, passedExams, remainingExams);
 		
 		StudentController.getInstance().addStudent(student);
 		

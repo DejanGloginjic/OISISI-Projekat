@@ -13,6 +13,14 @@ import javax.swing.SwingConstants;
 import view.listeners.MyActionListenerAddStudent;
 import view.listeners.MyActionListenerDeleteStudent;
 import view.listeners.MyActionListenerEdit;
+import controller.CourseController;
+import controller.ProfessorController;
+import controller.StudentController;
+import view.dialogs.AddCourseDialog;
+import view.dialogs.AddProfessorDialog;
+import view.dialogs.AddStudentDialog;
+
+import view.listeners.MyActionListenerEditStudent;
 import view.listeners.MyActionListenerFindEntities;
 
 public class MyToolbar extends JToolBar{
@@ -111,6 +119,9 @@ public class MyToolbar extends JToolBar{
 		this.bSearch = bSearch;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	public static void setInstance(MyToolbar instance) {
 		MyToolbar.instance = instance;
 	}

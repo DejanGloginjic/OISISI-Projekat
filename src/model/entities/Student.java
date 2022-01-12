@@ -29,8 +29,8 @@ public class Student implements Serializable{
 	}
 
 	public Student(String surname, String name, LocalDate dateOfBirth, Adress residentialAddress, int telephoneNumber,
-			String eMail, String indexNumber, int yearOfEnrollment, int currentYearOfStudy, Status status,
-			double averageGrade, List<Grade> passedExams, List<String> remainingExams) {
+			String eMail, String indexNumber, int yearOfEnrollment, int currentYearOfStudy, Status status,List<Grade> passedExams,
+				List<String> remainingExams) {
 		super();
 		this.surname = surname;
 		this.name = name;
@@ -42,9 +42,20 @@ public class Student implements Serializable{
 		this.yearOfEnrollment = yearOfEnrollment;
 		this.currentYearOfStudy = currentYearOfStudy;
 		this.status = status;
-		this.averageGrade = averageGrade;
 		this.passedExams = passedExams;
 		this.remainingExams = remainingExams;
+		
+		int total = 0;
+		int i = 0;
+		for(Grade g : passedExams) {
+			i++;
+			total += g.getValue();
+		}
+		
+		if(i != 0) {
+			double avg = total / i;
+			this.averageGrade = avg;
+		}
 	}
 
 	public String getSurname() {

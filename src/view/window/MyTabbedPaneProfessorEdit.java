@@ -3,7 +3,6 @@ package view.window;
 import javax.swing.JTabbedPane;
 
 import view.MyPanelEditProfessor;
-import view.MyPanelEditStudent;
 
 public class MyTabbedPaneProfessorEdit extends JTabbedPane{
 	

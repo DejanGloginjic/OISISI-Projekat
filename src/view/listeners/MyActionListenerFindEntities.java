@@ -11,18 +11,21 @@ import model.dataBase.StudentBase;
 import model.entities.Course;
 import model.entities.Grade;
 import model.entities.Professor;
+
 import model.entities.Student;
 import view.window.MyTabbedPane;
 import view.window.MyToolbar;
 
 public class MyActionListenerFindEntities implements ActionListener{
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch(MyTabbedPane.getOpenTab()) {
 		case 0:
 			String query = MyToolbar.getInstance().getbSearch2().getText();
+
 			String[] words = query.split(",");
+
 			if(words.length == 1) {
 				String surname = words[0];
 				List<Student> studentList = StudentBase.getInstance().getStudentListForSearch();
@@ -58,6 +61,7 @@ public class MyActionListenerFindEntities implements ActionListener{
 					}
 				}
 				StudentBase.getInstance().setStudentList(retList);
+
 			}else if(words.length == 0) {
 				break;
 			}
