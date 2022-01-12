@@ -3,6 +3,7 @@ package model.entities;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import enumerations.Status;
 
@@ -19,8 +20,8 @@ public class Student implements Serializable{
 	private int currentYearOfStudy;
 	private Status status;
 	private double averageGrade;
-	private ArrayList<Grade> passedExams;
-	private ArrayList<String> remainingExams;
+	private List<Grade> passedExams;
+	private List<String> remainingExams;
 	
 	public Student() {
 		super();
@@ -29,7 +30,7 @@ public class Student implements Serializable{
 
 	public Student(String surname, String name, LocalDate dateOfBirth, Adress residentialAddress, int telephoneNumber,
 			String eMail, String indexNumber, int yearOfEnrollment, int currentYearOfStudy, Status status,
-			double averageGrade, ArrayList<Grade> passedExams, ArrayList<String> remainingExams) {
+			double averageGrade, List<Grade> passedExams, List<String> remainingExams) {
 		super();
 		this.surname = surname;
 		this.name = name;
@@ -134,7 +135,7 @@ public class Student implements Serializable{
 		this.averageGrade = averageGrade;
 	}
 
-	public ArrayList<Grade> getPassedExams() {
+	public List<Grade> getPassedExams() {
 		return passedExams;
 	}
 
@@ -142,7 +143,7 @@ public class Student implements Serializable{
 		this.passedExams = passedExams;
 	}
 
-	public ArrayList<String> getRemainingExams() {
+	public List<String> getRemainingExams() {
 		return remainingExams;
 	}
 

@@ -28,6 +28,7 @@ public class MyActionListenerCofirmStudent implements ActionListener{
 		String eMail = AddStudentDialog.getInstance().getMailText().getText();
 		String indexNumber = AddStudentDialog.getInstance().getIndexText().getText();
 		int yearOfEnrollment = Integer.parseInt(AddStudentDialog.getInstance().getYoeText().getText());
+		
 		int currentYearOfStudy = 0;
 		switch(AddStudentDialog.getInstance().getYear().getSelectedItem().toString()) {
 		case "I (prva)":

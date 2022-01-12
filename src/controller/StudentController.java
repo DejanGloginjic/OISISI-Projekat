@@ -26,7 +26,7 @@ public class StudentController {
 		if(rowSelected < 0)
 			return;
 		Student s = StudentBase.getInstance().getRow(rowSelected);
-		StudentBase.getInstance().deleteStudent(s.getIndexNumber());
+		StudentBase.getInstance().deleteStudent(s);
 		MyTabbedPane.getInstance().updateViewStudent();
 	}
 	

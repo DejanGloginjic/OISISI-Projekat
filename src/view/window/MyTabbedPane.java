@@ -65,6 +65,7 @@ public class MyTabbedPane extends JTabbedPane{
 		        case 3:
 		        	MyStatusBar.setTabLabel("Predmeti");
 		        	openTab = 3;
+		        	break;
 		        }
 		      }
 		    };

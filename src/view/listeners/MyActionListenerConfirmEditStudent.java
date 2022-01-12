@@ -21,12 +21,6 @@ public class MyActionListenerConfirmEditStudent implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		int rowSelected = MyTabbedPane.getInstance().getSt().getSelectedRow();
-		
-		if(rowSelected < 0) {
-			return;
-		}
-		
 		String name = MyTabbedPaneStudentEdit.getInstance().getMpes().getNameText().getText();
 		String surname = MyTabbedPaneStudentEdit.getInstance().getMpes().getSurnameText().getText();
 		LocalDate dob = LocalDate.parse(MyTabbedPaneStudentEdit.getInstance().getMpes().getDobText().getText());
@@ -71,19 +65,18 @@ public class MyActionListenerConfirmEditStudent implements ActionListener{
 		
 		StudentController.getInstance().editStudent(student);
 		
-		MyTabbedPaneStudentEdit.getInstance().getMpes().getNameText().setText("");
-		MyTabbedPaneStudentEdit.getInstance().getMpes().getSurnameText().setText("");
-		MyTabbedPaneStudentEdit.getInstance().getMpes().getDobText().setText("");
-		MyTabbedPaneStudentEdit.getInstance().getMpes().getStreetText().setText("");
-		MyTabbedPaneStudentEdit.getInstance().getMpes().getNosText().setText("");
-		MyTabbedPaneStudentEdit.getInstance().getMpes().getCityText().setText("");
-		MyTabbedPaneStudentEdit.getInstance().getMpes().getCountryText().setText("");
-		MyTabbedPaneStudentEdit.getInstance().getMpes().getTelText().setText("");
-		MyTabbedPaneStudentEdit.getInstance().getMpes().getMailText().setText("");
-		MyTabbedPaneStudentEdit.getInstance().getMpes().getIndexText().setText("");
-		MyTabbedPaneStudentEdit.getInstance().getMpes().getYoeText().setText("");
+//		MyTabbedPaneStudentEdit.getInstance().getMpes().getNameText().setText("");
+//		MyTabbedPaneStudentEdit.getInstance().getMpes().getSurnameText().setText("");
+//		MyTabbedPaneStudentEdit.getInstance().getMpes().getDobText().setText("");
+//		MyTabbedPaneStudentEdit.getInstance().getMpes().getStreetText().setText("");
+//		MyTabbedPaneStudentEdit.getInstance().getMpes().getNosText().setText("");
+//		MyTabbedPaneStudentEdit.getInstance().getMpes().getCityText().setText("");
+//		MyTabbedPaneStudentEdit.getInstance().getMpes().getCountryText().setText("");
+//		MyTabbedPaneStudentEdit.getInstance().getMpes().getTelText().setText("");
+//		MyTabbedPaneStudentEdit.getInstance().getMpes().getMailText().setText("");
+//		MyTabbedPaneStudentEdit.getInstance().getMpes().getIndexText().setText("");
+//		MyTabbedPaneStudentEdit.getInstance().getMpes().getYoeText().setText("");
 		
-		EditStudentDialog.getInstance().dispose();
 		EditStudentDialog.getInstance().setVisible(false);
 	}
 

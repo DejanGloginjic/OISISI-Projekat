@@ -1,7 +1,9 @@
 package controller;
 
 import model.dataBase.CourseBase;
+import model.dataBase.StudentBase;
 import model.entities.Course;
+import model.entities.Student;
 import view.window.MyTabbedPane;
 
 public class CourseController {
@@ -15,8 +17,11 @@ public class CourseController {
 		return instance;
 	}
 
-	public CourseController() {
-
+	public CourseController() {}
+	
+	public void addCourse(Course c){
+		CourseBase.getInstance().addCourse(c);
+		MyTabbedPane.getInstance().updateViewCourse();
 	}
 	
 	public void deletCourse(int rowSelected){
@@ -24,6 +29,11 @@ public class CourseController {
 			return;
 		Course c = CourseBase.getInstance().getRow(rowSelected);
 		CourseBase.getInstance().deleteCourse(c.getCode());
+		MyTabbedPane.getInstance().updateViewCourse();
+	}
+	
+	public void editCourse(Course c) {
+		CourseBase.getInstance().editCourse(c);
 		MyTabbedPane.getInstance().updateViewCourse();
 	}
 }

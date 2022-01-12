@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import enumerations.Semester;
 
 public class Course{
-	private int code;
+	private String code;
 	private String name;
 	private Semester semester;
 	private int yearOfTheCourse;
@@ -19,7 +19,7 @@ public class Course{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Course(int code, String name, Semester semester, int yearOfTheCourse, Professor subjectProfessor,
+	public Course(String code, String name, Semester semester, int yearOfTheCourse, Professor subjectProfessor,
 			int numberOfESPB, ArrayList<Student> studentsWhoHavePassedTheExam,
 			ArrayList<Student> studentsWhoHaveNotPassedTheExam) {
 		super();
@@ -33,11 +33,11 @@ public class Course{
 		this.studentsWhoHaveNotPassedTheExam = studentsWhoHaveNotPassedTheExam;
 	}
 
-	public int getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(int code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 

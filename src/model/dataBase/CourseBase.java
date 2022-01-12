@@ -7,6 +7,7 @@ import enumerations.Semester;
 import model.entities.Course;
 import model.entities.Professor;
 import model.entities.Student;
+import view.window.MyTabbedPane;
 
 public class CourseBase {
 
@@ -36,10 +37,11 @@ public class CourseBase {
 	private void initCourse() {
 		this.courseList=new ArrayList<>();
 		
-		courseList.add(new Course(1,"Baze podataka",Semester.WINTER,3,null,8,null,null));
-		courseList.add(new Course(1,"Metode optimizacije",Semester.WINTER,3,null,8,null,null));
-		courseList.add(new Course(1,"Programski prevodioci",Semester.WINTER,3,null,6,null,null));
-		courseList.add(new Course(1,"OISISI",Semester.WINTER,3,null,5,null,null));
+		Professor p1 = new Professor();
+		courseList.add(new Course("1","Baze podataka",Semester.WINTER,3,p1,8,null,null));
+		courseList.add(new Course("2","Metode optimizacije",Semester.WINTER,3,p1,8,null,null));
+		courseList.add(new Course("3","Programski prevodioci",Semester.WINTER,3,p1,6,null,null));
+		courseList.add(new Course("4","OISISI",Semester.WINTER,3,p1,5,null,null));
 		
 	}
 
@@ -77,7 +79,7 @@ public class CourseBase {
 		
 		switch (column) {
 		case 0:
-			return Integer.toString(course.getCode());
+			return course.getCode();
 		case 1:
 			return course.getName();
 		case 2:
@@ -91,12 +93,42 @@ public class CourseBase {
 		}
 	}
 	
-	public void deleteCourse(int code) {
+	public void addCourse(Course c) {
+		this.courseList.add(c);
+		
+	}
+	
+	public void deleteCourse(String code) {
 		for(Course c : courseList) {
-			if(c.getCode()==code)
+			if(c.getCode().equals(code))
 				courseList.remove(code);
 				break;
 		}
 	}
 	
+	public boolean checkIfUnique(String code) {
+		for(Course c: courseList) {
+			if(code.equals(c.getCode())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void editCourse(Course c) {
+		for(Course course : this.courseList) {
+			if(course.getCode().equals(c.getCode())) {
+				course.setCode(c.getCode());
+				course.setName(c.getName());
+				course.setNumberOfESPB(c.getNumberOfESPB());
+				course.setSemester(c.getSemester());
+				course.setYearOfTheCourse(c.getYearOfTheCourse());
+				course.setSubjectProfessor(c.getSubjectProfessor());
+				course.setStudentsWhoHaveNotPassedTheExam(null);
+				course.setStudentsWhoHavePassedTheExam(null);
+				break;
+			}
+		
+		}
+	}
 }

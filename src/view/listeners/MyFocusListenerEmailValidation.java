@@ -16,7 +16,8 @@ public class MyFocusListenerEmailValidation implements FocusListener{
 
 	@Override
 	public void focusGained(FocusEvent e) {
-		// TODO Auto-generated method stub
+		AddStudentDialog.getInstance().getMailText().setText("");
+		AddStudentDialog.getInstance().getMailText().setForeground(Color.black);
 		
 	}
 
