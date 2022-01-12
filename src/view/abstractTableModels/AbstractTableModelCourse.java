@@ -25,5 +25,5 @@ public class AbstractTableModelCourse extends AbstractTableModel{
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		return CourseBase.getInstance().getValueAt(rowIndex, columnIndex);
 	}
-
+    
 }

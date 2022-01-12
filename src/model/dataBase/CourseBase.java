@@ -21,6 +21,7 @@ public class CourseBase {
 	}
 	
 	private List<Course> courseList;
+	private List<Course> courseListForSearch = new ArrayList<>();
 	private List<String> columnList;
 	
 	private CourseBase() {
@@ -37,12 +38,15 @@ public class CourseBase {
 	private void initCourse() {
 		this.courseList=new ArrayList<>();
 		
-		Professor p1 = new Professor();
-		courseList.add(new Course("1","Baze podataka",Semester.WINTER,3,p1,8,null,null));
-		courseList.add(new Course("2","Metode optimizacije",Semester.WINTER,3,p1,8,null,null));
-		courseList.add(new Course("3","Programski prevodioci",Semester.WINTER,3,p1,6,null,null));
-		courseList.add(new Course("4","OISISI",Semester.WINTER,3,p1,5,null,null));
-		
+		courseList.add(new Course("MO","Baze podataka",Semester.WINTER,3,null,8,null,null));
+		courseList.add(new Course("A3","Metode optimizacije",Semester.WINTER,3,null,8,null,null));
+		courseList.add(new Course("MV","Programski prevodioci",Semester.WINTER,3,null,6,null,null));
+		courseList.add(new Course("K7","OISISI",Semester.WINTER,3,null,5,null,null));
+
+		courseListForSearch.add(new Course("MO","Baze podataka",Semester.WINTER,3,null,8,null,null));
+		courseListForSearch.add(new Course("A3","Metode optimizacije",Semester.WINTER,3,null,8,null,null));
+		courseListForSearch.add(new Course("MV","Programski prevodioci",Semester.WINTER,3,null,6,null,null));
+		courseListForSearch.add(new Course("K7","OISISI",Semester.WINTER,3,null,5,null,null));
 	}
 
 	public List<Course> getCourseList() {
@@ -51,9 +55,17 @@ public class CourseBase {
 
 	public void setCourseList(List<Course> courseList) {
 		this.courseList = courseList;
+		MyTabbedPane.getInstance().updateViewCourse();
 	}
 	
 	public Course getRow(int rowIndex) {
+		int i = 0;
+		for(Course c: courseList) {
+			i++;
+			if (i==rowIndex) {
+				return c;
+			}
+		}
 		return this.courseList.get(rowIndex);
 	}
 
@@ -73,6 +85,14 @@ public class CourseBase {
 		return this.columnList.get(index);
 	}
 	
+	public List<Course> getCourseListForSearch() {
+		return courseListForSearch;
+	}
+
+	public void setCourseListForSearch(List<Course> courseListForSearch) {
+		this.courseListForSearch = courseListForSearch;
+	}
+
 	public String getValueAt(int row,int column) {
 		
 		Course course=this.courseList.get(row);
@@ -95,13 +115,12 @@ public class CourseBase {
 	
 	public void addCourse(Course c) {
 		this.courseList.add(c);
-		
 	}
-	
+
 	public void deleteCourse(String code) {
 		for(Course c : courseList) {
 			if(c.getCode().equals(code))
-				courseList.remove(code);
+				courseList.remove(c);
 				break;
 		}
 	}

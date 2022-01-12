@@ -4,9 +4,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.entities.Adress;
 import model.entities.Grade;
+
+import model.entities.Adress;
 import model.entities.Student;
+import view.window.MyTabbedPane;
 
 public class StudentBase {
 	
@@ -20,6 +22,7 @@ public class StudentBase {
 	}
 	
 	private List<Student> studentList = new ArrayList<>();
+	private List<Student> studentListForSearch = new ArrayList<>();
 	private List<String> columnList;
 
 	private StudentBase(){
@@ -37,6 +40,7 @@ public class StudentBase {
 	private void initStudents() {
 		Adress a1 = new Adress("Sportska", 2, "Mkronjic Grad", "BiH");
 		LocalDate date = LocalDate.of(2020, 1, 8);
+
 		List<Grade> g1 = new ArrayList<>();
 		Student s1 = new Student("Gloginjic", "Dejan", date, a1, 2, "deki555@hotmail.com", "ra-241-2020", 2019, 2, enumerations.Status.B, 7, g1, null);
 		
@@ -54,6 +58,12 @@ public class StudentBase {
 		this.studentList.add(s2);
 		this.studentList.add(s3);
 		this.studentList.add(s4);
+		
+		this.studentListForSearch.add(s1);
+		this.studentListForSearch.add(s2);
+		this.studentListForSearch.add(s3);
+		this.studentListForSearch.add(s4);
+
 	}
 	
 	public List<Student> getStudentList() {
@@ -62,6 +72,15 @@ public class StudentBase {
 	
 	public void setStudentList(List<Student> studentList) {
 		this.studentList = studentList;
+		MyTabbedPane.getInstance().updateViewStudent();
+	}
+	
+	public void setStudentListForSearch(List<Student> studentList) {
+		this.studentListForSearch = studentList;
+	}
+	
+	public List<Student> getStudentListForSearch() {
+		return this.studentListForSearch;
 	}
 	
 	public List<String> getColumnList() {
@@ -114,6 +133,7 @@ public class StudentBase {
 	
 	public void addStudent(Student student) {
 		this.studentList.add(student);
+		studentListForSearch = studentList;
 	}
 	
 	public void deleteStudent(Student s) {
@@ -122,6 +142,7 @@ public class StudentBase {
 				studentList.remove(s);
 				break;
 		}
+		studentListForSearch = studentList;
 	}
 	
 
@@ -145,6 +166,8 @@ public class StudentBase {
 				student.setStatus(s.getStatus());
 				break;
 			}
+			break;
 		}
+		studentListForSearch = studentList;
 	}
 }

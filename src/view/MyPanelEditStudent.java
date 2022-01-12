@@ -15,7 +15,7 @@ import view.dialogs.AddStudentDialog;
 import view.listeners.MyActionListenerCancelStudent;
 import view.listeners.MyActionListenerCofirmStudent;
 import view.listeners.MyActionListenerConfirmEditStudent;
-import view.listeners.MyActionListenerEditStudent;
+import view.listeners.MyActionListenerEdit;
 import view.listeners.MyFocusListenerCityValidation;
 import view.listeners.MyFocusListenerCountyValidation;
 import view.listeners.MyFocusListenerDateValidation;

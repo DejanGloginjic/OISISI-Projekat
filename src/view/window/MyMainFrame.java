@@ -22,7 +22,7 @@ public class MyMainFrame extends JFrame{
 	}
 	
 	private MyMenuBar mb=new MyMenuBar();
-	private MyToolbar tb=new MyToolbar();
+	private MyToolbar tb=MyToolbar.getInstance();
 	private MyStatusBar sb = new MyStatusBar();
 
 	private MyTabbedPane tp = MyTabbedPane.getInstance();

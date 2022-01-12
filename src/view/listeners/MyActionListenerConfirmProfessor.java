@@ -10,6 +10,7 @@ import model.entities.Adress;
 import model.entities.Course;
 import model.entities.Professor;
 import view.dialogs.AddProfessorDialog;
+import view.dialogs.AddStudentDialog;
 
 public class MyActionListenerConfirmProfessor implements ActionListener{
 

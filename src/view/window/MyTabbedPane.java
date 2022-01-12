@@ -18,7 +18,7 @@ public class MyTabbedPane extends JTabbedPane{
 	private StudentTable st = new StudentTable();
 	private ProfessorTable pt= new ProfessorTable();
 	private CourseTable ct= new CourseTable();
-	
+
 	private static int openTab;
 	
 	private static MyTabbedPane instance = null;
@@ -61,10 +61,6 @@ public class MyTabbedPane extends JTabbedPane{
 		        case 2:
 		        	MyStatusBar.setTabLabel("Predmeti");
 		        	openTab = 2;
-		        	break;
-		        case 3:
-		        	MyStatusBar.setTabLabel("Predmeti");
-		        	openTab = 3;
 		        	break;
 		        }
 		      }
@@ -119,6 +115,5 @@ public class MyTabbedPane extends JTabbedPane{
 	public void setCt(CourseTable ct) {
 		this.ct = ct;
 	}
-	
 	
 }

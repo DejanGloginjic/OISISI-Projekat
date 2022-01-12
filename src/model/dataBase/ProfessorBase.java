@@ -6,6 +6,9 @@ import java.util.List;
 
 import model.entities.Adress;
 import model.entities.Professor;
+import model.entities.Student;
+import view.window.MyTabbedPane;
+import view.window.MyTabbedPaneProfessorEdit;
 
 public class ProfessorBase {
 	
@@ -19,6 +22,7 @@ public class ProfessorBase {
 	}
 	
 	private List<Professor> professorList;
+	private List<Professor> professorListForSearch = new ArrayList<>();
 	private List<String> columnList;
 	
 	private ProfessorBase() {
@@ -43,6 +47,11 @@ public class ProfessorBase {
 		professorList.add(new Professor("Zoran","Jelicic", LocalDate.of(1960, 1, 1),adresa2,56,"zoranjelicic@yahoo.com",adresa2,"2","Diplomirani inzenjer elektrotehnike",10,null));
 		professorList.add(new Professor("Milan","Vidakovic", LocalDate.of(1952, 1, 1),adresa3,24,"milanvidakovic@yahoo.com",adresa3,"3","Diplomirani inzenjer elektrotehnike",10,null));
 		professorList.add(new Professor("Nebojsa","Ralevic", LocalDate.of(1959, 1, 1),adresa4,15,"nebojsaralevic@yahoo.com",adresa4,"4","Diplomirani inzenjer elektrotehnike",10,null));
+		
+		professorListForSearch.add(new Professor("Milan","Rapaic", LocalDate.of(1970, 1, 1),adresa1,12,"brankakukic@yahoo.com",adresa1,"1","Diplomirani inzenjer elektrotehnike",10,null));
+		professorListForSearch.add(new Professor("Zoran","Jelicic", LocalDate.of(1960, 1, 1),adresa2,56,"zoranjelicic@yahoo.com",adresa2,"2","Diplomirani inzenjer elektrotehnike",10,null));
+		professorListForSearch.add(new Professor("Milan","Vidakovic", LocalDate.of(1952, 1, 1),adresa3,24,"milanvidakovic@yahoo.com",adresa3,"3","Diplomirani inzenjer elektrotehnike",10,null));
+		professorListForSearch.add(new Professor("Nebojsa","Ralevic", LocalDate.of(1959, 1, 1),adresa4,15,"nebojsaralevic@yahoo.com",adresa4,"4","Diplomirani inzenjer elektrotehnike",10,null));
 	}
 
 	public List<Professor> getProfessorList() {
@@ -51,6 +60,7 @@ public class ProfessorBase {
 
 	public void setProfessorList(List<Professor> professorList) {
 		this.professorList = professorList;
+		MyTabbedPane.getInstance().updateViewProfessor();
 	}
 
 	public List<String> getColumnList() {
@@ -73,6 +83,14 @@ public class ProfessorBase {
 		return this.professorList.get(rowIndex);
 	}
 	
+	public List<Professor> getProfessorListForSearch() {
+		return professorListForSearch;
+	}
+
+	public void setProfessorListForSearch(List<Professor> professorListForSearch) {
+		this.professorListForSearch = professorListForSearch;
+	}
+
 	public String getValueAt(int row,int column) {
 		
 		Professor professor=this.professorList.get(row);
@@ -111,4 +129,29 @@ public class ProfessorBase {
 				break;
 		}
 	}
+	
+	public void editProfessor(Professor p) {
+		for(Professor professor : professorList) {
+			if(professor.getIdNumber().equals(p.getIdNumber())) {
+				professor.setName(p.getName());
+				professor.setSurname(p.getSurname());
+				professor.setDateOfBirth(p.getDateOfBirth());
+				professor.getResidentialAddress().setCity(p.getResidentialAddress().getCity());
+				professor.getResidentialAddress().setCountry(p.getResidentialAddress().getCountry());
+				professor.getResidentialAddress().setNumber(p.getResidentialAddress().getNumber());
+				professor.getResidentialAddress().setStreet(p.getResidentialAddress().getStreet());
+				professor.setTelephoneNumber(p.getTelephoneNumber());
+				professor.seteMail(p.geteMail());
+				professor.getOfficeAddress().setCity(p.getOfficeAddress().getCity());
+				professor.getOfficeAddress().setCountry(p.getOfficeAddress().getCountry());
+				professor.getOfficeAddress().setNumber(p.getOfficeAddress().getNumber());
+				professor.getOfficeAddress().setStreet(p.getOfficeAddress().getStreet());
+				professor.setIdNumber(p.getIdNumber());
+				professor.setTitle(p.getTitle());
+				professor.setYearOfTrail(p.getYearOfTrail());
+			}
+		}
+		MyTabbedPane.getInstance().updateViewProfessor();
+	}
+	
 }

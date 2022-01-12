@@ -1,28 +1,29 @@
 Drugi student treba da implementira stavke sa sledećim oznakama:
-#profesor
-#predmet
-#adresa
-#glavni_prozor
-#toolbar
+
+#profesor+
+#predmet+
+#adresa+
+#glavni_prozor+
+#toolbar+
 
 
 2.domaci
-#prikaz_predmeta
-#brisanje_predmeta
-#prikaz_profesora
-#dodavanje_profesora
-#izmena_profesora
-#brisanje_profesora
+#prikaz_predmeta+
+#brisanje_predmeta+?
+#prikaz_profesora+
+#dodavanje_profesora+
+#izmena_profesora+?
+#brisanje_profesora+?
 
 
 
 #prikaz_nepolozenih_ispita
 #upis_ocene
 #ponistavanje_ocene
-#pretraga_profesora
-#pretraga_predmeta
-#sortiranje_profesora
-#sortiranje_predmeta
+#pretraga_profesora+
+#pretraga_predmeta+
+#sortiranje_profesora+
+#sortiranje_predmeta+
 
 
 

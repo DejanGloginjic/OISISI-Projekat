@@ -15,8 +15,6 @@ public class MyApp {
 		StudentBase sb = StudentBase.getInstance();
 		ProfessorBase pb = ProfessorBase.getInstance();
 		CourseBase cb = CourseBase.getInstance();
-		ProfessorController pc = ProfessorController.getInstance();
-		CourseController cc = CourseController.getInstance();
 	}
 
 }

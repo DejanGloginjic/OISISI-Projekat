@@ -21,7 +21,6 @@ public class MyFocusListenerNameValidationForProfessor implements FocusListener{
 		if(AddProfessorDialog.getInstance().getNameText().getText().matches("[a-zA-Z]+")) {
 			
 		}else {
-			//JOptionPane.showMessageDialog(AddProfessorDialog.getInstance(), "Samo slova su dozvoljena!");
 			AddProfessorDialog.getInstance().getNameText().setText("Samo slova su dozvoljena");
 			AddProfessorDialog.getInstance().getNameText().setForeground(Color.red);
 		}	

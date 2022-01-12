@@ -1,7 +1,9 @@
 package controller;
 
 import model.dataBase.ProfessorBase;
+import model.dataBase.StudentBase;
 import model.entities.Professor;
+import model.entities.Student;
 import view.window.MyTabbedPane;
 
 public class ProfessorController {
@@ -21,11 +23,15 @@ public class ProfessorController {
 		ProfessorBase.getInstance().addProfessor(p);
 		MyTabbedPane.getInstance().updateViewProfessor();
 	}
-	public void deleteProfessor(int rowSelected){
-		if(rowSelected < 0)
+	public void deleteProfessor(int rowSelected1){
+		if(rowSelected1 < 0)
 			return;
-		Professor p = ProfessorBase.getInstance().getRow(rowSelected);
+		Professor p = ProfessorBase.getInstance().getRow(rowSelected1);
 		ProfessorBase.getInstance().deleteProfessor(p.getIdNumber());
+		MyTabbedPane.getInstance().updateViewProfessor();
+	}
+	public void editProfessor(Professor p) {
+		ProfessorBase.getInstance().editProfessor(p);
 		MyTabbedPane.getInstance().updateViewProfessor();
 	}
 }

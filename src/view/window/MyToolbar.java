@@ -2,8 +2,6 @@
 package view.window;
 
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -12,32 +10,36 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
-import controller.CourseController;
-import controller.ProfessorController;
-import controller.StudentController;
-import view.dialogs.AddProfessorDialog;
-import view.dialogs.AddStudentDialog;
 import view.listeners.MyActionListenerAddStudent;
 import view.listeners.MyActionListenerDeleteStudent;
-import view.listeners.MyActionListenerEditStudent;
+import view.listeners.MyActionListenerEdit;
+import view.listeners.MyActionListenerFindEntities;
 
 public class MyToolbar extends JToolBar{
 	
+	private JButton bNew=new JButton();
+	private JButton bEdit=new JButton();
+	private JButton bDelete=new JButton();
+	private JTextField bSearch2=new JTextField();
+	private JButton bSearch=new JButton();
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public MyToolbar(){
+	private static MyToolbar instance = null;
+
+	public static MyToolbar getInstance() {
+		if (instance == null) {
+			instance = new MyToolbar();
+		}
+		return instance;
+	}
+	
+	private MyToolbar(){
 		super(SwingConstants.HORIZONTAL);
 		
 		setFloatable(false);
-		
-		JButton bNew=new JButton();
-		JButton bEdit=new JButton();
-		JButton bDelete=new JButton();
-		JTextField bSearch2=new JTextField();
-		JButton bSearch=new JButton();
 		
 		bNew.setToolTipText("New");
 		bEdit.setToolTipText("Edit");
@@ -54,9 +56,9 @@ public class MyToolbar extends JToolBar{
 		bSearch2.setMaximumSize(new Dimension(130,30));
 		
 		bNew.addActionListener(new MyActionListenerAddStudent());
-		bEdit.addActionListener(new MyActionListenerEditStudent());
+		bEdit.addActionListener(new MyActionListenerEdit());
 		bDelete.addActionListener(new MyActionListenerDeleteStudent());
-
+		bSearch.addActionListener(new MyActionListenerFindEntities());
 		
 		add(bNew);
 		addSeparator();
@@ -68,4 +70,49 @@ public class MyToolbar extends JToolBar{
 		add(bSearch);
 		
 	}
+
+	public JButton getbNew() {
+		return bNew;
+	}
+
+	public void setbNew(JButton bNew) {
+		this.bNew = bNew;
+	}
+
+	public JButton getbEdit() {
+		return bEdit;
+	}
+
+	public void setbEdit(JButton bEdit) {
+		this.bEdit = bEdit;
+	}
+
+	public JButton getbDelete() {
+		return bDelete;
+	}
+
+	public void setbDelete(JButton bDelete) {
+		this.bDelete = bDelete;
+	}
+
+	public JTextField getbSearch2() {
+		return bSearch2;
+	}
+
+	public void setbSearch2(JTextField bSearch2) {
+		this.bSearch2 = bSearch2;
+	}
+
+	public JButton getbSearch() {
+		return bSearch;
+	}
+
+	public void setbSearch(JButton bSearch) {
+		this.bSearch = bSearch;
+	}
+
+	public static void setInstance(MyToolbar instance) {
+		MyToolbar.instance = instance;
+	}
+	
 }
