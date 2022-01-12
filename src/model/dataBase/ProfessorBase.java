@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import enumerations.Semester;
 import model.entities.Adress;
+import model.entities.Course;
 import model.entities.Professor;
 import model.entities.Student;
 import view.window.MyTabbedPane;
@@ -43,10 +45,19 @@ public class ProfessorBase {
 		Adress adresa3 = new Adress("Ulica kralja Petra", 16, "Novi Sad", "Srbija");
 		Adress adresa4 = new Adress("Bulevar oslobodjenja", 6, "Novi Sad", "Srbija");
 		
-		professorList.add(new Professor("Milan","Rapaic", LocalDate.of(1970, 1, 1),adresa1,12,"brankakukic@yahoo.com",adresa1,"1","Diplomirani inzenjer elektrotehnike",10,null));
-		professorList.add(new Professor("Zoran","Jelicic", LocalDate.of(1960, 1, 1),adresa2,56,"zoranjelicic@yahoo.com",adresa2,"2","Diplomirani inzenjer elektrotehnike",10,null));
-		professorList.add(new Professor("Milan","Vidakovic", LocalDate.of(1952, 1, 1),adresa3,24,"milanvidakovic@yahoo.com",adresa3,"3","Diplomirani inzenjer elektrotehnike",10,null));
-		professorList.add(new Professor("Nebojsa","Ralevic", LocalDate.of(1959, 1, 1),adresa4,15,"nebojsaralevic@yahoo.com",adresa4,"4","Diplomirani inzenjer elektrotehnike",10,null));
+		List<Course> courseList = new ArrayList<>();
+		Professor p = new Professor();
+		Course c1 = new Course("1a", "Matematika", Semester.SUMMER, 3, p, 4, null, null);
+		Course c2 = new Course("1b", "Fizika", Semester.SUMMER, 3, p, 4, null, null);
+		Course c3 = new Course("1c", "Hemija", Semester.SUMMER, 3, p, 4, null, null);
+		courseList.add(c1);
+		courseList.add(c2);
+		courseList.add(c3);
+		
+		professorList.add(new Professor("Milan","Rapaic", LocalDate.of(1970, 1, 1),adresa1,12,"brankakukic@yahoo.com",adresa1,"1","Diplomirani inzenjer elektrotehnike",10, courseList));
+		professorList.add(new Professor("Zoran","Jelicic", LocalDate.of(1960, 1, 1),adresa2,56,"zoranjelicic@yahoo.com",adresa2,"2","Diplomirani inzenjer elektrotehnike",10,courseList));
+		professorList.add(new Professor("Milan","Vidakovic", LocalDate.of(1952, 1, 1),adresa3,24,"milanvidakovic@yahoo.com",adresa3,"3","Diplomirani inzenjer elektrotehnike",10,courseList));
+		professorList.add(new Professor("Nebojsa","Ralevic", LocalDate.of(1959, 1, 1),adresa4,15,"nebojsaralevic@yahoo.com",adresa4,"4","Diplomirani inzenjer elektrotehnike",10,courseList));
 		
 		professorListForSearch.add(new Professor("Milan","Rapaic", LocalDate.of(1970, 1, 1),adresa1,12,"brankakukic@yahoo.com",adresa1,"1","Diplomirani inzenjer elektrotehnike",10,null));
 		professorListForSearch.add(new Professor("Zoran","Jelicic", LocalDate.of(1960, 1, 1),adresa2,56,"zoranjelicic@yahoo.com",adresa2,"2","Diplomirani inzenjer elektrotehnike",10,null));

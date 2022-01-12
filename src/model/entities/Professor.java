@@ -2,6 +2,7 @@ package model.entities;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Professor {
  private String surname;
@@ -14,7 +15,7 @@ public class Professor {
  private String IdNumber;
  private String title;
  private int yearOfTrail;
- private ArrayList<Course> listOfSubjects;
+ private List<Course> listOfSubjects;
  
 public Professor() {
 	super();
@@ -23,7 +24,7 @@ public Professor() {
 
 public Professor(String surname, String name, LocalDate dateOfBirth, Adress residentialAddress, int telephoneNumber,
 		String eMail, Adress officeAddress, String idNumber, String title, int yearOfTrail,
-		ArrayList<Course> listOfSubjects) {
+		List<Course> listOfSubjects) {
 	super();
 	this.surname = surname;
 	this.name = name;
@@ -118,7 +119,7 @@ public void setYearOfTrail(int yearOfTrail) {
 	this.yearOfTrail = yearOfTrail;
 }
 
-public ArrayList<Course> getListOfSubjects() {
+public List<Course> getListOfSubjects() {
 	return listOfSubjects;
 }
 

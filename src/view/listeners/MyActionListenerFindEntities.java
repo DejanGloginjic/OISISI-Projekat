@@ -24,7 +24,7 @@ public class MyActionListenerFindEntities implements ActionListener{
 		case 0:
 			String query = MyToolbar.getInstance().getbSearch2().getText();
 
-			String[] words = query.split(",");
+			String[] words = query.split(", ");
 
 			if(words.length == 1) {
 				String surname = words[0];
