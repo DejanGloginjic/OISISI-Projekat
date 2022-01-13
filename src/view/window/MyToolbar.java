@@ -19,6 +19,9 @@ import controller.StudentController;
 import view.dialogs.AddCourseDialog;
 import view.dialogs.AddProfessorDialog;
 import view.dialogs.AddStudentDialog;
+import view.listeners.MyActionListenerAddStudent;
+import view.listeners.MyActionListenerDeleteStudent;
+import view.listeners.MyActionListenerEditStudent;
 
 import view.listeners.MyActionListenerEditStudent;
 import view.listeners.MyActionListenerFindEntities;

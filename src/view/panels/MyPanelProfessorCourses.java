@@ -8,6 +8,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import view.abstractTableModels.AbstractTableModelProfessorCourses;
+import view.abstractTableModels.AbstractTableModelStudent;
+import view.listeners.MyActionListenerDeleteCourseFromProfessor;
+import view.listeners.MyActionListenerDeleteStudent;
 import view.panels.MyPanelPassedExams;
 import view.tables.TableProfessorCourses;
 
@@ -54,6 +58,8 @@ public class MyPanelProfessorCourses extends JPanel{
 		btnPanel.add(Box.createHorizontalGlue());
 		centerPanel.add(btnPanel);
 		
+		btn2.addActionListener(new MyActionListenerDeleteCourseFromProfessor());
+		
 		table = new TableProfessorCourses();
 		JScrollPane scrollPane = new JScrollPane(table);
 		tablePanel = new JPanel();
@@ -61,5 +67,79 @@ public class MyPanelProfessorCourses extends JPanel{
 		centerPanel.add(tablePanel);
 		
 		add(centerPanel);
+	}
+
+	public JPanel getCenterPanel() {
+		return centerPanel;
+	}
+
+	public void setCenterPanel(JPanel centerPanel) {
+		this.centerPanel = centerPanel;
+	}
+
+	public JPanel getBtnPanel() {
+		return btnPanel;
+	}
+
+	public void setBtnPanel(JPanel btnPanel) {
+		this.btnPanel = btnPanel;
+	}
+
+	public JButton getBtn1() {
+		return btn1;
+	}
+
+	public void setBtn1(JButton btn1) {
+		this.btn1 = btn1;
+	}
+
+	public JButton getBtn2() {
+		return btn2;
+	}
+
+	public void setBtn2(JButton btn2) {
+		this.btn2 = btn2;
+	}
+
+	public JPanel getTablePanel() {
+		return tablePanel;
+	}
+
+	public void setTablePanel(JPanel tablePanel) {
+		this.tablePanel = tablePanel;
+	}
+
+	public TableProfessorCourses getTable() {
+		return table;
+	}
+
+	public void setTable(TableProfessorCourses table) {
+		this.table = table;
+	}
+
+	public BoxLayout getBox1() {
+		return box1;
+	}
+
+	public void setBox1(BoxLayout box1) {
+		this.box1 = box1;
+	}
+
+	public BoxLayout getBox2() {
+		return box2;
+	}
+
+	public void setBox2(BoxLayout box2) {
+		this.box2 = box2;
+	}
+
+	public static void setInstance(MyPanelProfessorCourses instance) {
+		MyPanelProfessorCourses.instance = instance;
+	}
+	
+	public void updateViewProfessorCourses() {
+		AbstractTableModelProfessorCourses model = (AbstractTableModelProfessorCourses) table.getModel();
+		model.fireTableDataChanged();
+		validate();
 	}
 }

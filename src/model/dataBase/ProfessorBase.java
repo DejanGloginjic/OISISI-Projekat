@@ -54,10 +54,19 @@ public class ProfessorBase {
 		courseList.add(c2);
 		courseList.add(c3);
 		
+		List<Course> courseList1 = new ArrayList<>();
+		Professor p1 = new Professor();
+		Course c11 = new Course("1aa", "Matematika123", Semester.SUMMER, 3, p1, 4, null, null);
+		Course c22 = new Course("1bb", "Fizika123", Semester.SUMMER, 3, p1, 4, null, null);
+		Course c33 = new Course("1cc", "Hemija123", Semester.SUMMER, 3, p1, 4, null, null);
+		courseList1.add(c11);
+		courseList1.add(c22);
+		courseList1.add(c33);
+		
 		professorList.add(new Professor("Milan","Rapaic", LocalDate.of(1970, 1, 1),adresa1,12,"brankakukic@yahoo.com",adresa1,"1","Diplomirani inzenjer elektrotehnike",10, courseList));
 		professorList.add(new Professor("Zoran","Jelicic", LocalDate.of(1960, 1, 1),adresa2,56,"zoranjelicic@yahoo.com",adresa2,"2","Diplomirani inzenjer elektrotehnike",10,courseList));
-		professorList.add(new Professor("Milan","Vidakovic", LocalDate.of(1952, 1, 1),adresa3,24,"milanvidakovic@yahoo.com",adresa3,"3","Diplomirani inzenjer elektrotehnike",10,courseList));
-		professorList.add(new Professor("Nebojsa","Ralevic", LocalDate.of(1959, 1, 1),adresa4,15,"nebojsaralevic@yahoo.com",adresa4,"4","Diplomirani inzenjer elektrotehnike",10,courseList));
+		professorList.add(new Professor("Milan","Vidakovic", LocalDate.of(1952, 1, 1),adresa3,24,"milanvidakovic@yahoo.com",adresa3,"3","Diplomirani inzenjer elektrotehnike",10,courseList1));
+		professorList.add(new Professor("Nebojsa","Ralevic", LocalDate.of(1959, 1, 1),adresa4,15,"nebojsaralevic@yahoo.com",adresa4,"4","Diplomirani inzenjer elektrotehnike",10,courseList1));
 		
 		professorListForSearch.add(new Professor("Milan","Rapaic", LocalDate.of(1970, 1, 1),adresa1,12,"brankakukic@yahoo.com",adresa1,"1","Diplomirani inzenjer elektrotehnike",10,null));
 		professorListForSearch.add(new Professor("Zoran","Jelicic", LocalDate.of(1960, 1, 1),adresa2,56,"zoranjelicic@yahoo.com",adresa2,"2","Diplomirani inzenjer elektrotehnike",10,null));
@@ -165,4 +174,12 @@ public class ProfessorBase {
 		MyTabbedPane.getInstance().updateViewProfessor();
 	}
 	
+	public void setProfesorCoursesAfterRemovingCourse(Professor p) {
+		for(Professor prof : this.professorList) {
+			if(prof.getIdNumber() == p.getIdNumber()) {
+				prof.setListOfSubjects(p.getListOfSubjects());
+				break;
+			}
+		}
+	}
 }

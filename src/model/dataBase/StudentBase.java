@@ -163,10 +163,10 @@ public class StudentBase {
 		studentListForSearch = studentList;
 	}
 	
-	public void deleteStudent(Student s) {
-		for(Student student : studentList) {
-			if(s.getIndexNumber().equals(student.getIndexNumber()))
-				studentList.remove(s);
+	public void deleteStudent(Student student) {
+		for(Student s : this.studentList) {
+			if(s.getIndexNumber().equals(s.getIndexNumber()))
+				this.studentList.remove(s);
 				break;
 		}
 		studentListForSearch = studentList;
@@ -197,4 +197,5 @@ public class StudentBase {
 		}
 		studentListForSearch = studentList;
 	}
+	
 }

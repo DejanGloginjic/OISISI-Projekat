@@ -16,6 +16,11 @@ import view.dialogs.EditStudentDialog;
 import view.panels.MyPanelPassedExams;
 import view.window.MyTabbedPane;
 import view.window.MyTabbedPaneStudentEdit;
+import view.dialogs.AddProfessorDialog;
+import view.dialogs.AddStudentDialog;
+import view.dialogs.EditStudentDialog;
+import view.window.MyTabbedPane;
+
 
 public class MyActionListenerEditStudent implements ActionListener{
 

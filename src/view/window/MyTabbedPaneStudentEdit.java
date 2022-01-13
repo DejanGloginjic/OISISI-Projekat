@@ -5,6 +5,8 @@ import javax.swing.JTabbedPane;
 import view.panels.MyPanelEditStudent;
 import view.panels.MyPanelPassedExams;
 import view.panels.MyPanelRemainingExams;
+import view.panels.MyPanelEditStudent;
+
 
 public class MyTabbedPaneStudentEdit extends JTabbedPane{
 	
@@ -47,6 +49,7 @@ public class MyTabbedPaneStudentEdit extends JTabbedPane{
 	public void setMpre(MyPanelRemainingExams mpre) {
 		this.mpre = mpre;
 	}
+
 	
 	
 }

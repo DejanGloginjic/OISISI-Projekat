@@ -3,12 +3,6 @@ package view.listeners;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
-import javax.swing.JOptionPane;
-
-import view.dialogs.AddProfessorDialog;
 import view.dialogs.AddStudentDialog;
 
 public class MyFocusListenerNameValidation implements FocusListener{

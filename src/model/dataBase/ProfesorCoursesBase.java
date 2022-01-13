@@ -77,4 +77,13 @@ public class ProfesorCoursesBase {
 		}
 		
 	}
+	
+	public void deleteProfessorCourse(Course c) {
+		for(Course course : this.courseList) {
+			if(course.getCode().equals(c.getCode())) {
+				this.courseList.remove(course);
+				break;
+			}
+		}
+	}
 }

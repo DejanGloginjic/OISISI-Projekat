@@ -21,6 +21,12 @@ public class MyActionListenerConfirmEditStudent implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		int rowSelected = MyTabbedPane.getInstance().getSt().getSelectedRow();
+		
+		if(rowSelected < 0) {
+			return;
+		}
+		
 		String name = MyTabbedPaneStudentEdit.getInstance().getMpes().getNameText().getText();
 		String surname = MyTabbedPaneStudentEdit.getInstance().getMpes().getSurnameText().getText();
 		LocalDate dob = LocalDate.parse(MyTabbedPaneStudentEdit.getInstance().getMpes().getDobText().getText());
@@ -75,7 +81,6 @@ public class MyActionListenerConfirmEditStudent implements ActionListener{
 //		MyTabbedPaneStudentEdit.getInstance().getMpes().getMailText().setText("");
 //		MyTabbedPaneStudentEdit.getInstance().getMpes().getIndexText().setText("");
 //		MyTabbedPaneStudentEdit.getInstance().getMpes().getYoeText().setText("");
-		
 		EditStudentDialog.getInstance().setVisible(false);
 	}
 

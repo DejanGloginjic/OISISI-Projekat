@@ -7,6 +7,7 @@ import view.panels.*;
 public class MyTabbedPaneProfessorEdit extends JTabbedPane{
 	
 	private MyPanelEditProfessor mpep =new MyPanelEditProfessor();
+	private MyPanelProfessorCourses mppc = MyPanelProfessorCourses.getInstance();
 	
 	private static MyTabbedPaneProfessorEdit instance = null;
 	
@@ -20,6 +21,7 @@ public class MyTabbedPaneProfessorEdit extends JTabbedPane{
 	private MyTabbedPaneProfessorEdit() {
 		
 		addTab("Informacije", mpep);
+		addTab("Predmeti", mppc);
 	}
 	public MyPanelEditProfessor getMpep() {
 		return mpep;

@@ -123,8 +123,8 @@ public List<Course> getListOfSubjects() {
 	return listOfSubjects;
 }
 
-public void setListOfSubjects(ArrayList<Course> listOfSubjects) {
-	this.listOfSubjects = listOfSubjects;
+public void setListOfSubjects(List<Course> courseList) {
+	this.listOfSubjects = courseList;
 }
 
  
