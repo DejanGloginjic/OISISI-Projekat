@@ -17,7 +17,7 @@ Drugi student treba da implementira stavke sa sledećim oznakama:
 
 
 
-#prikaz_nepolozenih_ispita
+#prikaz_nepolozenih_ispita+
 #upis_ocene
 #ponistavanje_ocene
 #pretraga_profesora+

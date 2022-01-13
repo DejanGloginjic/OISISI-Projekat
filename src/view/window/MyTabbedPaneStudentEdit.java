@@ -4,11 +4,13 @@ import javax.swing.JTabbedPane;
 
 import view.panels.MyPanelEditStudent;
 import view.panels.MyPanelPassedExams;
+import view.panels.MyPanelRemainingExams;
 
 public class MyTabbedPaneStudentEdit extends JTabbedPane{
 	
 	private MyPanelEditStudent mpes = new MyPanelEditStudent();
 	MyPanelPassedExams mppe = MyPanelPassedExams.getInstance();
+	private MyPanelRemainingExams mpre = MyPanelRemainingExams.getInstance();
 	
 	private static MyTabbedPaneStudentEdit instance = null;
 	
@@ -23,6 +25,7 @@ public class MyTabbedPaneStudentEdit extends JTabbedPane{
 		
 		addTab("Informacije", mpes);
 		addTab("Položeni", mppe);
+		addTab("Nepolozeni", mpre);
 	}
 
 	public MyPanelEditStudent getMpes() {
