@@ -45,6 +45,7 @@ public class StudentBase {
 
 		List<Grade> g1 = new ArrayList<>();
 		List<Grade> g3 = new ArrayList<>();
+		List<Grade> remainingExames = new ArrayList<>();
 		
 		Student s = new Student();
 		
@@ -59,17 +60,25 @@ public class StudentBase {
 		g3.add(g4);
 		g1.add(g4);
 		
-		Student s1 = new Student("Gloginjic", "Dejan", date, a1, 2, "deki555@hotmail.com", "ra-241-2020", 2019, 2, enumerations.Status.B, g1, null);
+		Course cn1 = new Course("1","Operativni sistemi",Semester.SUMMER,4,p1,10,null,null);
+		Course cn2 = new Course("1","Matematicka Analiza 2",Semester.WINTER,3,p1,10,null,null);
+		Grade gn1 = new Grade(s, cn1, 9, date);
+		Grade gn2 = new Grade(s, cn2, 7, date);
+		
+		remainingExames.add(gn1);
+		remainingExames.add(gn2);
+		
+		Student s1 = new Student("Gloginjic", "Dejan", date, a1, 2, "deki555@hotmail.com", "ra-241-2020", 2019, 2, enumerations.Status.B, g1, remainingExames);
 		
 		Adress a2 = new Adress("Sportska", 2, "Mkronjic Grad", "BiH");
 		LocalDate date1 = LocalDate.of(2020, 1, 8);
-		Student s2 = new Student("Antic", "Tamara", date1, a1, 2, "tamara555@hotmail.com", "sw-1-2019", 2019, 2, enumerations.Status.B, g1, null);
+		Student s2 = new Student("Antic", "Tamara", date1, a1, 2, "tamara555@hotmail.com", "sw-1-2019", 2019, 2, enumerations.Status.B, g1, remainingExames);
 		
 		Adress a3 = new Adress("Sportska", 2, "Mkronjic Grad", "BiH");
-		Student s3 = new Student("Tesanovic", "Ivana", date1, a1, 2, "ivana555@hotmail.com", "ra-24-2020", 2019, 2, enumerations.Status.B, g3, null);
+		Student s3 = new Student("Tesanovic", "Ivana", date1, a1, 2, "ivana555@hotmail.com", "ra-24-2020", 2019, 2, enumerations.Status.B, g3, remainingExames);
 		
 		Adress a4 = new Adress("Sportska", 2, "Mkronjic Grad", "BiH");
-		Student s4 = new Student("Boskic", "Slavko", date1, a1, 2, "ivana555@hotmail.com", "ra-2-2020", 2019, 2, enumerations.Status.B, g3, null);
+		Student s4 = new Student("Boskic", "Slavko", date1, a1, 2, "ivana555@hotmail.com", "ra-2-2020", 2019, 2, enumerations.Status.B, g3, remainingExames);
 		
 		this.studentList.add(s1);
 		this.studentList.add(s2);
@@ -81,6 +90,8 @@ public class StudentBase {
 		this.studentListForSearch.add(s3);
 		this.studentListForSearch.add(s4);
 	}
+	
+	
 	
 	public List<Student> getStudentList() {
 		return studentList;

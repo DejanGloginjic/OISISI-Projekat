@@ -21,7 +21,7 @@ public class Student implements Serializable{
 	private Status status;
 	private double averageGrade;
 	private List<Grade> passedExams;
-	private List<String> remainingExams;
+	private List<Grade> remainingExams;
 	
 	public Student() {
 		super();
@@ -30,7 +30,7 @@ public class Student implements Serializable{
 
 	public Student(String surname, String name, LocalDate dateOfBirth, Adress residentialAddress, int telephoneNumber,
 			String eMail, String indexNumber, int yearOfEnrollment, int currentYearOfStudy, Status status,List<Grade> passedExams,
-				List<String> remainingExams) {
+				List<Grade> remainingExams) {
 		super();
 		this.surname = surname;
 		this.name = name;
@@ -154,11 +154,11 @@ public class Student implements Serializable{
 		this.passedExams = passedExams;
 	}
 
-	public List<String> getRemainingExams() {
+	public List<Grade> getRemainingExams() {
 		return remainingExams;
 	}
 
-	public void setRemainingExams(ArrayList<String> remainingExams) {
+	public void setRemainingExams(ArrayList<Grade> remainingExams) {
 		this.remainingExams = remainingExams;
 	}
 	

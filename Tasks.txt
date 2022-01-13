@@ -30,3 +30,4 @@ Drugi student treba da implementira stavke sa sledećim oznakama:
 #dodavanje_profesora_na_predmet
 #uklanjanje_profesora_sa_predmeta
 #serijalizacija
+#lokalizacija(engleski)

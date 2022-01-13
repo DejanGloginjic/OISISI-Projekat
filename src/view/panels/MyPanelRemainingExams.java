@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import view.listeners.MyActionListenerPassExam;
 import view.tables.TablePassedExams;
 import view.tables.TableRemainingExams;
 
@@ -46,6 +47,7 @@ public class MyPanelRemainingExams extends JPanel{
 		bAdd = new JButton("Dodaj");
 		bDelete = new JButton("Obrisi");
 		bPass = new JButton("Polaganje");
+		bPass.addActionListener(new MyActionListenerPassExam());
 		btnPanel.add(bAdd);
 		btnPanel.add(bDelete);
 		btnPanel.add(bPass);

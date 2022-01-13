@@ -39,6 +39,14 @@ public class MyTabbedPaneStudentEdit extends JTabbedPane{
 	public static void setInstance(MyTabbedPaneStudentEdit instance) {
 		MyTabbedPaneStudentEdit.instance = instance;
 	}
+
+	public MyPanelRemainingExams getMpre() {
+		return mpre;
+	}
+
+	public void setMpre(MyPanelRemainingExams mpre) {
+		this.mpre = mpre;
+	}
 	
 	
 }

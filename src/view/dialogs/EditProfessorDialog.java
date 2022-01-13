@@ -9,7 +9,6 @@ import javax.swing.JTextField;
 
 import model.dataBase.ProfessorBase;
 import model.entities.Professor;
-import view.panels.MyPanelEditProfessor;
 import view.window.MyMainFrame;
 import view.window.MyTabbedPane;
 import view.window.MyTabbedPaneProfessorEdit;
