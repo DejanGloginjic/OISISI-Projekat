@@ -44,4 +44,8 @@ public class CourseController {
 	public void addStudentToCourse(Course c) {
 		CourseBase.getInstance().addStudentToCourse(c);
 	}
+	
+	public void deleteStudentFromCourse(Course c) {
+		CourseBase.getInstance().deleteStudentFromCourse(c);
+	}
 }

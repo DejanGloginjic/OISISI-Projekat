@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 import view.abstractTableModels.AbstractTableModelCourse;
 import view.abstractTableModels.AbstractTableModelRemainingExams;
 import view.listeners.MyActionListenerAddCourseToStudent;
+import view.listeners.MyActionListenerDeletingCourseFromStudent;
 import view.listeners.MyActionListenerPassExam;
 import view.tables.TablePassedExams;
 import view.tables.TableRemainingExams;
@@ -61,6 +62,7 @@ public class MyPanelRemainingExams extends JPanel{
 		tablePanel.add(scrollPane);
 		
 		bAdd.addActionListener(new MyActionListenerAddCourseToStudent());
+		bDelete.addActionListener(new MyActionListenerDeletingCourseFromStudent());
 		
 		centerPanel.add(btnPanel);
 		centerPanel.add(tablePanel);

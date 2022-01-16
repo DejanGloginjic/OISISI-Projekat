@@ -10,7 +10,7 @@
 + dodavanje_predmeta 
 + izmena_predmeta
 + prikaz_polozenih_ispita
- +dodavanje_predmeta_studentu
++ dodavanje_predmeta_studentu
 #uklanjanje_predmeta_sa_studenta
 #pretraga_studenata
 #sortiranje_studenata

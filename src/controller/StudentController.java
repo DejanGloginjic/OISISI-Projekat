@@ -49,4 +49,8 @@ public class StudentController {
 	public Student findSelectedStudent() {
 		return StudentBase.getInstance().findSelectedStudent();
 	}
+	
+	public void deleteCourseToSelectedStudent(Course c) {
+		StudentBase.getInstance().deleteCourseToSelectedStudent(c);
+	}
 }

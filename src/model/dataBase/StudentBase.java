@@ -227,4 +227,13 @@ public class StudentBase {
 		this.selectedStudent = s;
 	}
 	
+	public void deleteCourseToSelectedStudent(Course c) {
+		Student s = getSelectedStudent();
+		for(Student st : this.studentList) {
+			if(st.getIndexNumber().equals(s.getIndexNumber())) {
+				st.getRemainingExams().remove(c);
+				break;
+			}
+		}
+	}
 }

@@ -213,4 +213,14 @@ public class CourseBase {
         	}
         }
 	}
+	
+	//brisanje predmeta iz studenta
+		public void deleteStudentFromCourse(Course c) {
+			for(Course course : this.courseList) {
+	        	if(c.getCode().equals(course.getCode())) {
+	        		course.getStudentsWhoHaveNotPassedTheExam().remove(StudentBase.getInstance().getSelectedStudent());
+	        		break;
+	        	}
+	        }
+		}
 }
