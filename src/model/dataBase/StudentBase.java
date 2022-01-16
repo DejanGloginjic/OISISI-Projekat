@@ -26,6 +26,8 @@ public class StudentBase {
 	private List<Student> studentList = new ArrayList<>();
 	private List<Student> studentListForSearch = new ArrayList<>();
 	private List<String> columnList;
+	
+	private Student selectedStudent = new Student();
 
 	private StudentBase(){
 		initStudents();
@@ -45,28 +47,31 @@ public class StudentBase {
 
 		List<Grade> g1 = new ArrayList<>();
 		List<Grade> g3 = new ArrayList<>();
-		List<Grade> remainingExames = new ArrayList<>();
+		List<Course> remainingExames = new ArrayList<>();
 		
 		Student s = new Student();
 		
 		Professor p1 = new Professor();
+		Professor p2 = new Professor();
+		
 		Course c = new Course("1","Baze podataka",Semester.WINTER,3,p1,10,null,null);
+		Course c1 = new Course("2","OISISI",Semester.WINTER,3,p2,8,null,null);
+		Course cn1 = new Course("3","Operativni sistemi",Semester.SUMMER,4,p1,10,null,null);
+		Course cn2 = new Course("4","Matematicka Analiza 2",Semester.WINTER,3,p1,10,null,null);
+		
 		Grade g2 = new Grade(s, c, 10, date);
+		Grade g4 = new Grade(s, c1, 12, date);
+		Grade gn1 = new Grade(s, cn1, 9, date);
+		Grade gn2 = new Grade(s, cn2, 7, date);
 		g1.add(g2);
 		
-		Professor p2 = new Professor();
-		Course c1 = new Course("2","OISISI",Semester.WINTER,3,p2,8,null,null);
-		Grade g4 = new Grade(s, c1, 12, date);
+		
 		g3.add(g4);
 		g1.add(g4);
 		
-		Course cn1 = new Course("1","Operativni sistemi",Semester.SUMMER,4,p1,10,null,null);
-		Course cn2 = new Course("1","Matematicka Analiza 2",Semester.WINTER,3,p1,10,null,null);
-		Grade gn1 = new Grade(s, cn1, 9, date);
-		Grade gn2 = new Grade(s, cn2, 7, date);
+		Course remc = new Course("7","Baze podataka 6",Semester.WINTER,3,p1,10,null,null);
 		
-		remainingExames.add(gn1);
-		remainingExames.add(gn2);
+		remainingExames.add(remc);
 		
 		Student s1 = new Student("Gloginjic", "Dejan", date, a1, 2, "deki555@hotmail.com", "ra-241-2020", 2019, 2, enumerations.Status.B, g1, remainingExames);
 		
@@ -196,6 +201,30 @@ public class StudentBase {
 			break;
 		}
 		studentListForSearch = studentList;
+	}
+	
+	public Student getSelectedStudent() {
+		int rowSelected1 = MyTabbedPane.getInstance().getSt().getSelectedRow();
+		Student s = StudentBase.getInstance().getRow(rowSelected1);
+		return s;
+	}
+	
+	public void addCourseToSelectedStudent(Course c) {
+		Student s = selectedStudent;
+		for(Student st : this.studentList) {
+			if(st.getIndexNumber().equals(s.getIndexNumber())) {
+				st.getRemainingExams().add(c);
+				break;
+			}
+		}
+	}
+
+	public Student findSelectedStudent() {
+		return selectedStudent;
+	}
+
+	public void setSelectedStudent(Student s) {
+		this.selectedStudent = s;
 	}
 	
 }

@@ -8,6 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import view.abstractTableModels.AbstractTableModelCourse;
+import view.abstractTableModels.AbstractTableModelRemainingExams;
+import view.listeners.MyActionListenerAddCourseToStudent;
 import view.listeners.MyActionListenerPassExam;
 import view.tables.TablePassedExams;
 import view.tables.TableRemainingExams;
@@ -56,6 +59,8 @@ public class MyPanelRemainingExams extends JPanel{
 		JScrollPane scrollPane = new JScrollPane(table);
 		tablePanel = new JPanel();
 		tablePanel.add(scrollPane);
+		
+		bAdd.addActionListener(new MyActionListenerAddCourseToStudent());
 		
 		centerPanel.add(btnPanel);
 		centerPanel.add(tablePanel);
@@ -138,5 +143,9 @@ public class MyPanelRemainingExams extends JPanel{
 		MyPanelRemainingExams.instance = instance;
 	}
 	
-	
+	public void updateViewRemainingExams() {
+		AbstractTableModelRemainingExams model = (AbstractTableModelRemainingExams) table.getModel();
+		model.fireTableDataChanged();
+		validate();
+	}
 }

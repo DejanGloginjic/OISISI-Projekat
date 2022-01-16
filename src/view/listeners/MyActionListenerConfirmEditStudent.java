@@ -5,11 +5,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import controller.StudentController;
 import enumerations.Status;
 import model.dataBase.StudentBase;
 import model.entities.Adress;
+import model.entities.Course;
 import model.entities.Grade;
 import model.entities.Student;
 import view.dialogs.AddStudentDialog;
@@ -62,8 +64,8 @@ public class MyActionListenerConfirmEditStudent implements ActionListener{
 		}
 		
 		Status status = MyTabbedPaneStudentEdit.getInstance().getMpes().getStatus().getSelectedItem() == "Budžet" ? Status.B : Status.S;
-		ArrayList<Grade> passedExams = null;
-		ArrayList<Grade> remainingExams = null;
+		List<Grade> passedExams = null;
+		List<Course> remainingExams = null;
 		
 		Student student = new Student(surname, name, dob, residentialAddress, telephoneNumber, eMail, indexNumber, yearOfEnrollment, currentYearOfStudy,
 				status,passedExams, remainingExams);

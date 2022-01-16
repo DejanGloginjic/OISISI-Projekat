@@ -31,7 +31,7 @@ public class MyActionListenerEditStudent implements ActionListener{
 			int rowSelected1 = MyTabbedPane.getInstance().getSt().getSelectedRow();
 			Student s = StudentBase.getInstance().getRow(rowSelected1);
 			PassedExamsBase.getInstance().setGradeList(s.getPassedExams());
-			RemainingExamsBase.getInstance().setGradeList(s.getRemainingExams());
+			//RemainingExamsBase.getInstance().setGradeList(s.getRemainingExams());
 			MyPanelPassedExams.getInstance().getGrade().setText(String.valueOf(s.getAverageGrade()));
 			PassedExamsBase.getInstance().setNumberOfESPB();
 			

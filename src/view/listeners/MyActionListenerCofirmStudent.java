@@ -4,10 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import controller.StudentController;
 import enumerations.Status;
 import model.entities.Adress;
+import model.entities.Course;
 import model.entities.Grade;
 import model.entities.Student;
 import view.dialogs.AddStudentDialog;
@@ -52,8 +54,8 @@ public class MyActionListenerCofirmStudent implements ActionListener{
 		}
 		
 		Status status = AddStudentDialog.getInstance().getStatus().getSelectedItem() == "Budžet" ? Status.B : Status.S;
-		ArrayList<Grade> passedExams = null;
-		ArrayList<Grade> remainingExams = null;
+		List<Grade> passedExams = null;
+		List<Course> remainingExams = null;
 		
 		Student student = new Student(surname, name, dateOfBirth, residentialAddress, telephoneNumber, eMail, indexNumber, yearOfEnrollment, currentYearOfStudy,
 				status, passedExams, remainingExams);

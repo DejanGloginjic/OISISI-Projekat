@@ -1,6 +1,7 @@
 package model.entities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import enumerations.Semester;
 
@@ -11,8 +12,8 @@ public class Course{
 	private int yearOfTheCourse;
 	private Professor subjectProfessor;
 	private int numberOfESPB;
-	private ArrayList<Student> studentsWhoHavePassedTheExam;
-	private ArrayList<Student> studentsWhoHaveNotPassedTheExam;
+	private List<Student> studentsWhoHavePassedTheExam;
+	private List<Student> studentsWhoHaveNotPassedTheExam;
 	
 	public Course() {
 		super();
@@ -20,8 +21,8 @@ public class Course{
 	}
 
 	public Course(String code, String name, Semester semester, int yearOfTheCourse, Professor subjectProfessor,
-			int numberOfESPB, ArrayList<Student> studentsWhoHavePassedTheExam,
-			ArrayList<Student> studentsWhoHaveNotPassedTheExam) {
+			int numberOfESPB, List<Student> studentsWhoHavePassedTheExam,
+			List<Student> studentsWhoHaveNotPassedTheExam) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -81,7 +82,7 @@ public class Course{
 		this.numberOfESPB = numberOfESPB;
 	}
 
-	public ArrayList<Student> getStudentsWhoHavePassedTheExam() {
+	public List<Student> getStudentsWhoHavePassedTheExam() {
 		return studentsWhoHavePassedTheExam;
 	}
 
@@ -89,7 +90,7 @@ public class Course{
 		this.studentsWhoHavePassedTheExam = studentsWhoHavePassedTheExam;
 	}
 
-	public ArrayList<Student> getStudentsWhoHaveNotPassedTheExam() {
+	public List<Student> getStudentsWhoHaveNotPassedTheExam() {
 		return studentsWhoHaveNotPassedTheExam;
 	}
 

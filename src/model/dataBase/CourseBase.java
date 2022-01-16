@@ -3,9 +3,10 @@ package model.dataBase;
 import java.util.ArrayList;
 import java.util.List;
 
+import controller.StudentController;
 import enumerations.Semester;
 import model.entities.Course;
-import model.entities.Professor;
+import model.entities.Grade;
 import model.entities.Student;
 import view.window.MyTabbedPane;
 
@@ -38,15 +39,17 @@ public class CourseBase {
 	private void initCourse() {
 		this.courseList=new ArrayList<>();
 		
-		courseList.add(new Course("MO","Baze podataka",Semester.WINTER,3,null,8,null,null));
-		courseList.add(new Course("A3","Metode optimizacije",Semester.WINTER,3,null,8,null,null));
-		courseList.add(new Course("MV","Programski prevodioci",Semester.WINTER,3,null,6,null,null));
-		courseList.add(new Course("K7","OISISI",Semester.WINTER,3,null,5,null,null));
+		List<Student> list = new ArrayList<>();
+		
+		courseList.add(new Course("MO","Baze podataka",Semester.WINTER,1,null,8,list,list));
+		courseList.add(new Course("A3","Metode optimizacije",Semester.WINTER,1,null,8,list,list));
+		courseList.add(new Course("MV","Programski prevodioci",Semester.WINTER,1,null,6,list,list));
+		courseList.add(new Course("K7","OISISI",Semester.WINTER,1,null,5,list,list));
 
-		courseListForSearch.add(new Course("MO","Baze podataka",Semester.WINTER,3,null,8,null,null));
-		courseListForSearch.add(new Course("A3","Metode optimizacije",Semester.WINTER,3,null,8,null,null));
-		courseListForSearch.add(new Course("MV","Programski prevodioci",Semester.WINTER,3,null,6,null,null));
-		courseListForSearch.add(new Course("K7","OISISI",Semester.WINTER,3,null,5,null,null));
+		courseListForSearch.add(new Course("MO","Baze podataka",Semester.WINTER,1,null,8,null,null));
+		courseListForSearch.add(new Course("A3","Metode optimizacije",Semester.WINTER,1,null,8,null,null));
+		courseListForSearch.add(new Course("MV","Programski prevodioci",Semester.WINTER,1,null,6,null,null));
+		courseListForSearch.add(new Course("K7","OISISI",Semester.WINTER,1,null,5,null,null));
 	}
 
 	public List<Course> getCourseList() {
@@ -149,5 +152,65 @@ public class CourseBase {
 			}
 		
 		}
+	}
+	
+	public List<Course> getListOfCoursesThatSuitTheStudent(){
+		List<Course> retList = new ArrayList<>();
+	
+		Student s = StudentController.getInstance().findSelectedStudent();
+		
+		for(Course c1 : this.courseList) {
+			int i = 0;
+			for(Course c2 : s.getRemainingExams()) {
+				i++;
+				if(c1.getCode().equals(c2.getCode())) {
+					break;
+				}
+				if(i == s.getRemainingExams().size()) {
+					//ako se nalazimo na ovoj tacki znaci da se predmet c1 ne nalazi u listi nepolozenih predmeta datog studenta
+					//sad ispitujemo da li se predemet c1 nalazi u listi polozenih ispita
+					int j = 0;
+					for(Grade g : s.getPassedExams()) {
+						j++;
+						if(g.getCourse().getCode().equals(c1.getCode())) {
+							break;
+						}
+						if(j == s.getPassedExams().size()) {
+							//ako se nalazimo na ovoj tacki znaci da se predmet c1 ne nalazi ni u listi polozenih ispita
+							//sad jos trebamo ispitati da li predemet c1 odgovara godini studija studenta
+							if(c1.getYearOfTheCourse() > s.getCurrentYearOfStudy()) {
+								break;
+							}else {
+								retList.add(c1);
+							}
+						}
+					}
+					break;
+				}
+				break;
+			}
+			
+		}
+		
+		return retList;
+	}
+	
+	public Course findCourseByCode(String code) {
+		Course course = new Course();
+		for(Course c : this.courseList) {
+        	if(c.getCode().equals(code)) {
+        		course = c;
+        	}
+        }
+		return course;
+	}
+	
+	public void addStudentToCourse(Course c) {
+		for(Course course : this.courseList) {
+        	if(c.getCode().equals(course.getCode())) {
+        		course.getStudentsWhoHaveNotPassedTheExam().add(StudentBase.getInstance().findSelectedStudent());
+        		break;
+        	}
+        }
 	}
 }

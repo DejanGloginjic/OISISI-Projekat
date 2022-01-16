@@ -3,7 +3,8 @@ package model.dataBase;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.entities.Grade;
+import controller.StudentController;
+import model.entities.Course;
 
 public class RemainingExamsBase {
 
@@ -16,26 +17,26 @@ public class RemainingExamsBase {
 		return instance;
 	}
 	
-	private List<Grade> gradeList = new ArrayList<>();
+	private List<Course> courseList = new ArrayList<>();
 	private List<String> columnList;
 	
 	private RemainingExamsBase(){
-		
+		this.courseList = StudentController.getInstance().findSelectedStudent().getRemainingExams();
 		
 		setColumnList(new ArrayList<>());
 		this.getColumnList().add("Šifra predmeta");
 		this.getColumnList().add("Naziv predmeta");
 		this.getColumnList().add("ESPB");
-		this.getColumnList().add("Ocjena");
-		this.getColumnList().add("Datum");
+		this.getColumnList().add("Godina studija");
+		this.getColumnList().add("Semestar");
 	}
 
-	public List<Grade> getGradeList() {
-		return gradeList;
+	public List<Course> getGradeList() {
+		return courseList;
 	}
 
-	public void setGradeList(List<Grade> gradeList) {
-		this.gradeList = gradeList;
+	public void setCourseList(List<Course> courseList) {
+		this.courseList = courseList;
 	}
 
 	public List<String> getColumnList() {
@@ -52,19 +53,19 @@ public class RemainingExamsBase {
 	
 	public String getValueAt(int row, int column) {
 		
-		Grade grade = this.gradeList.get(row);
+		Course course = this.courseList.get(row);
 			
 		switch (column) {
 		case 0:
-			return String.valueOf(grade.getCourse().getCode());
+			return course.getCode();
 		case 1:
-			return grade.getCourse().getName();
+			return course.getName();
 		case 2:
-			return String.valueOf(grade.getCourse().getNumberOfESPB());
+			return String.valueOf(course.getNumberOfESPB());
 		case 3:
-			return String.valueOf(grade.getValue());
+			return String.valueOf(course.getYearOfTheCourse());
 		case 4:
-			return grade.getExamDate().toString();
+			return String.valueOf(course.getSemester());
 		default:
 			return null;
 		}
@@ -74,8 +75,16 @@ public class RemainingExamsBase {
 		return this.columnList.get(index);
 	}
 	
-	public Grade getRow(int rowIndex) {
-		return this.gradeList.get(rowIndex);
+	public Course getRow(int rowIndex) {
+		return this.courseList.get(rowIndex);
 	}
 	
+	public void deleteCourse(String code) {
+		for(Course c : this.courseList) {
+			if(c.getCode().equals(code)) {
+				this.courseList.remove(c);
+				break;
+			}
+		}
+	}
 }

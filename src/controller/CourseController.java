@@ -36,4 +36,12 @@ public class CourseController {
 		CourseBase.getInstance().editCourse(c);
 		MyTabbedPane.getInstance().updateViewCourse();
 	}
+	
+	public Course findCourseByCode(String code) {
+		return CourseBase.getInstance().findCourseByCode(code);
+	}
+	
+	public void addStudentToCourse(Course c) {
+		CourseBase.getInstance().addStudentToCourse(c);
+	}
 }
