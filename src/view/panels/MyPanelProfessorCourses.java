@@ -10,6 +10,7 @@ import javax.swing.JScrollPane;
 
 import view.abstractTableModels.AbstractTableModelProfessorCourses;
 import view.abstractTableModels.AbstractTableModelStudent;
+import view.listeners.MyActionListenerAddCourseToProfesor;
 import view.listeners.MyActionListenerDeleteCourseFromProfessor;
 import view.listeners.MyActionListenerDeleteStudent;
 import view.panels.MyPanelPassedExams;
@@ -58,6 +59,7 @@ public class MyPanelProfessorCourses extends JPanel{
 		btnPanel.add(Box.createHorizontalGlue());
 		centerPanel.add(btnPanel);
 		
+		btn1.addActionListener(new MyActionListenerAddCourseToProfesor());
 		btn2.addActionListener(new MyActionListenerDeleteCourseFromProfessor());
 		
 		table = new TableProfessorCourses();

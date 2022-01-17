@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.DefaultListModel;
+
 import controller.CourseController;
 import controller.StudentController;
 import model.dataBase.CourseBase;
@@ -31,6 +33,9 @@ public class MyActionListenerConfirmAddCourseToStudent implements ActionListener
         CourseController.getInstance().addStudentToCourse(course);
         
         AddCourseToStudentDialog.getInstance().setVisible(false);
+        
+        int index = AddCourseToStudentDialog.getInstance().getCourseList().getSelectedIndex();
+        AddCourseToStudentDialog.getInstance().getDlm().removeElementAt(index);
 	}
 
 }

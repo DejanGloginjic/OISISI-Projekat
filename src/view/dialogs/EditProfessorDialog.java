@@ -34,7 +34,7 @@ public class EditProfessorDialog extends JDialog{
 		
 		setTitle("Izmjena profesora");
 
-		setSize(450, 600);
+		setSize(500, 600);
 		setLocationRelativeTo(MyMainFrame.getInstance());
 		setModal(true);
 		

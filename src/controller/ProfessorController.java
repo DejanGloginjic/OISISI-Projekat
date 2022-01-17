@@ -2,8 +2,10 @@ package controller;
 
 import model.dataBase.ProfessorBase;
 import model.dataBase.StudentBase;
+import model.entities.Course;
 import model.entities.Professor;
 import model.entities.Student;
+import view.panels.MyPanelProfessorCourses;
 import view.window.MyTabbedPane;
 
 public class ProfessorController {
@@ -33,5 +35,10 @@ public class ProfessorController {
 	public void editProfessor(Professor p) {
 		ProfessorBase.getInstance().editProfessor(p);
 		MyTabbedPane.getInstance().updateViewProfessor();
+	}
+	
+	public void addCourseToSelectedProfessor(Course c) {
+		ProfessorBase.getInstance().addCourseToSelectedProfessor(c);
+		MyPanelProfessorCourses.getInstance().updateViewProfessorCourses();
 	}
 }

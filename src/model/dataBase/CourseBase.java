@@ -8,6 +8,7 @@ import enumerations.Semester;
 import localization.Language;
 import model.entities.Course;
 import model.entities.Grade;
+import model.entities.Professor;
 import model.entities.Student;
 import view.window.MyTabbedPane;
 
@@ -41,11 +42,12 @@ public class CourseBase {
 		this.courseList=new ArrayList<>();
 		
 		List<Student> list = new ArrayList<>();
+		Professor p =  new Professor();
 		
-		courseList.add(new Course("MO","Baze podataka",Semester.WINTER,1,null,8,list,list));
-		courseList.add(new Course("A3","Metode optimizacije",Semester.WINTER,1,null,8,list,list));
-		courseList.add(new Course("MV","Programski prevodioci",Semester.WINTER,1,null,6,list,list));
-		courseList.add(new Course("K7","OISISI",Semester.WINTER,1,null,5,list,list));
+		courseList.add(new Course("MO","Baze podataka",Semester.WINTER,1,p,8,list,list));
+		courseList.add(new Course("A3","Metode optimizacije",Semester.WINTER,1,p,8,list,list));
+		courseList.add(new Course("MV","Programski prevodioci",Semester.WINTER,1,p,6,list,list));
+		courseList.add(new Course("K7","OISISI",Semester.WINTER,1,p,5,list,list));
 
 		courseListForSearch.add(new Course("MO","Baze podataka",Semester.WINTER,1,null,8,null,null));
 		courseListForSearch.add(new Course("A3","Metode optimizacije",Semester.WINTER,1,null,8,null,null));
@@ -216,13 +218,37 @@ public class CourseBase {
 	}
 	
 	//brisanje predmeta iz studenta
-		public void deleteStudentFromCourse(Course c) {
-			for(Course course : this.courseList) {
-	        	if(c.getCode().equals(course.getCode())) {
-	        		course.getStudentsWhoHaveNotPassedTheExam().remove(StudentBase.getInstance().getSelectedStudent());
-	        		break;
-	        	}
-	        }
+	public void deleteStudentFromCourse(Course c) {
+		for(Course course : this.courseList) {
+			if(c.getCode().equals(course.getCode())) {
+				course.getStudentsWhoHaveNotPassedTheExam().remove(StudentBase.getInstance().getSelectedStudent());
+				break;
+			}
 		}
+	}
+	
+	public List<Course> getListOfCoursesThatSuitTheProfessor(){
+		int rowSelected = MyTabbedPane.getInstance().getPt().getSelectedRow();
+		Professor p = ProfessorBase.getInstance().getRow(rowSelected);
+		List<Course> retList = new ArrayList<>();
+		
+		for(Course c1 : this.courseList) {
+			int i = 0;
+			for(Course c2 : p.getListOfSubjects()) {
+				i++;
+				if(c1.getCode().equals(c2.getCode())) {
+					break;
+				}
+				
+				if(i == p.getListOfSubjects().size()) {
+					retList.add(c1);
+				}
+				
+			}
+			
+		}
+
+		return retList;
+	}
 
 }
