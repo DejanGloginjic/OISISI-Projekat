@@ -13,18 +13,15 @@ import javax.swing.SwingConstants;
 import view.listeners.MyActionListenerAddStudent;
 import view.listeners.MyActionListenerDeleteStudent;
 import view.listeners.MyActionListenerEdit;
+import view.listeners.MyActionListenerFindEntities;
 import controller.CourseController;
 import controller.ProfessorController;
 import controller.StudentController;
+import localization.Language;
 import view.dialogs.AddCourseDialog;
 import view.dialogs.AddProfessorDialog;
 import view.dialogs.AddStudentDialog;
-import view.listeners.MyActionListenerAddStudent;
-import view.listeners.MyActionListenerDeleteStudent;
-import view.listeners.MyActionListenerEditStudent;
 
-import view.listeners.MyActionListenerEditStudent;
-import view.listeners.MyActionListenerFindEntities;
 
 public class MyToolbar extends JToolBar{
 	
@@ -52,11 +49,11 @@ public class MyToolbar extends JToolBar{
 		
 		setFloatable(false);
 		
-		bNew.setToolTipText("New");
-		bEdit.setToolTipText("Edit");
-		bDelete.setToolTipText("Delete");
-		bSearch2.setToolTipText("Search");
-		bSearch.setToolTipText("Search");
+		bNew.setToolTipText(Language.getInstance().getResourceBundle().getString("new"));
+		bEdit.setToolTipText(Language.getInstance().getResourceBundle().getString("edit"));
+		bDelete.setToolTipText(Language.getInstance().getResourceBundle().getString("delete"));
+		bSearch2.setToolTipText(Language.getInstance().getResourceBundle().getString("search"));
+		bSearch.setToolTipText(Language.getInstance().getResourceBundle().getString("search"));
 		
 		bNew.setIcon(new ImageIcon("images/plus.png"));
 		bEdit.setIcon(new ImageIcon("images/pencilstraight.png"));
@@ -125,6 +122,7 @@ public class MyToolbar extends JToolBar{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
 	public static void setInstance(MyToolbar instance) {
 		MyToolbar.instance = instance;
 	}

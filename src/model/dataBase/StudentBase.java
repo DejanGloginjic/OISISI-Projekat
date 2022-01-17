@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import enumerations.Semester;
+import localization.Language;
 import model.entities.Adress;
 import model.entities.Course;
 import model.entities.Grade;
 import model.entities.Professor;
+
 import model.entities.Student;
 import view.window.MyTabbedPane;
 
@@ -34,11 +36,11 @@ public class StudentBase {
 		
 		columnList = new ArrayList<>();
 		this.getColumnList().add("Indeks");
-		this.getColumnList().add("Ime");
-		this.getColumnList().add("Prezime");
-		this.getColumnList().add("Godina studija");
+		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("nameT"));
+		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("surnameT"));
+		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("currentYearT"));
 		this.getColumnList().add("Status");
-		this.getColumnList().add("Prosjek");
+		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("averageGrade"));
 	}
 	
 	private void initStudents() {
@@ -84,6 +86,7 @@ public class StudentBase {
 		
 		Adress a4 = new Adress("Sportska", 2, "Mkronjic Grad", "BiH");
 		Student s4 = new Student("Boskic", "Slavko", date1, a1, 2, "ivana555@hotmail.com", "ra-2-2020", 2019, 2, enumerations.Status.B, g3, remainingExames);
+
 		
 		this.studentList.add(s1);
 		this.studentList.add(s2);
@@ -95,9 +98,7 @@ public class StudentBase {
 		this.studentListForSearch.add(s3);
 		this.studentListForSearch.add(s4);
 	}
-	
-	
-	
+
 	public List<Student> getStudentList() {
 		return studentList;
 	}
@@ -169,9 +170,9 @@ public class StudentBase {
 	}
 	
 	public void deleteStudent(Student student) {
-		for(Student s : this.studentList) {
-			if(s.getIndexNumber().equals(s.getIndexNumber()))
-				this.studentList.remove(s);
+		for(Student m : this.studentList) {
+			if(m.getIndexNumber().equals(student.getIndexNumber()))
+				this.studentList.remove(m);
 				break;
 		}
 		studentListForSearch = studentList;

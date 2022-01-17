@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import localization.Language;
 import view.dialogs.AddStudentDialog;
 import view.listeners.MyActionListenerCancelStudent;
 import view.listeners.MyActionListenerCofirmStudent;
@@ -19,14 +20,12 @@ import view.listeners.MyActionListenerEdit;
 import view.listeners.MyFocusListenerCityValidation;
 import view.listeners.MyFocusListenerCountyValidation;
 import view.listeners.MyFocusListenerDateValidation;
-import view.listeners.MyFocusListenerEmailValidation;
 import view.listeners.MyFocusListenerIndexValidation;
-import view.listeners.MyFocusListenerNOSValidation;
 import view.listeners.MyFocusListenerNameValidation;
-import view.listeners.MyFocusListenerStreetValidation;
 import view.listeners.MyFocusListenerSurnameValidation;
-import view.listeners.MyFocusListenerTelValidation;
-import view.listeners.MyFocusListenerYOEValidation;
+import view.listeners.MyKeyListenerNOSValidation;
+import view.listeners.MyKeyListenerTelValidation;
+import view.listeners.MyKeyListenerYOEValidation;
 import view.window.MyMainFrame;
 
 public class MyPanelEditStudent extends JPanel{
@@ -102,7 +101,7 @@ public class MyPanelEditStudent extends JPanel{
 		add(panelCenter);
 		
 		namePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		nameLab = new JLabel("Ime*");
+		nameLab = new JLabel(Language.getInstance().getResourceBundle().getString("name"));
 		nameLab.setPreferredSize(dim);
 		nameText = new JTextField();
 		nameText.setPreferredSize(dim);
@@ -112,7 +111,7 @@ public class MyPanelEditStudent extends JPanel{
 		panelCenter.add(namePan);
 		
 		surnamePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		surnameLab = new JLabel("Prezime*");
+		surnameLab = new JLabel(Language.getInstance().getResourceBundle().getString("surname"));
 		surnameLab.setPreferredSize(dim);
 		surnameText = new JTextField();
 		surnameText.setPreferredSize(dim);
@@ -122,7 +121,7 @@ public class MyPanelEditStudent extends JPanel{
 		panelCenter.add(surnamePan);
 		
 		dobPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		dobLab = new JLabel("Datum rodjenja*");
+		dobLab = new JLabel(Language.getInstance().getResourceBundle().getString("dateofBirth"));
 		dobLab.setPreferredSize(dim);
 		dobText = new JTextField();
 		dobText.setPreferredSize(dim);
@@ -132,27 +131,27 @@ public class MyPanelEditStudent extends JPanel{
 		panelCenter.add(dobPan);
 
 		streetPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		streetLab = new JLabel("Ulica*");
+		streetLab = new JLabel(Language.getInstance().getResourceBundle().getString("street"));
 		streetLab.setPreferredSize(dim);
 		streetText = new JTextField();
 		streetText.setPreferredSize(dim);
-	    streetText.addFocusListener(new MyFocusListenerStreetValidation());
+		//streetText.addFocusListener(new MyFocusListenerStreetValidation());
 		streetPan.add(streetLab);
 		streetPan.add(streetText);
 		panelCenter.add(streetPan);
 		
 		nosPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		nosLab = new JLabel("Broj adrese*");
+		nosLab = new JLabel(Language.getInstance().getResourceBundle().getString("nos"));
 		nosLab.setPreferredSize(dim);
 		nosText = new JTextField();
 		nosText.setPreferredSize(dim);
-		nosText.addFocusListener(new MyFocusListenerNOSValidation());
+		nosText.addKeyListener(new MyKeyListenerNOSValidation());
 		nosPan.add(nosLab);
 		nosPan.add(nosText);
 		panelCenter.add(nosPan);
 		
 		cityPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		cityLab = new JLabel("Grad*");
+		cityLab = new JLabel(Language.getInstance().getResourceBundle().getString("city"));
 		cityLab.setPreferredSize(dim);
 		cityText = new JTextField();
 		cityText.setPreferredSize(dim);
@@ -162,7 +161,7 @@ public class MyPanelEditStudent extends JPanel{
 		panelCenter.add(cityPan);
 		
 		countryPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		countryLab = new JLabel("Država*");
+		countryLab = new JLabel(Language.getInstance().getResourceBundle().getString("country"));
 		countryLab.setPreferredSize(dim);
 		countryText = new JTextField();
 		countryText.setPreferredSize(dim);
@@ -172,27 +171,27 @@ public class MyPanelEditStudent extends JPanel{
 		panelCenter.add(countryPan);
 		
 		telPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		telLab = new JLabel("Broj telefona*");
+		telLab = new JLabel(Language.getInstance().getResourceBundle().getString("tel"));
 		telLab.setPreferredSize(dim);
 		telText = new JTextField();
 		telText.setPreferredSize(dim);
-		telText.addFocusListener(new MyFocusListenerTelValidation());
+		telText.addKeyListener(new MyKeyListenerTelValidation());
 		telPan.add(telLab);
 		telPan.add(telText);
 		panelCenter.add(telPan);
 		
 		mailPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		mailLab = new JLabel("Mail*");
+		mailLab = new JLabel(Language.getInstance().getResourceBundle().getString("email"));
 		mailLab.setPreferredSize(dim);
 		mailText = new JTextField();
 		mailText.setPreferredSize(dim);
-		mailText.addFocusListener(new MyFocusListenerEmailValidation());
+		//mailText.addFocusListener(new MyFocusListenerEmailValidation());
 		mailPan.add(mailLab);
 		mailPan.add(mailText);
 		panelCenter.add(mailPan);
 		
 		indexPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		indexLab = new JLabel("Broj indeksa*");
+		indexLab = new JLabel(Language.getInstance().getResourceBundle().getString("indexNum"));
 		indexLab.setPreferredSize(dim);
 		indexText = new JTextField();
 		indexText.setPreferredSize(dim);
@@ -202,27 +201,27 @@ public class MyPanelEditStudent extends JPanel{
 		panelCenter.add(indexPan);
 		
 		yoePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		yoeLab = new JLabel("Godina upisa*");
+		yoeLab = new JLabel(Language.getInstance().getResourceBundle().getString("yearofEnrollment"));
 		yoeLab.setPreferredSize(dim);
 		yoeText = new JTextField();
 		yoeText.setPreferredSize(dim);
-		yoeText.addFocusListener(new MyFocusListenerYOEValidation());
+		yoeText.addKeyListener(new MyKeyListenerYOEValidation());
 		yoePan.add(yoeLab);
 		yoePan.add(yoeText);
 		panelCenter.add(yoePan);
 		
 		
 		cyosPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		cyosLab = new JLabel("Trenutna godina studija*");
+		cyosLab = new JLabel(Language.getInstance().getResourceBundle().getString("currentYear"));
 		cyosLab.setPreferredSize(dim);
 		year = new JComboBox<String>();
 		yearModel = new DefaultComboBoxModel<String>();
-		yearModel.addElement("I (prva)");
-		yearModel.addElement("II (druga)");
-		yearModel.addElement("III (treća)");
-		yearModel.addElement("IV (četvrta)");
-		yearModel.addElement("V (peta)");
-		yearModel.addElement("VI (šesta)");
+		yearModel.addElement(Language.getInstance().getResourceBundle().getString("first"));
+		yearModel.addElement(Language.getInstance().getResourceBundle().getString("second"));
+		yearModel.addElement(Language.getInstance().getResourceBundle().getString("third"));
+		yearModel.addElement(Language.getInstance().getResourceBundle().getString("fourth"));
+		yearModel.addElement(Language.getInstance().getResourceBundle().getString("fifth"));
+		yearModel.addElement(Language.getInstance().getResourceBundle().getString("sixth"));
 		year.setModel(yearModel);
 		year.setSelectedIndex(0);
 		year.setPreferredSize(dim);
@@ -235,8 +234,8 @@ public class MyPanelEditStudent extends JPanel{
 		statusLab.setPreferredSize(dim);
 		status = new JComboBox<String>();
 		statusModel = new DefaultComboBoxModel<String>();
-		statusModel.addElement("Budžet");
-		statusModel.addElement("Samofinansiranje");
+		statusModel.addElement(Language.getInstance().getResourceBundle().getString("budget"));
+		statusModel.addElement(Language.getInstance().getResourceBundle().getString("selffinansing"));
 		status.setModel(statusModel);
 		status.setSelectedIndex(0);
 		status.setPreferredSize(dim);
@@ -245,9 +244,9 @@ public class MyPanelEditStudent extends JPanel{
 		panelCenter.add(statusPan);
 		
 		buttonPanel = new JPanel();
-		confirm = new JButton("Potvrdi");
+		confirm = new JButton(Language.getInstance().getResourceBundle().getString("confirm"));
 		confirm.addActionListener(new MyActionListenerConfirmEditStudent());
-		cancel = new JButton("Odustani");
+		cancel = new JButton(Language.getInstance().getResourceBundle().getString("cancel"));
 		//cancel.addActionListener(new MyActionListenerCancelStudent());
 		buttonPanel.add(confirm);
 		buttonPanel.add(cancel);
@@ -621,6 +620,11 @@ public class MyPanelEditStudent extends JPanel{
 
 	public void setConfirm(JButton confirm) {
 		this.confirm = confirm;
+	}
+
+	public void updateComponents() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

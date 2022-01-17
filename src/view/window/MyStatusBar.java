@@ -11,14 +11,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import localization.Language;
+
 public class MyStatusBar extends JPanel{
 
-private static JLabel tabLabel = new JLabel("Studenti");
+private static JLabel tabLabel = new JLabel(Language.getInstance().getResourceBundle().getString("students"));
 	
 	public MyStatusBar() {
       
     	JLabel clock = new JLabel();
-    	JLabel name = new JLabel("Studentska sluzba  -  ");
+    	JLabel name = new JLabel(Language.getInstance().getResourceBundle().getString("studentServicesStatusBar"));
     	
     	BoxLayout bl = new BoxLayout(this, BoxLayout.X_AXIS);
     	setLayout(bl);

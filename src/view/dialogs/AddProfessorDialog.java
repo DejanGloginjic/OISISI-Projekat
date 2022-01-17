@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.ProfessorController;
+import localization.Language;
 import model.entities.Adress;
 import model.entities.Course;
 import model.entities.Professor;
@@ -116,7 +117,7 @@ public class AddProfessorDialog extends JDialog{
 	private JButton confirm;
 	
 	private AddProfessorDialog() {
-		setTitle("Dodavanje profesora");
+		setTitle(Language.getInstance().getResourceBundle().getString("addProfessor"));
 		setSize(450,600);
 		setLocationRelativeTo(MyMainFrame.getInstance());
 		setModal(true);
@@ -129,7 +130,7 @@ public class AddProfessorDialog extends JDialog{
 		add(panelCenter);
 		
 		namePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		nameLab = new JLabel("Ime*");
+		nameLab = new JLabel(Language.getInstance().getResourceBundle().getString("name"));
 		nameLab.setPreferredSize(dim);
 		nameText = new JTextField();
 		nameText.addFocusListener(new MyFocusListenerNameValidationForProfessor());
@@ -140,7 +141,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(namePan);
 		
 		surnamePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		surnameLab = new JLabel("Prezime*");
+		surnameLab = new JLabel(Language.getInstance().getResourceBundle().getString("surname"));
 		surnameLab.setPreferredSize(dim);
 		surnameText = new JTextField();
 		surnameText.addFocusListener(new MyFocusListenerSurnameValidationForProfessor());
@@ -150,7 +151,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(surnamePan);
 		
 		dateOfBirthPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		dateOfBirthLab = new JLabel("Datum rođenja*");
+		dateOfBirthLab = new JLabel(Language.getInstance().getResourceBundle().getString("dateofBirth"));
 		dateOfBirthLab.setPreferredSize(dim);
 		dateOfBirthText = new JTextField();
 		dateOfBirthText.addFocusListener(new MyFocusListenerDateValidationForProfessor());
@@ -160,7 +161,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(dateOfBirthPan);
 
 		streetPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		streetLab = new JLabel("Ulica*");
+		streetLab = new JLabel(Language.getInstance().getResourceBundle().getString("street"));
 		streetLab.setPreferredSize(dim);
 		streetText = new JTextField();
 		streetText.addFocusListener(new MyFocusListenerStreetValidationForProfessor());
@@ -170,7 +171,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(streetPan);
 		
 		nosPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		nosLab = new JLabel("Broj adrese (stanovanja)*");
+		nosLab = new JLabel(Language.getInstance().getResourceBundle().getString("nos"));
 		nosLab.setPreferredSize(dim);
 		nosText = new JTextField();
 		nosText.setPreferredSize(dim);
@@ -180,7 +181,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(nosPan);
 		
 		cityPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		cityLab = new JLabel("Grad (stanovanja)*");
+		cityLab = new JLabel(Language.getInstance().getResourceBundle().getString("city"));
 		cityLab.setPreferredSize(dim);
 		cityText = new JTextField();
 		cityText.addFocusListener(new MyFocusListenerCityValidationForProfessor());
@@ -190,7 +191,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(cityPan);
 		
 		countryPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		countryLab = new JLabel("Država (stanovanja)*");
+		countryLab = new JLabel(Language.getInstance().getResourceBundle().getString("country"));
 		countryLab.setPreferredSize(dim);
 		countryText = new JTextField();
 		countryText.addFocusListener(new MyFocusListenerCountryValidationForProfessor());
@@ -200,7 +201,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(countryPan);
 		
 		telephoneNumberPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		telephoneNumberLab = new JLabel("Broj telefona*");
+		telephoneNumberLab = new JLabel(Language.getInstance().getResourceBundle().getString("tel"));
 		telephoneNumberLab.setPreferredSize(dim);
 		telephoneNumberText = new JTextField();
 		telephoneNumberText.setPreferredSize(dim);
@@ -210,7 +211,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(telephoneNumberPan);
 		
 		eMailPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		eMailLab = new JLabel("Mail*");
+		eMailLab = new JLabel(Language.getInstance().getResourceBundle().getString("email"));
 		eMailLab.setPreferredSize(dim);
 		eMailText = new JTextField();
 		eMailText.setPreferredSize(dim);
@@ -220,7 +221,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(eMailPan);
 		
 		streetOfficePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		streetOfficeLab = new JLabel("Ulica (kancelarije)*");
+		streetOfficeLab = new JLabel(Language.getInstance().getResourceBundle().getString("streetO"));
 		streetOfficeLab.setPreferredSize(dim);
 		streetOfficeText = new JTextField();
 		streetOfficeText.setPreferredSize(dim);
@@ -229,7 +230,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(streetOfficePan);
 		
 		nosOfficePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		nosOfficeLab = new JLabel("Broj adrese (kancelarije)*");
+		nosOfficeLab = new JLabel(Language.getInstance().getResourceBundle().getString("nosO"));
 		nosOfficeLab.setPreferredSize(dim);
 		nosOfficeText = new JTextField();
 		nosOfficeText.setPreferredSize(dim);
@@ -238,7 +239,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(nosOfficePan);
 		
 		cityOfficePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		cityOfficeLab = new JLabel("Grad (kancelarije)*");
+		cityOfficeLab = new JLabel(Language.getInstance().getResourceBundle().getString("cityO"));
 		cityOfficeLab.setPreferredSize(dim);
 		cityOfficeText = new JTextField();
 		cityOfficeText.setPreferredSize(dim);
@@ -247,7 +248,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(cityOfficePan);
 		
 		countryOfficePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		countryOfficeLab = new JLabel("Država (kancelarije)*");
+		countryOfficeLab = new JLabel(Language.getInstance().getResourceBundle().getString("countryO"));
 		countryOfficeLab.setPreferredSize(dim);
 		countryOfficeText = new JTextField();
 		countryOfficeText.setPreferredSize(dim);
@@ -256,7 +257,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(countryOfficePan);
 		
 		IdNumberPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		IdNumberLab = new JLabel("Broj lične karte*");
+		IdNumberLab = new JLabel(Language.getInstance().getResourceBundle().getString("idNum"));
 		IdNumberLab.setPreferredSize(dim);
 		IdNumberText = new JTextField();
 		IdNumberText.setPreferredSize(dim);
@@ -266,7 +267,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(IdNumberPan);
 		
 		titlePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		titleLab = new JLabel("Zvanje*");
+		titleLab = new JLabel(Language.getInstance().getResourceBundle().getString("title"));
 		titleLab.setPreferredSize(dim);
 		titleText = new JTextField();
 		titleText.setPreferredSize(dim);
@@ -275,7 +276,7 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(titlePan);
 		
 		yearOfTrailPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		yearOfTrailLab = new JLabel("Godine iskustva*");
+		yearOfTrailLab = new JLabel(Language.getInstance().getResourceBundle().getString("years"));
 		yearOfTrailLab.setPreferredSize(dim);
 		yearOfTrailText = new JTextField();
 		yearOfTrailText.setPreferredSize(dim);
@@ -285,9 +286,9 @@ public class AddProfessorDialog extends JDialog{
 		panelCenter.add(yearOfTrailPan);
 		
 		buttonPanel = new JPanel();
-		confirm = new JButton("Potvrdi");
+		confirm = new JButton(Language.getInstance().getResourceBundle().getString("confirm"));
 		confirm.addActionListener(new MyActionListenerConfirmProfessor());
-		cancel = new JButton("Odustani");
+		cancel = new JButton(Language.getInstance().getResourceBundle().getString("cancel"));
 		cancel.addActionListener(new MyActionListenerCancleProfessor());
 		buttonPanel.add(confirm);
 		buttonPanel.add(cancel);

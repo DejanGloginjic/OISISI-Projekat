@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import enumerations.Semester;
+import localization.Language;
 import model.entities.Professor;
 import view.listeners.MyActionListenerCancelStudent;
 import view.listeners.MyActionListenerCofirmStudent;
@@ -65,7 +66,7 @@ public class AddCourseDialog extends JDialog{
 	
 	private AddCourseDialog() {
 		
-		setTitle("Dodavanje predmeta");
+		setTitle(Language.getInstance().getResourceBundle().getString("courseAdd"));
 		setSize(350, 250);
 		setLocationRelativeTo(MyMainFrame.getInstance());
 		setModal(true);
@@ -78,7 +79,7 @@ public class AddCourseDialog extends JDialog{
 		add(panelCenter);
 		
 		codePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		codeLab = new JLabel("Šifra*");
+		codeLab = new JLabel(Language.getInstance().getResourceBundle().getString("courseCode*"));
 		codeLab.setPreferredSize(dim);
 		codeText = new JTextField();
 		codeText.setPreferredSize(dim);
@@ -88,7 +89,7 @@ public class AddCourseDialog extends JDialog{
 		panelCenter.add(codePan);
 		
 		namePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		nameLab = new JLabel("Naziv*");
+		nameLab = new JLabel(Language.getInstance().getResourceBundle().getString("courseName*"));
 		nameLab.setPreferredSize(dim);
 		nameText = new JTextField();
 		nameText.setPreferredSize(dim);
@@ -98,16 +99,16 @@ public class AddCourseDialog extends JDialog{
 		panelCenter.add(namePan);
 		
 		yearOfTheCoursePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		yearOfTheCourseLab = new JLabel("Godina*");
+		yearOfTheCourseLab = new JLabel(Language.getInstance().getResourceBundle().getString("courseYear*"));
 		yearOfTheCourseLab.setPreferredSize(dim);
 		yearOfTheCourse = new JComboBox<String>();
 		yearOfTheCourseModel = new DefaultComboBoxModel<String>();
-		yearOfTheCourseModel.addElement("I (prva)");
-		yearOfTheCourseModel.addElement("II (druga)");
-		yearOfTheCourseModel.addElement("III (treća)");
-		yearOfTheCourseModel.addElement("IV (četvrta)");
-		yearOfTheCourseModel.addElement("V (peta)");
-		yearOfTheCourseModel.addElement("VI (šesta)");
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("first"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("second"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("third"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("fourth"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("fifth"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("sixth"));
 		yearOfTheCourse.setModel(yearOfTheCourseModel);
 		yearOfTheCourse.setSelectedIndex(0);
 		yearOfTheCourse.setPreferredSize(dim);
@@ -116,12 +117,12 @@ public class AddCourseDialog extends JDialog{
 		panelCenter.add(yearOfTheCoursePan);
 		
 		semesterPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		semesterLab = new JLabel("Semestar*");
+		semesterLab = new JLabel(Language.getInstance().getResourceBundle().getString("semester"));
 		semesterLab.setPreferredSize(dim);
 		semester = new JComboBox<String>();
 		semesterModel = new DefaultComboBoxModel<String>();
-		semesterModel.addElement("Ljeto");
-		semesterModel.addElement("Zima");
+		semesterModel.addElement(Language.getInstance().getResourceBundle().getString("summer"));
+		semesterModel.addElement(Language.getInstance().getResourceBundle().getString("winter"));
 		semester.setModel(semesterModel);
 		semester.setSelectedIndex(0);
 		semester.setPreferredSize(dim);
@@ -140,10 +141,10 @@ public class AddCourseDialog extends JDialog{
 		panelCenter.add(numberOfESPBPan);
 		
 		buttonPanel = new JPanel();
-		confirm = new JButton("Potvrdi");
+		confirm = new JButton(Language.getInstance().getResourceBundle().getString("confirm"));
 		confirm.addActionListener(new MyActionListenerConfirmCourse());
 		//confirm.setEnabled(false);
-		cancel = new JButton("Odustani");
+		cancel = new JButton(Language.getInstance().getResourceBundle().getString("cancel"));
 		//cancel.addActionListener(new MyActionListenerCancelStudent());
 		buttonPanel.add(confirm);
 		buttonPanel.add(cancel);

@@ -77,4 +77,9 @@ public class EditStudentDialog extends JDialog{
 		panelCenter.add(mtpse);
 		add(panelCenter);
 	}
+
+	public void updateComponents() {
+		mtpse.updateComponents();
+		
+	}
 }

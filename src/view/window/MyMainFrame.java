@@ -4,11 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.ResourceBundle;
+
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 
+import localization.Language;
 import model.dataBase.StudentBase;
+import view.dialogs.AddStudentDialog;
+import view.dialogs.EditStudentDialog;
 
 public class MyMainFrame extends JFrame{
 	
@@ -22,17 +27,18 @@ public class MyMainFrame extends JFrame{
 	}
 	
 	private MyMenuBar mb=new MyMenuBar();
-
 	private MyToolbar tb=MyToolbar.getInstance();
-
 	private MyStatusBar sb = new MyStatusBar();
-
 	private MyTabbedPane tp = MyTabbedPane.getInstance();
+	
+	//AddStudentDialog addStudentDialog = new AddStudentDialog();
+	//EditStudentDialog editStudentDialog = EditStudentDialog.getInstance();
+	//MyPanelEditStudent myPanelEditStudent = new MyPanelEditStudent();
 	
 	private MyMainFrame() {
 		super();
 		
-		setTitle("Studentska služba");
+		setTitle(Language.getInstance().getResourceBundle().getString("studentskaSluzba"));
 		
 		Toolkit kit=Toolkit.getDefaultToolkit();
 		Dimension dimension=kit.getScreenSize();
@@ -54,5 +60,11 @@ public class MyMainFrame extends JFrame{
 		setVisible(true);
 	}
 	
+	public void updateLanguage() {
+		
+		ResourceBundle resourceBundle = Language.getInstance().getResourceBundle();
+		mb.updateComponents();
+		
+	}
 	
 }

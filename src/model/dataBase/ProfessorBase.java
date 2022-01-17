@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import enumerations.Semester;
+import localization.Language;
 import model.entities.Adress;
 import model.entities.Course;
 import model.entities.Professor;
@@ -31,10 +32,10 @@ public class ProfessorBase {
 		initProfessors();
 		
 		columnList=new ArrayList<>();
-		this.getColumnList().add("Ime");
-		this.getColumnList().add("Prezime");
-		this.getColumnList().add("Zvanje");
-		this.getColumnList().add("E-mail");
+		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("nameT"));
+		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("surnameT"));
+		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("titleT"));
+		this.getColumnList().add("Email");
 	}
 
 	private void initProfessors() {
@@ -174,6 +175,7 @@ public class ProfessorBase {
 		MyTabbedPane.getInstance().updateViewProfessor();
 	}
 	
+
 	public void setProfesorCoursesAfterRemovingCourse(Professor p) {
 		for(Professor prof : this.professorList) {
 			if(prof.getIdNumber() == p.getIdNumber()) {
@@ -182,4 +184,5 @@ public class ProfessorBase {
 			}
 		}
 	}
+
 }

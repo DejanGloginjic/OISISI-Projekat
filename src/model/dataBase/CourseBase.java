@@ -5,6 +5,7 @@ import java.util.List;
 
 import controller.StudentController;
 import enumerations.Semester;
+import localization.Language;
 import model.entities.Course;
 import model.entities.Grade;
 import model.entities.Student;
@@ -29,11 +30,11 @@ public class CourseBase {
 		initCourse();
 		
 		columnList=new ArrayList<>();
-		this.getColumnList().add("Šifra predmeta");
-		this.getColumnList().add("Naziv predmeta");
-		this.getColumnList().add("Broj ESPB bodova");
-		this.getColumnList().add("Godina na kojoj se predmet izvodi");
-		this.getColumnList().add("Semestar u kome se predmet izvodi");
+		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("courseCode"));
+		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("courseName"));
+		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("espb"));
+		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("courseYear"));
+		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("courseSemestar"));
 	}
 
 	private void initCourse() {
@@ -153,7 +154,7 @@ public class CourseBase {
 		
 		}
 	}
-	
+
 	public List<Course> getListOfCoursesThatSuitTheStudent(){
 		List<Course> retList = new ArrayList<>();
 	
@@ -223,4 +224,5 @@ public class CourseBase {
 	        	}
 	        }
 		}
+
 }

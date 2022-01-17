@@ -2,10 +2,10 @@ package view.window;
 
 import javax.swing.JTabbedPane;
 
+import localization.Language;
 import view.panels.MyPanelEditStudent;
 import view.panels.MyPanelPassedExams;
 import view.panels.MyPanelRemainingExams;
-import view.panels.MyPanelEditStudent;
 
 
 public class MyTabbedPaneStudentEdit extends JTabbedPane{
@@ -25,9 +25,9 @@ public class MyTabbedPaneStudentEdit extends JTabbedPane{
 	
 	private MyTabbedPaneStudentEdit() {
 		
-		addTab("Informacije", mpes);
-		addTab("Položeni", mppe);
-		addTab("Nepolozeni", mpre);
+		addTab(Language.getInstance().getResourceBundle().getString("informations"), mpes);
+		addTab(Language.getInstance().getResourceBundle().getString("passed"), mppe);
+		addTab(Language.getInstance().getResourceBundle().getString("failed"), mpre);
 	}
 
 	public MyPanelEditStudent getMpes() {
@@ -48,6 +48,12 @@ public class MyTabbedPaneStudentEdit extends JTabbedPane{
 
 	public void setMpre(MyPanelRemainingExams mpre) {
 		this.mpre = mpre;
+	}
+
+	public void updateComponents() {
+		mpes.updateComponents();
+		//mppe.updateComponents();
+		//mpre.updateComponents();
 	}
 
 	

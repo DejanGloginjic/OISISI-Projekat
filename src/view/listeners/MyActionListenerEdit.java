@@ -12,8 +12,7 @@ import model.dataBase.StudentBase;
 import model.entities.Course;
 import model.entities.Professor;
 import model.entities.Student;
-import view.dialogs.AddProfessorDialog;
-import view.dialogs.AddStudentDialog;
+
 import view.dialogs.EditCourseDialog;
 import view.dialogs.EditProfessorDialog;
 import view.dialogs.EditStudentDialog;
@@ -21,6 +20,7 @@ import view.panels.MyPanelPassedExams;
 import view.window.MyTabbedPane;
 import view.window.MyTabbedPaneProfessorEdit;
 import view.window.MyTabbedPaneStudentEdit;
+
 
 public class MyActionListenerEdit implements ActionListener{
 
@@ -30,6 +30,7 @@ public class MyActionListenerEdit implements ActionListener{
 		case 0:
 			Student s = StudentBase.getInstance().getSelectedStudent();
 			StudentBase.getInstance().setSelectedStudent(s);
+
 			PassedExamsBase.getInstance().setGradeList(s.getPassedExams());
 			//RemainingExamsBase.getInstance().setGradeList(s.getRemainingExams());
 			MyPanelPassedExams.getInstance().getGrade().setText(String.valueOf(s.getAverageGrade()));
@@ -146,6 +147,7 @@ public class MyActionListenerEdit implements ActionListener{
 			EditCourseDialog  ecd= EditCourseDialog.getInstance();
 			ecd.setVisible(true);
 			break;	
+
 		}
 	}
 }

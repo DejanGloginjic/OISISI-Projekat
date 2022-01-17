@@ -2,12 +2,18 @@ package view.window;
 
 import javax.swing.JTabbedPane;
 
-import view.panels.*;
+import localization.Language;
+import view.panels.MyPanelEditProfessor;
+import view.panels.MyPanelEditStudent;
+import view.panels.MyPanelProfessorCourses;
+
 
 public class MyTabbedPaneProfessorEdit extends JTabbedPane{
 	
 	private MyPanelEditProfessor mpep =new MyPanelEditProfessor();
+
 	private MyPanelProfessorCourses mppc = MyPanelProfessorCourses.getInstance();
+
 	
 	private static MyTabbedPaneProfessorEdit instance = null;
 	
@@ -20,8 +26,9 @@ public class MyTabbedPaneProfessorEdit extends JTabbedPane{
 	
 	private MyTabbedPaneProfessorEdit() {
 		
-		addTab("Informacije", mpep);
-		addTab("Predmeti", mppc);
+		addTab(Language.getInstance().getResourceBundle().getString("informations"), mpep);
+		addTab(Language.getInstance().getResourceBundle().getString("courses"), mppc);
+
 	}
 	public MyPanelEditProfessor getMpep() {
 		return mpep;

@@ -6,6 +6,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import localization.Language;
 import view.abstractTableModels.AbstractTableModelCourse;
 import view.abstractTableModels.AbstractTableModelProfessor;
 import view.abstractTableModels.AbstractTableModelStudent;
@@ -36,11 +37,11 @@ public class MyTabbedPane extends JTabbedPane{
 		JScrollPane scrollPane1 = new JScrollPane(pt);
 		JScrollPane scrollPane2 = new JScrollPane(ct);
 		
-		addTab("Studenti", scrollPane);
+		addTab(Language.getInstance().getResourceBundle().getString("students"), scrollPane);
 		updateViewStudent();
-		addTab("Profesori", scrollPane1);
+		addTab(Language.getInstance().getResourceBundle().getString("professors"), scrollPane1);
 		updateViewProfessor();
-		addTab("Predmeti", scrollPane2);
+		addTab(Language.getInstance().getResourceBundle().getString("courses"), scrollPane2);
 		updateViewCourse();
 		
 		
@@ -51,15 +52,15 @@ public class MyTabbedPane extends JTabbedPane{
 		        
 		        switch(index) {
 		        case 0:
-		        	MyStatusBar.setTabLabel("Studenti");
+		        	MyStatusBar.setTabLabel(Language.getInstance().getResourceBundle().getString("students"));
 		        	openTab = 0;
 		        	break;
 		        case 1:
-		        	MyStatusBar.setTabLabel("Profesori");
+		        	MyStatusBar.setTabLabel(Language.getInstance().getResourceBundle().getString("professors"));
 		        	openTab = 1;
 		        	break;	
 		        case 2:
-		        	MyStatusBar.setTabLabel("Predmeti");
+		        	MyStatusBar.setTabLabel(Language.getInstance().getResourceBundle().getString("courses"));
 		        	openTab = 2;
 		        	break;
 		        }
