@@ -1,6 +1,9 @@
 package view.dialogs;
 
 import java.awt.Dimension;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.Box;
@@ -8,32 +11,35 @@ import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 
 import model.dataBase.CourseBase;
 import model.entities.Course;
-import view.listeners.MyActionListenerAddCourseToStudent;
+import view.listeners.MyActionListenerConfirmAddCourseToProfessor;
 import view.listeners.MyActionListenerConfirmAddCourseToStudent;
-import view.window.MyMainFrame;
 
-public class AddCourseToStudentDialog extends JDialog{
+public class AddCourseToProfessorDialog extends JDialog{
 
-	private static AddCourseToStudentDialog instance=null;
+	private static AddCourseToProfessorDialog instance=null;
 	
-	public static AddCourseToStudentDialog getInstance() {
+	public static AddCourseToProfessorDialog getInstance() {
 		if (instance == null) {
-			instance = new AddCourseToStudentDialog();
+			instance = new AddCourseToProfessorDialog();
 		}
 		return instance;
 	}
 	
 	private JPanel centerPanel;
 	
+	private JPanel labelPanel;
+	private JLabel label;
+	
 	private JPanel listPanel;
 	private JList courseList; 
-	private DefaultListModel<String> dlm;
 	
 	private JPanel buttonPanel;
 	private JButton addButton;
@@ -42,29 +48,34 @@ public class AddCourseToStudentDialog extends JDialog{
 	private BoxLayout box1;
 	private BoxLayout box2;
 	
-	private AddCourseToStudentDialog() {
+	private List<Course> coursesForCourseList;
+	DefaultListModel<String> dlm;
+	
+	private AddCourseToProfessorDialog() {
 		
 		setTitle("Dodavanje predmeta");
 		setSize(450, 400);
-		setLocationRelativeTo(EditStudentDialog.getInstance());
+		setLocationRelativeTo(EditProfessorDialog.getInstance());
 		setModal(true);
 		
 		centerPanel = new JPanel();
 		box1 = new BoxLayout(centerPanel, BoxLayout.Y_AXIS);
 		centerPanel.setLayout(box1);
 		
+		labelPanel = new JPanel();
+		label = new JLabel("Predmeti");
+		
 		listPanel = new JPanel();
 		courseList = new JList<>();
 		dlm = new DefaultListModel<>();
 		courseList.setModel(dlm);
+		courseList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		coursesForCourseList = CourseBase.getInstance().getListOfCoursesThatSuitTheProfessor();
 		
-		List<Course> coursesForCourseList = CourseBase.getInstance().getListOfCoursesThatSuitTheStudent();
-		
-		for(Course c : coursesForCourseList) {
+		for(Course c : this.coursesForCourseList) {
 			String courseString = c.getCode() + " " + c.getName();
 			dlm.addElement(courseString);
 		}
-		
 		
 		JScrollPane scrollPane = new JScrollPane(courseList);
 		scrollPane.setPreferredSize(new Dimension(300, 250));
@@ -76,8 +87,9 @@ public class AddCourseToStudentDialog extends JDialog{
 		box2 = new BoxLayout(buttonPanel, BoxLayout.X_AXIS);
 		buttonPanel.setLayout(box2);
 		addButton = new JButton("Dodaj");
-		addButton.addActionListener(new MyActionListenerConfirmAddCourseToStudent());
+		addButton.addActionListener(new MyActionListenerConfirmAddCourseToProfessor());
 		cancelButton = new JButton("Odustani");
+		
 		buttonPanel.add(Box.createHorizontalStrut(20));
 		buttonPanel.add(addButton);
 		buttonPanel.add(Box.createHorizontalStrut(20));
@@ -86,6 +98,33 @@ public class AddCourseToStudentDialog extends JDialog{
 		centerPanel.add(buttonPanel);
 		
 		add(centerPanel);
+		
+		this.addComponentListener(new ComponentListener() {
+			
+			@Override
+			public void componentShown(ComponentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void componentResized(ComponentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void componentMoved(ComponentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void componentHidden(ComponentEvent e) {
+				setCoursesForCourseList(CourseBase.getInstance().getListOfCoursesThatSuitTheProfessor());
+				
+			}
+		});
 	}
 
 	public JPanel getCenterPanel() {
@@ -94,6 +133,22 @@ public class AddCourseToStudentDialog extends JDialog{
 
 	public void setCenterPanel(JPanel centerPanel) {
 		this.centerPanel = centerPanel;
+	}
+
+	public JPanel getLabelPanel() {
+		return labelPanel;
+	}
+
+	public void setLabelPanel(JPanel labelPanel) {
+		this.labelPanel = labelPanel;
+	}
+
+	public JLabel getLabel() {
+		return label;
+	}
+
+	public void setLabel(JLabel label) {
+		this.label = label;
 	}
 
 	public JPanel getListPanel() {
@@ -152,8 +207,16 @@ public class AddCourseToStudentDialog extends JDialog{
 		this.box2 = box2;
 	}
 
-	public static void setInstance(AddCourseToStudentDialog instance) {
-		AddCourseToStudentDialog.instance = instance;
+	public static void setInstance(AddCourseToProfessorDialog instance) {
+		AddCourseToProfessorDialog.instance = instance;
+	}
+
+	public List<Course> getCoursesForCourseList() {
+		return coursesForCourseList;
+	}
+
+	public void setCoursesForCourseList(List<Course> coursesForCourseList) {
+		this.coursesForCourseList = coursesForCourseList;
 	}
 
 	public DefaultListModel<String> getDlm() {
@@ -162,6 +225,7 @@ public class AddCourseToStudentDialog extends JDialog{
 
 	public void setDlm(DefaultListModel<String> dlm) {
 		this.dlm = dlm;
-	}
+	}	
+	
 	
 }

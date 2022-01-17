@@ -182,4 +182,16 @@ public class ProfessorBase {
 			}
 		}
 	}
+
+	public void addCourseToSelectedProfessor(Course c) {
+		int rowSelected = MyTabbedPane.getInstance().getPt().getSelectedRow();
+		Professor p = ProfessorBase.getInstance().getRow(rowSelected);
+		
+		for(Professor professor : this.professorList) {
+			if(professor.getIdNumber().equals(p.getIdNumber())) {
+				professor.getListOfSubjects().add(c);
+				break;
+			}
+		}
+	}
 }
