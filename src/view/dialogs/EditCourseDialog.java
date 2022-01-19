@@ -5,6 +5,8 @@ import java.awt.FlowLayout;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -14,10 +16,12 @@ import javax.swing.JTextField;
 
 import enumerations.Semester;
 import model.entities.Professor;
+import view.listeners.MyActionListenerAddProfessorToCourse;
 import view.listeners.MyActionListenerCancelStudent;
 import view.listeners.MyActionListenerCofirmStudent;
 import view.listeners.MyActionListenerConfirmCourse;
 import view.listeners.MyActionListenerConfirmEditCourse;
+import view.listeners.MyActionListenerDeleteProfessorFromCourse;
 import view.listeners.MyFocusListenerCodeValidationForCourse;
 import view.listeners.MyFocusListenerESPBValidationForCourse;
 import view.listeners.MyFocusListenerNameValidation;
@@ -72,7 +76,7 @@ public class EditCourseDialog extends JDialog{
 	
 	private EditCourseDialog() {
 		
-		setTitle("Dodavanje predmeta");
+		setTitle("Izmena predmeta");
 		setSize(350, 300);
 		setLocationRelativeTo(MyMainFrame.getInstance());
 		setModal(true);
@@ -157,10 +161,14 @@ public class EditCourseDialog extends JDialog{
 		subjectProfessorText.addFocusListener(new MyFocusListenerCodeValidationForCourse());
 		subjectProfessorPan.add(subjectProfessorLab);
 		subjectProfessorPan.add(subjectProfessorText);
-		plus = new JButton();
+		Icon iconPlus = new ImageIcon("images/plus.png");
+		Icon iconMinus = new ImageIcon("images/minus.png");
+		plus = new JButton(iconPlus);
 		plus.setPreferredSize(btn);
-		minus = new JButton();
+		plus.addActionListener(new MyActionListenerAddProfessorToCourse());
+		minus = new JButton(iconMinus);
 		minus.setPreferredSize(btn);
+		minus.addActionListener(new MyActionListenerDeleteProfessorFromCourse());
 		subjectProfessorPan.add(plus);
 		subjectProfessorPan.add(minus);
 		panelCenter.add(subjectProfessorPan);

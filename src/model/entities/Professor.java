@@ -127,5 +127,9 @@ public void setListOfSubjects(List<Course> courseList) {
 	this.listOfSubjects = courseList;
 }
 
- 
+@Override
+public String toString() {
+	return IdNumber + " " + name + " " + surname;
+}
+
 }

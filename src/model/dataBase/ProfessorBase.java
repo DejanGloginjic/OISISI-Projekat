@@ -151,6 +151,34 @@ public class ProfessorBase {
 		}
 	}
 	
+	public Professor findByIdNum(String idNum) {
+		for(Professor p : professorList) {
+			if(p.getIdNumber().equals(idNum)) {
+				return p;
+			}
+		}
+		return null;
+	}
+	
+	public void addToCourseList(Course c,Professor p) {
+		for (Course course: p.getListOfSubjects()) {
+			if (course.getCode() == c.getCode()) {
+				return;
+			}
+		}
+		p.getListOfSubjects().add(c);
+	}
+	
+	public void removeFromCourseList(Course c,Professor p) {
+		for (Course course : p.getListOfSubjects()) {
+			if(course.getCode() == c.getCode()) {
+				p.getListOfSubjects().remove(course);
+				return;
+			}
+		}
+		return ;
+	}
+	
 	public void editProfessor(Professor p) {
 		for(Professor professor : professorList) {
 			if(professor.getIdNumber().equals(p.getIdNumber())) {
@@ -175,6 +203,22 @@ public class ProfessorBase {
 		MyTabbedPane.getInstance().updateViewProfessor();
 	}
 	
+	/*public List<Professor> getListOfProfessorsThatSuitTheCourse(){
+		
+		int rowSelected = MyTabbedPane.getInstance().getCt().getSelectedRow();
+		Course c = CourseBase.getInstance().getRow(rowSelected);
+		List<Professor> retList = new ArrayList<>();
+		
+		for (Professor p1 : this.professorList) {
+			int i = 0;
+			for(Professor p2 : c.getSubjectProfessor()) {
+				i++;
+				if(p1.)
+			}
+		}
+		return retList;
+	}*/
+
 
 	public void setProfesorCoursesAfterRemovingCourse(Professor p) {
 		for(Professor prof : this.professorList) {
@@ -196,4 +240,7 @@ public class ProfessorBase {
 			}
 		}
 	}
+	
+	
+	
 }

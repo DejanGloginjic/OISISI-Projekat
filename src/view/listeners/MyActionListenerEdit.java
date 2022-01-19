@@ -142,7 +142,12 @@ public class MyActionListenerEdit implements ActionListener{
 			}
 			
 			EditCourseDialog.getInstance().getNumberOfESPBText().setText(String.valueOf(c.getNumberOfESPB()));
-			EditCourseDialog.getInstance().getSubjectProfessorText().setText(c.getSubjectProfessor().getName() + " " + c.getSubjectProfessor().getSurname());
+			if (c.getSubjectProfessor() != null) {
+				EditCourseDialog.getInstance().getSubjectProfessorText().setText(c.getSubjectProfessor().getName() + " " + c.getSubjectProfessor().getSurname());
+			}else {
+				EditCourseDialog.getInstance().getSubjectProfessorText().setText("-");
+			}
+			
 			
 			EditCourseDialog  ecd= EditCourseDialog.getInstance();
 			ecd.setVisible(true);

@@ -27,7 +27,7 @@ Drugi student treba da implementira stavke sa sledećim oznakama:
 
 
 
-#dodavanje_profesora_na_predmet
-#uklanjanje_profesora_sa_predmeta
+#dodavanje_profesora_na_predmet+
+#uklanjanje_profesora_sa_predmet+
 #serijalizacija
 #lokalizacija(engleski)+

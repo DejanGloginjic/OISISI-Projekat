@@ -44,7 +44,7 @@ public class CourseBase {
 		List<Student> list = new ArrayList<>();
 		Professor p =  new Professor();
 		
-		courseList.add(new Course("MO","Baze podataka",Semester.WINTER,1,p,8,list,list));
+		courseList.add(new Course("MO","Baze podataka",Semester.WINTER,1,null,8,list,list));
 		courseList.add(new Course("A3","Metode optimizacije",Semester.WINTER,1,p,8,list,list));
 		courseList.add(new Course("MV","Programski prevodioci",Semester.WINTER,1,p,6,list,list));
 		courseList.add(new Course("K7","OISISI",Semester.WINTER,1,p,5,list,list));
@@ -65,13 +65,6 @@ public class CourseBase {
 	}
 	
 	public Course getRow(int rowIndex) {
-		int i = 0;
-		for(Course c: courseList) {
-			i++;
-			if (i==rowIndex) {
-				return c;
-			}
-		}
 		return this.courseList.get(rowIndex);
 	}
 
