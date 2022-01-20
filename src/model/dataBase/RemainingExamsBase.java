@@ -89,4 +89,19 @@ public class RemainingExamsBase {
 			}
 		}
 	}
+	
+	public Course findByCode(String code) {
+		
+		for (Course c: courseList) {
+			if(c.getCode().equals(code)) {
+				return c;
+				
+			}
+		}
+		return null;
+	}
+	
+	public void addCourse(Course c) {
+		this.courseList.add(c);
+	}
 }

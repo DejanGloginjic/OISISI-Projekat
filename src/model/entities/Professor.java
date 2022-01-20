@@ -150,5 +150,9 @@ public void setListOfSubjects(List<Course> courseList) {
 public String toString() {
 	return IdNumber + " " + name + " " + surname;
 }
+//Obradovic,Branimir,1979-01-07,Safarikova#2#Novi Sad#Srbija,021/922-333,branimir.obradovic@mailinator.com,Nikole Pasica#6a#Novi Sad#Srbija,600600644,DOCENT,17
+public String toStringForDataBaseWriter() {
+	return surname + ", " + name + ", " + dateOfBirth + ", " + residentialAddress + ", " + telephoneNumber + ", " + eMail + ", " + officeAddress + ", " + IdNumber + ", " + title + ", " + yearOfTrail;
+}
 
 }

@@ -207,4 +207,17 @@ public class StudentBase {
 			}
 		}
 	}
+	
+	public void addPassedExamsToStudent(Student student, Grade grade) {
+		for(Student s : this.studentList) {
+			if(s.getIndexNumber().equals(student.getIndexNumber())) {
+				s.getPassedExams().add(grade);
+				break;
+			}
+		}
+	}
+	
+	public void addToPassedExames(Grade g,Student s) {
+		s.getPassedExams().add(g);
+	}
 }

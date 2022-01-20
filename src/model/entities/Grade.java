@@ -53,6 +53,11 @@ public class Grade implements Serializable{
 	public void setExamDate(LocalDate examDate) {
 		this.examDate = examDate;
 	}
+
+	@Override
+	public String toString() {
+		return  student.getIndexNumber() + ", "  + course.getCode() + ", " + value + ", " + examDate ;
+	}
 	
 	
 }

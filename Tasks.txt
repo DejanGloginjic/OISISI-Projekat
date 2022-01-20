@@ -9,17 +9,17 @@ Drugi student treba da implementira stavke sa sledećim oznakama:
 
 2.domaci
 #prikaz_predmeta+
-#brisanje_predmeta+?
+#brisanje_predmeta+
 #prikaz_profesora+
 #dodavanje_profesora+
-#izmena_profesora+?
-#brisanje_profesora+?
+#izmena_profesora+
+#brisanje_profesora+
 
 
 
 #prikaz_nepolozenih_ispita+
-#upis_ocene
-#ponistavanje_ocene
+#upis_ocene+
+#ponistavanje_ocene+
 #pretraga_profesora+
 #pretraga_predmeta+
 #sortiranje_profesora+
@@ -29,5 +29,5 @@ Drugi student treba da implementira stavke sa sledećim oznakama:
 
 #dodavanje_profesora_na_predmet+
 #uklanjanje_profesora_sa_predmet+
-#serijalizacija
+#serijalizacija+
 #lokalizacija(engleski)+

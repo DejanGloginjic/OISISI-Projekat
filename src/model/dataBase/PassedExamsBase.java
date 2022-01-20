@@ -89,4 +89,23 @@ public class PassedExamsBase {
 		}
 		MyPanelPassedExams.getInstance().getValue().setText(String.valueOf(total));
 	}
+
+	public Grade findGrade(String id) {
+		for (Grade g: gradeList) {
+			if(g.getCourse().getCode().equals(id)) {
+				return g;
+			}
+		}
+		return null;
+	}
+
+	public void deleteGrade(String code) {
+		for(Grade g:this.gradeList) {
+			if(g.getCourse().getCode().equals(code)) {
+				this.gradeList.remove(g);
+				break;
+			}
+		}
+		
+	}
 }

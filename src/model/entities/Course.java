@@ -110,6 +110,11 @@ public class Course{
 	public void setStudentsWhoHaveNotPassedTheExam(ArrayList<Student> studentsWhoHaveNotPassedTheExam) {
 		this.studentsWhoHaveNotPassedTheExam = studentsWhoHaveNotPassedTheExam;
 	}
+//p30,	Masinsko ucenje,	4,	7,	null,	LETNJI
+	@Override
+	public String toString() {
+		return  code + ", " + name + ", " + yearOfTheCourse + ", " + numberOfESPB + ", " + subjectProfessor + ", " + semester;
+	}
 	
 	
 }

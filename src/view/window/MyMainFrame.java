@@ -14,6 +14,7 @@ import localization.Language;
 import model.dataBase.StudentBase;
 import view.dialogs.AddStudentDialog;
 import view.dialogs.EditStudentDialog;
+import view.listeners.MyWindowListener;
 
 public class MyMainFrame extends JFrame{
 	
@@ -56,7 +57,7 @@ public class MyMainFrame extends JFrame{
 		add(tb, BorderLayout.NORTH);
 		add(sb, BorderLayout.SOUTH);
 		add(MyTabbedPane.getInstance());
-		
+		addWindowListener(new MyWindowListener());
 		setVisible(true);
 	}
 	
@@ -64,7 +65,7 @@ public class MyMainFrame extends JFrame{
 		
 		ResourceBundle resourceBundle = Language.getInstance().getResourceBundle();
 		mb.updateComponents();
-		
+		AddStudentDialog.getInstance().updateComponents();
 	}
 	
 }

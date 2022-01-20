@@ -107,9 +107,10 @@ public class ProfessorBase {
 	
 	public void deleteProfessor(String idNum) {
 		for(Professor p : professorList) {
-			if(p.getIdNumber().equals(idNum))
+			if(p.getIdNumber().equals(idNum)) {
 				professorList.remove(p);
 				break;
+			}
 		}
 	}
 	

@@ -176,14 +176,12 @@ public class Student implements Serializable{
 	public static Status selffinancing() {
 		return Status.S;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Student [surname=" + surname + ", name=" + name + ", dateOfBirth=" + dateOfBirth
-				+ ", residentialAddress=" + residentialAddress + ", telephoneNumber=" + telephoneNumber + ", eMail="
-				+ eMail + ", indexNumber=" + indexNumber + ", yearOfEnrollment=" + yearOfEnrollment
-				+ ", currentYearOfStudy=" + currentYearOfStudy + ", status=" + status + ", averageGrade=" + averageGrade
-				+ ", passedExams=" + passedExams + ", remainingExams=" + remainingExams + "]";
+		return surname + ", " + name + ", " + dateOfBirth + ", " + residentialAddress + ", " + telephoneNumber + ", " + eMail + ", " + indexNumber + ", " + yearOfEnrollment + ", " + currentYearOfStudy + ", " + status + ", " + averageGrade;                           
+				
+				
 	}
 	
 }

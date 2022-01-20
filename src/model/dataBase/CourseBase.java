@@ -100,9 +100,10 @@ public class CourseBase {
 
 	public void deleteCourse(String code) {
 		for(Course c : courseList) {
-			if(c.getCode().equals(code))
+			if(c.getCode().equals(code)) {
 				courseList.remove(c);
 				break;
+			}
 		}
 	}
 	

@@ -13,6 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import view.abstractTableModels.AbstractTableModelPassedExams;
+import view.abstractTableModels.AbstractTableModelRemainingExams;
+import view.listeners.MyActionListenerUndoGrade;
 import view.tables.TablePassedExams;
 
 public class MyPanelPassedExams extends JPanel{
@@ -57,6 +60,7 @@ public class MyPanelPassedExams extends JPanel{
 		box1 = new BoxLayout(btnPanel, BoxLayout.Y_AXIS);
 		btnPanel.setLayout(box1);
 		btn1 = new JButton("Poništi ocijenu");
+		btn1.addActionListener(new MyActionListenerUndoGrade());
 		btnPanel.add(Box.createHorizontalStrut(5));
 		btnPanel.add(btn1);
 		btnPanel.add(Box.createHorizontalGlue());
@@ -217,5 +221,10 @@ public class MyPanelPassedExams extends JPanel{
 		MyPanelPassedExams.instance = instance;
 	}
 	
+	public void updateViewPassedExams() {
+		AbstractTableModelPassedExams model = (AbstractTableModelPassedExams) table.getModel();
+		model.fireTableDataChanged();
+		validate();
+	}
 	
 }

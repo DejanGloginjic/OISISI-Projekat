@@ -6,6 +6,7 @@ import model.dataBase.StudentBase;
 import model.entities.Course;
 import model.entities.Grade;
 import model.entities.Student;
+import view.panels.MyPanelPassedExams;
 import view.panels.MyPanelRemainingExams;
 import view.window.MyTabbedPane;
 
@@ -68,4 +69,11 @@ public class StudentController {
 	public void addCourseToStudent(Student student, Course course) {
 		StudentBase.getInstance().addCourseToStudent(student, course);
 	}
+	
+	public void addPassedExamsToStudent(Student student, Grade grade) {
+		StudentBase.getInstance().addPassedExamsToStudent(student, grade);
+		MyPanelPassedExams.getInstance().updateViewPassedExams();
+	}
+	
 }
+

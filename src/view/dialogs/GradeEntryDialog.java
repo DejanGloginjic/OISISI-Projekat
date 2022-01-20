@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import view.listeners.MyActionListenerConfirmPassingExam;
 import view.panels.MyPanelRemainingExams;
 
 
@@ -40,8 +41,8 @@ public class GradeEntryDialog extends JDialog{
 	
 	private JPanel gradePan;
 	private JLabel gradeLab;
-	private JComboBox<String> grade;
-	private DefaultComboBoxModel<String> gradeModel;
+	private JComboBox<Integer> grade;
+	private DefaultComboBoxModel<Integer> gradeModel;
 	
 	private JPanel datePan;
 	private JLabel dateLab;
@@ -86,13 +87,13 @@ public class GradeEntryDialog extends JDialog{
 		gradePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		gradeLab = new JLabel("Ocena*");
 		gradeLab.setPreferredSize(dim);
-		grade = new JComboBox<String>();
-		gradeModel = new DefaultComboBoxModel<String>();
-		gradeModel.addElement("6");
-		gradeModel.addElement("7");
-		gradeModel.addElement("8");
-		gradeModel.addElement("9");
-		gradeModel.addElement("10");
+		grade = new JComboBox<Integer>();
+		gradeModel = new DefaultComboBoxModel<Integer>();
+		gradeModel.addElement(6);
+		gradeModel.addElement(7);
+		gradeModel.addElement(8);
+		gradeModel.addElement(9);
+		gradeModel.addElement(10);
 		grade.setModel(gradeModel);
 		grade.setSelectedIndex(0);
 		grade.setPreferredSize(dim);
@@ -112,6 +113,7 @@ public class GradeEntryDialog extends JDialog{
 		
 		buttonPanel = new JPanel();
 		confirm = new JButton("Potvrdi");
+		confirm.addActionListener(new MyActionListenerConfirmPassingExam());
 		cancel = new JButton("Odustani");
 		buttonPanel.add(confirm);
 		buttonPanel.add(cancel);
@@ -199,19 +201,19 @@ public class GradeEntryDialog extends JDialog{
 		this.gradeLab = gradeLab;
 	}
 
-	public JComboBox<String> getGrade() {
-		return grade;
+	public String getGrade() {
+		return grade.getSelectedItem().toString();
 	}
 
-	public void setGrade(JComboBox<String> grade) {
+	public void setGrade(JComboBox<Integer> grade) {
 		this.grade = grade;
 	}
 
-	public DefaultComboBoxModel<String> getGradeModel() {
+	public DefaultComboBoxModel<Integer> getGradeModel() {
 		return gradeModel;
 	}
 
-	public void setGradeModel(DefaultComboBoxModel<String> gradeModel) {
+	public void setGradeModel(DefaultComboBoxModel<Integer> gradeModel) {
 		this.gradeModel = gradeModel;
 	}
 
