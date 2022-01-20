@@ -33,6 +33,19 @@ public class Course{
 		this.studentsWhoHavePassedTheExam = studentsWhoHavePassedTheExam;
 		this.studentsWhoHaveNotPassedTheExam = studentsWhoHaveNotPassedTheExam;
 	}
+	
+	
+
+	public Course(String code, String name, Semester semester, int yearOfTheCourse, Professor subjectProfessor,
+			int numberOfESPB) {
+		super();
+		this.code = code;
+		this.name = name;
+		this.semester = semester;
+		this.yearOfTheCourse = yearOfTheCourse;
+		this.subjectProfessor = subjectProfessor;
+		this.numberOfESPB = numberOfESPB;
+	}
 
 	public String getCode() {
 		return code;

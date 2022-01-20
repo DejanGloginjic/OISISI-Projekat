@@ -13,7 +13,7 @@ public class Student implements Serializable{
 	private String name;
 	private LocalDate dateOfBirth;
 	private Adress residentialAddress;
-	private int telephoneNumber;
+	private String telephoneNumber;
 	private String eMail;
 	private String indexNumber;
 	private int yearOfEnrollment;
@@ -28,8 +28,8 @@ public class Student implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Student(String surname, String name, LocalDate dateOfBirth, Adress residentialAddress, int telephoneNumber,
-			String eMail, String indexNumber, int yearOfEnrollment, int currentYearOfStudy, Status status,List<Grade> passedExams,
+	public Student(String surname, String name, LocalDate dateOfBirth, Adress residentialAddress, String telephoneNumber,
+			String eMail, String indexNumber, int yearOfEnrollment, int currentYearOfStudy, Status status, double averageGrade, List<Grade> passedExams,
 				List<Course> remainingExams) {
 		super();
 		this.surname = surname;
@@ -44,18 +44,25 @@ public class Student implements Serializable{
 		this.status = status;
 		this.passedExams = passedExams;
 		this.remainingExams = remainingExams;
+		this.averageGrade = averageGrade;
 		
-		int total = 0;
-		int i = 0;
-		for(Grade g : passedExams) {
-			i++;
-			total += g.getValue();
-		}
-		
-		if(i != 0) {
-			double avg = total / i;
-			this.averageGrade = avg;
-		}
+	}
+
+	public Student(String surname, String name, LocalDate dateOfBirth, Adress residentialAddress,
+			String telephoneNumber, String eMail, String indexNumber, int yearOfEnrollment, int currentYearOfStudy,
+			Status status, double averageGrade) {
+		super();
+		this.surname = surname;
+		this.name = name;
+		this.dateOfBirth = dateOfBirth;
+		this.residentialAddress = residentialAddress;
+		this.telephoneNumber = telephoneNumber;
+		this.eMail = eMail;
+		this.indexNumber = indexNumber;
+		this.yearOfEnrollment = yearOfEnrollment;
+		this.currentYearOfStudy = currentYearOfStudy;
+		this.status = status;
+		this.averageGrade = averageGrade;
 	}
 
 	public String getSurname() {
@@ -90,11 +97,11 @@ public class Student implements Serializable{
 		this.residentialAddress = residentialAddress;
 	}
 
-	public int getTelephoneNumber() {
+	public String getTelephoneNumber() {
 		return telephoneNumber;
 	}
 
-	public void setTelephoneNumber(int telephoneNumber) {
+	public void setTelephoneNumber(String telephoneNumber) {
 		this.telephoneNumber = telephoneNumber;
 	}
 

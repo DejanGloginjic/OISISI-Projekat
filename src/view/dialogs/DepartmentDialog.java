@@ -1,30 +1,30 @@
-package view.panels;
-
-import java.awt.FlowLayout;
+package view.dialogs;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
 
+import view.abstractTableModels.AbstractTableModelDepartment;
+import view.abstractTableModels.AbstractTableModelProfessor;
 import view.abstractTableModels.AbstractTableModelProfessorCourses;
-import view.abstractTableModels.AbstractTableModelStudent;
-import view.listeners.MyActionListenerAddCourseToProfesor;
+import view.listeners.MyActionListenerAddBossOfDepartment;
+import view.listeners.MyActionListenerAddDepartment;
 import view.listeners.MyActionListenerDeleteCourseFromProfessor;
-import view.listeners.MyActionListenerDeleteStudent;
-import view.panels.MyPanelPassedExams;
+import view.panels.MyPanelProfessorCourses;
+import view.tables.DepartmentTable;
 import view.tables.TableProfessorCourses;
+import view.window.MyMainFrame;
 
+public class DepartmentDialog extends JDialog{
+	
+	private static DepartmentDialog instance = null;
 
-public class MyPanelProfessorCourses extends JPanel{
-
-	private static MyPanelProfessorCourses instance = null;
-
-	public static MyPanelProfessorCourses getInstance(){
+	public static DepartmentDialog getInstance(){
 		if (instance == null) {
-			instance = new MyPanelProfessorCourses();
+			instance = new DepartmentDialog();
 		}
 		return instance;
 	}
@@ -36,23 +36,30 @@ public class MyPanelProfessorCourses extends JPanel{
 	private JButton btn2;
 	
 	private JPanel tablePanel;
-	private TableProfessorCourses table;
+	private DepartmentTable table;
 	
 	private BoxLayout box1;
 	private BoxLayout box2;
 	
-	private MyPanelProfessorCourses() {
+	private DepartmentDialog() {
+		
+		setTitle("Katedre");
+		setSize(480, 500);
+		setLocationRelativeTo(MyMainFrame.getInstance());
+		setModal(true);
 		
 		centerPanel = new JPanel();
 		
 		box1 = new BoxLayout(centerPanel, BoxLayout.Y_AXIS);
 		centerPanel.setLayout(box1);
 		
+		centerPanel.add(Box.createVerticalStrut(7));
+		
 		btnPanel = new JPanel();
 		box2 = new BoxLayout(btnPanel, BoxLayout.X_AXIS);
 		btnPanel.setLayout(box2);
-		btn1 = new JButton("Dodaj predmet");
-		btn2 = new JButton("Ukloni predmet");
+		btn1 = new JButton("Dodaj katedru");
+		btn2 = new JButton("Dodaj šefa katedre");
 		btnPanel.add(Box.createHorizontalStrut(5));
 		btnPanel.add(btn1);
 		btnPanel.add(Box.createHorizontalStrut(10));
@@ -60,11 +67,10 @@ public class MyPanelProfessorCourses extends JPanel{
 		btnPanel.add(Box.createHorizontalGlue());
 		centerPanel.add(btnPanel);
 		
-		btn1.addActionListener(new MyActionListenerAddCourseToProfesor());
-		btn2.addActionListener(new MyActionListenerDeleteCourseFromProfessor());
+		btn1.addActionListener(new MyActionListenerAddDepartment());
+		btn2.addActionListener(new MyActionListenerAddBossOfDepartment());
 		
-		table = new TableProfessorCourses();
-		table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		table = new DepartmentTable();
 		JScrollPane scrollPane = new JScrollPane(table);
 		tablePanel = new JPanel();
 		tablePanel.add(scrollPane);
@@ -113,11 +119,11 @@ public class MyPanelProfessorCourses extends JPanel{
 		this.tablePanel = tablePanel;
 	}
 
-	public TableProfessorCourses getTable() {
+	public DepartmentTable getTable() {
 		return table;
 	}
 
-	public void setTable(TableProfessorCourses table) {
+	public void setTable(DepartmentTable table) {
 		this.table = table;
 	}
 
@@ -137,12 +143,12 @@ public class MyPanelProfessorCourses extends JPanel{
 		this.box2 = box2;
 	}
 
-	public static void setInstance(MyPanelProfessorCourses instance) {
-		MyPanelProfessorCourses.instance = instance;
+	public static void setInstance(DepartmentDialog instance) {
+		DepartmentDialog.instance = instance;
 	}
 	
-	public void updateViewProfessorCourses() {
-		AbstractTableModelProfessorCourses model = (AbstractTableModelProfessorCourses) table.getModel();
+	public void updateViewDepartment() {
+		AbstractTableModelDepartment model = (AbstractTableModelDepartment) table.getModel();
 		model.fireTableDataChanged();
 		validate();
 	}

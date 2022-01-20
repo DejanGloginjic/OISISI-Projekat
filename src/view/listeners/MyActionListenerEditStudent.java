@@ -31,7 +31,7 @@ public class MyActionListenerEditStudent implements ActionListener{
 			int rowSelected1 = MyTabbedPane.getInstance().getSt().getSelectedRow();
 			Student s = StudentBase.getInstance().getRow(rowSelected1);
 			PassedExamsBase.getInstance().setGradeList(s.getPassedExams());
-			//RemainingExamsBase.getInstance().setGradeList(s.getRemainingExams());
+			RemainingExamsBase.getInstance().setCourseList(s.getRemainingExams());
 			MyPanelPassedExams.getInstance().getGrade().setText(String.valueOf(s.getAverageGrade()));
 			PassedExamsBase.getInstance().setNumberOfESPB();
 			
@@ -120,7 +120,7 @@ public class MyActionListenerEditStudent implements ActionListener{
 			}
 			
 			EditCourseDialog.getInstance().getNumberOfESPBText().setText(String.valueOf(c.getNumberOfESPB()));
-			EditCourseDialog.getInstance().getSubjectProfessorText().setText(c.getSubjectProfessor().getName() + " " + c.getSubjectProfessor().getSurname());
+			//EditCourseDialog.getInstance().getSubjectProfessorText().setText(c.getSubjectProfessor().getName() + " " + c.getSubjectProfessor().getSurname());
 			
 			EditCourseDialog  ecd= EditCourseDialog.getInstance();
 			ecd.setVisible(true);

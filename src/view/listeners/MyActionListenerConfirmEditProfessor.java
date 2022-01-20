@@ -34,14 +34,14 @@ public class MyActionListenerConfirmEditProfessor  implements ActionListener{
 		String surname = MyTabbedPaneProfessorEdit.getInstance().getMpep().getSurnameText().getText();
 		LocalDate dob = LocalDate.parse(MyTabbedPaneProfessorEdit.getInstance().getMpep().getDateOfBirthText().getText());
 		String street = MyTabbedPaneProfessorEdit.getInstance().getMpep().getStreetText().getText();
-		int number = Integer.parseInt(MyTabbedPaneProfessorEdit.getInstance().getMpep().getNosText().getText());
+		String number = MyTabbedPaneProfessorEdit.getInstance().getMpep().getNosText().getText();
 		String city = MyTabbedPaneProfessorEdit.getInstance().getMpep().getCityText().getText();
 		String country = MyTabbedPaneProfessorEdit.getInstance().getMpep().getCountryText().getText();
 		Adress residentialAddress = new Adress(street, number, city, country);
-		int telephoneNumber = Integer.parseInt(MyTabbedPaneProfessorEdit.getInstance().getMpep().getTelephoneNumberText().getText());
+		String telephoneNumber = MyTabbedPaneProfessorEdit.getInstance().getMpep().getTelephoneNumberText().getText();
 		String eMail = MyTabbedPaneProfessorEdit.getInstance().getMpep().geteMailText().getText();
 		String street1 = MyTabbedPaneProfessorEdit.getInstance().getMpep().getStreetOfficeText().getText();
-		int number1 = Integer.parseInt(MyTabbedPaneProfessorEdit.getInstance().getMpep().getNosOfficeText().getText());
+		String number1 = MyTabbedPaneProfessorEdit.getInstance().getMpep().getNosOfficeText().getText();
 		String city1 = MyTabbedPaneProfessorEdit.getInstance().getMpep().getCityOfficeText().getText();
 		String country1 = MyTabbedPaneProfessorEdit.getInstance().getMpep().getCountryOfficeText().getText();
 		Adress officelAddress = new Adress(street1, number1, city1, country1);

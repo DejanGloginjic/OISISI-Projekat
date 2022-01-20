@@ -41,4 +41,8 @@ public class ProfessorController {
 		ProfessorBase.getInstance().addCourseToSelectedProfessor(c);
 		MyPanelProfessorCourses.getInstance().updateViewProfessorCourses();
 	}
+	
+	public Professor findProfessor(String id) {
+		return ProfessorBase.getInstance().findProfessor(id);
+	}
 }

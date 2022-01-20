@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Adress implements Serializable{
 	private String street;
-	private int number;
+	private String number;
 	private String city;
 	private String country;
 	
@@ -13,7 +13,7 @@ public class Adress implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Adress(String street, int number, String city, String country) {
+	public Adress(String street, String number, String city, String country) {
 		super();
 		this.street = street;
 		this.number = number;
@@ -29,11 +29,11 @@ public class Adress implements Serializable{
 		this.street = street;
 	}
 
-	public int getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(int number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 

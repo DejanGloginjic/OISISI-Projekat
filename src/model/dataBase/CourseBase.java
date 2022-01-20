@@ -28,7 +28,6 @@ public class CourseBase {
 	private List<String> columnList;
 	
 	private CourseBase() {
-		initCourse();
 		
 		columnList=new ArrayList<>();
 		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("courseCode"));
@@ -36,23 +35,6 @@ public class CourseBase {
 		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("espb"));
 		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("courseYear"));
 		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("courseSemestar"));
-	}
-
-	private void initCourse() {
-		this.courseList=new ArrayList<>();
-		
-		List<Student> list = new ArrayList<>();
-		Professor p =  new Professor();
-		
-		courseList.add(new Course("MO","Baze podataka",Semester.WINTER,1,null,8,list,list));
-		courseList.add(new Course("A3","Metode optimizacije",Semester.WINTER,1,p,8,list,list));
-		courseList.add(new Course("MV","Programski prevodioci",Semester.WINTER,1,p,6,list,list));
-		courseList.add(new Course("K7","OISISI",Semester.WINTER,1,p,5,list,list));
-
-		courseListForSearch.add(new Course("MO","Baze podataka",Semester.WINTER,1,null,8,null,null));
-		courseListForSearch.add(new Course("A3","Metode optimizacije",Semester.WINTER,1,null,8,null,null));
-		courseListForSearch.add(new Course("MV","Programski prevodioci",Semester.WINTER,1,null,6,null,null));
-		courseListForSearch.add(new Course("K7","OISISI",Semester.WINTER,1,null,5,null,null));
 	}
 
 	public List<Course> getCourseList() {
@@ -152,17 +134,72 @@ public class CourseBase {
 
 	public List<Course> getListOfCoursesThatSuitTheStudent(){
 		List<Course> retList = new ArrayList<>();
-	
 		Student s = StudentController.getInstance().findSelectedStudent();
 		
+		//prvi slucaj: ako je prazna i lista remainingExams i passedExams kod studenta
+		if(s.getRemainingExams().size() == 0 && s.getPassedExams().size() == 0) {
+			for(Course c1 : this.courseList) {
+				if(c1.getYearOfTheCourse() <= s.getCurrentYearOfStudy()) {
+					retList.add(c1);
+				}
+			}
+			return retList;
+		}
+		
+		//drugi slucaj: ako je prazna lista remainingExams kod studenta
+		if(s.getRemainingExams().size() == 0) {
+			for(Course c1 : this.courseList) {
+				int j = 0;
+				for(Grade g : s.getPassedExams()) {
+					j++;
+					if(g.getCourse().getCode().equals(c1.getCode())) {
+						break;
+					}
+					if(j == s.getPassedExams().size()) {
+						//ako se nalazimo na ovoj tacki znaci da se predmet c1 ne nalazi u listi polozenih ispita
+						//sad jos trebamo ispitati da li predemet c1 odgovara godini studija studenta
+						if(c1.getYearOfTheCourse() > s.getCurrentYearOfStudy()) {
+							break;
+						}else {
+							retList.add(c1);
+						}
+					}
+				}
+			}
+			return retList;
+		}
+		
+		//treci slicaj: ako je prazna lista passedExams kod studenta
+		if(s.getPassedExams().size() == 0) {
+			for(Course c1 : this.courseList) {
+				int i = 0;
+				for(Course c2 : s.getRemainingExams()) {
+					i++;
+					if(c1.getCode().equals(c2.getCode())) {
+						break;
+					}
+					if(i == s.getRemainingExams().size()) {
+						//ako se nalazimo na ovoj tacki znaci da se predmet c1 ne nalazi u listi nepolozenih predmeta datog studenta
+						//sad ispitujemo da li se predemet c1 nalazi u listi polozenih ispita
+						if(c1.getYearOfTheCourse() > s.getCurrentYearOfStudy()) {
+							break;
+						}else {
+							retList.add(c1);
+						}
+					}
+				}
+			}
+		}
+		
+		//cetvrti slucaj: nista od gore navedenog
 		for(Course c1 : this.courseList) {
-			int i = 0;
+			int i1 = 0;
 			for(Course c2 : s.getRemainingExams()) {
-				i++;
+				i1++;
 				if(c1.getCode().equals(c2.getCode())) {
 					break;
 				}
-				if(i == s.getRemainingExams().size()) {
+				if(i1 == s.getRemainingExams().size()) {
 					//ako se nalazimo na ovoj tacki znaci da se predmet c1 ne nalazi u listi nepolozenih predmeta datog studenta
 					//sad ispitujemo da li se predemet c1 nalazi u listi polozenih ispita
 					int j = 0;
@@ -181,11 +218,9 @@ public class CourseBase {
 							}
 						}
 					}
-					break;
 				}
-				break;
 			}
-			
+			return retList;
 		}
 		
 		return retList;
@@ -226,6 +261,10 @@ public class CourseBase {
 		List<Course> retList = new ArrayList<>();
 		
 		for(Course c1 : this.courseList) {
+			
+			if(p.getListOfSubjects().size() == 0)
+				retList.add(c1);
+			
 			int i = 0;
 			for(Course c2 : p.getListOfSubjects()) {
 				i++;
@@ -244,4 +283,12 @@ public class CourseBase {
 		return retList;
 	}
 
+	public Course findCourse(String id) {
+		for(int i = 0; i < this.courseList.size(); i++) {
+			if (this.courseList.get(i).getCode().equals(id)) {
+				return this.courseList.get(i);
+			}
+		}
+		return null;
+	}
 }

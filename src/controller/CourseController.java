@@ -48,4 +48,8 @@ public class CourseController {
 	public void deleteStudentFromCourse(Course c) {
 		CourseBase.getInstance().deleteStudentFromCourse(c);
 	}
+	
+	public Course findCourse(String id) {
+		return CourseBase.getInstance().findCourse(id);
+	}
 }

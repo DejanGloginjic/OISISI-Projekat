@@ -9,7 +9,7 @@ public class Professor {
  private String name;
  private LocalDate dateOfBirth;
  private Adress residentialAddress;
- private int telephoneNumber;
+ private String telephoneNumber;
  private String eMail;
  private Adress officeAddress;
  private String IdNumber;
@@ -22,7 +22,26 @@ public Professor() {
 	// TODO Auto-generated constructor stub
 }
 
-public Professor(String surname, String name, LocalDate dateOfBirth, Adress residentialAddress, int telephoneNumber,
+
+
+public Professor(String surname, String name, LocalDate dateOfBirth, Adress residentialAddress, String telephoneNumber,
+		String eMail, Adress officeAddress, String idNumber, String title, int yearOfTrail) {
+	super();
+	this.surname = surname;
+	this.name = name;
+	this.dateOfBirth = dateOfBirth;
+	this.residentialAddress = residentialAddress;
+	this.telephoneNumber = telephoneNumber;
+	this.eMail = eMail;
+	this.officeAddress = officeAddress;
+	IdNumber = idNumber;
+	this.title = title;
+	this.yearOfTrail = yearOfTrail;
+}
+
+
+
+public Professor(String surname, String name, LocalDate dateOfBirth, Adress residentialAddress, String telephoneNumber,
 		String eMail, Adress officeAddress, String idNumber, String title, int yearOfTrail,
 		List<Course> listOfSubjects) {
 	super();
@@ -71,11 +90,11 @@ public void setResidentialAddress(Adress residentialAddress) {
 	this.residentialAddress = residentialAddress;
 }
 
-public int getTelephoneNumber() {
+public String getTelephoneNumber() {
 	return telephoneNumber;
 }
 
-public void setTelephoneNumber(int telephoneNumber) {
+public void setTelephoneNumber(String telephoneNumber) {
 	this.telephoneNumber = telephoneNumber;
 }
 

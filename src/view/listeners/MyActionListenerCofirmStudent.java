@@ -22,11 +22,11 @@ public class MyActionListenerCofirmStudent implements ActionListener{
 		String name = AddStudentDialog.getInstance().getNameText().getText();
 		LocalDate dateOfBirth = LocalDate.parse(AddStudentDialog.getInstance().getDobText().getText());
 		String street = AddStudentDialog.getInstance().getCityText().getText();
-		int number = Integer.parseInt(AddStudentDialog.getInstance().getNosText().getText());
+		String number = AddStudentDialog.getInstance().getNosText().getText();
 		String city = AddStudentDialog.getInstance().getCityText().getText();
 		String country = AddStudentDialog.getInstance().getCountryText().getText();
 		Adress residentialAddress = new Adress(street, number, city, country);
-		int telephoneNumber = Integer.parseInt(AddStudentDialog.getInstance().getTelText().getText());
+		String telephoneNumber = AddStudentDialog.getInstance().getTelText().getText();
 		String eMail = AddStudentDialog.getInstance().getMailText().getText();
 		String indexNumber = AddStudentDialog.getInstance().getIndexText().getText();
 		int yearOfEnrollment = Integer.parseInt(AddStudentDialog.getInstance().getYoeText().getText());
@@ -54,11 +54,12 @@ public class MyActionListenerCofirmStudent implements ActionListener{
 		}
 		
 		Status status = AddStudentDialog.getInstance().getStatus().getSelectedItem() == "Budžet" ? Status.B : Status.S;
-		List<Grade> passedExams = null;
-		List<Course> remainingExams = null;
+		List<Grade> passedExams = new ArrayList<>();
+		List<Course> remainingExams = new ArrayList<>();
+		double averageGrade = 0;
 		
 		Student student = new Student(surname, name, dateOfBirth, residentialAddress, telephoneNumber, eMail, indexNumber, yearOfEnrollment, currentYearOfStudy,
-				status, passedExams, remainingExams);
+				status, averageGrade, passedExams, remainingExams);
 		
 		StudentController.getInstance().addStudent(student);
 		

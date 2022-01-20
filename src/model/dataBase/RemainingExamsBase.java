@@ -5,6 +5,7 @@ import java.util.List;
 
 import controller.StudentController;
 import model.entities.Course;
+import view.panels.MyPanelRemainingExams;
 
 public class RemainingExamsBase {
 
@@ -37,6 +38,7 @@ public class RemainingExamsBase {
 
 	public void setCourseList(List<Course> courseList) {
 		this.courseList = courseList;
+		MyPanelRemainingExams.getInstance().updateViewRemainingExams();
 	}
 
 	public List<String> getColumnList() {

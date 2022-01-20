@@ -7,16 +7,17 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
+import view.abstractTableModels.AbstractTableModelDepartment;
 import view.abstractTableModels.AbstractTableModelProfessor;
 
-public class ProfessorTable extends JTable{
+public class DepartmentTable extends JTable{
 	
-	public ProfessorTable() {
+	public DepartmentTable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.setModel(new AbstractTableModelProfessor());
-		//this.setAutoCreateRowSorter(true);
+		this.setModel(new AbstractTableModelDepartment());
+		this.setAutoCreateRowSorter(true);
 	}
 	@Override
 	public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {

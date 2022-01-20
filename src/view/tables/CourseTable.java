@@ -16,7 +16,7 @@ public class CourseTable extends JTable{
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelCourse());
-		this.setAutoCreateRowSorter(true);
+		//this.setAutoCreateRowSorter(true);
 	}
 	
 	@Override

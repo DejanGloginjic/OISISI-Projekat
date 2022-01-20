@@ -29,7 +29,6 @@ public class ProfessorBase {
 	private List<String> columnList;
 	
 	private ProfessorBase() {
-		initProfessors();
 		
 		columnList=new ArrayList<>();
 		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("nameT"));
@@ -38,45 +37,8 @@ public class ProfessorBase {
 		this.getColumnList().add("Email");
 	}
 
-	private void initProfessors() {
-		this.professorList=new ArrayList<>();
-		
-		Adress adresa1 = new Adress("Sportska ulica", 12, "Novi Sad", "Srbija");
-		Adress adresa2 = new Adress("Strazilovska", 2, "Novi Sad", "Srbija");
-		Adress adresa3 = new Adress("Ulica kralja Petra", 16, "Novi Sad", "Srbija");
-		Adress adresa4 = new Adress("Bulevar oslobodjenja", 6, "Novi Sad", "Srbija");
-		
-		List<Course> courseList = new ArrayList<>();
-		Professor p = new Professor();
-		Course c1 = new Course("1a", "Matematika", Semester.SUMMER, 3, p, 4, null, null);
-		Course c2 = new Course("1b", "Fizika", Semester.SUMMER, 3, p, 4, null, null);
-		Course c3 = new Course("1c", "Hemija", Semester.SUMMER, 3, p, 4, null, null);
-		courseList.add(c1);
-		courseList.add(c2);
-		courseList.add(c3);
-		
-		List<Course> courseList1 = new ArrayList<>();
-		Professor p1 = new Professor();
-		Course c11 = new Course("1aa", "Matematika123", Semester.SUMMER, 3, p1, 4, null, null);
-		Course c22 = new Course("1bb", "Fizika123", Semester.SUMMER, 3, p1, 4, null, null);
-		Course c33 = new Course("1cc", "Hemija123", Semester.SUMMER, 3, p1, 4, null, null);
-		courseList1.add(c11);
-		courseList1.add(c22);
-		courseList1.add(c33);
-		
-		professorList.add(new Professor("Milan","Rapaic", LocalDate.of(1970, 1, 1),adresa1,12,"brankakukic@yahoo.com",adresa1,"1","Diplomirani inzenjer elektrotehnike",10, courseList));
-		professorList.add(new Professor("Zoran","Jelicic", LocalDate.of(1960, 1, 1),adresa2,56,"zoranjelicic@yahoo.com",adresa2,"2","Diplomirani inzenjer elektrotehnike",10,courseList));
-		professorList.add(new Professor("Milan","Vidakovic", LocalDate.of(1952, 1, 1),adresa3,24,"milanvidakovic@yahoo.com",adresa3,"3","Diplomirani inzenjer elektrotehnike",10,courseList1));
-		professorList.add(new Professor("Nebojsa","Ralevic", LocalDate.of(1959, 1, 1),adresa4,15,"nebojsaralevic@yahoo.com",adresa4,"4","Diplomirani inzenjer elektrotehnike",10,courseList1));
-		
-		professorListForSearch.add(new Professor("Milan","Rapaic", LocalDate.of(1970, 1, 1),adresa1,12,"brankakukic@yahoo.com",adresa1,"1","Diplomirani inzenjer elektrotehnike",10,null));
-		professorListForSearch.add(new Professor("Zoran","Jelicic", LocalDate.of(1960, 1, 1),adresa2,56,"zoranjelicic@yahoo.com",adresa2,"2","Diplomirani inzenjer elektrotehnike",10,null));
-		professorListForSearch.add(new Professor("Milan","Vidakovic", LocalDate.of(1952, 1, 1),adresa3,24,"milanvidakovic@yahoo.com",adresa3,"3","Diplomirani inzenjer elektrotehnike",10,null));
-		professorListForSearch.add(new Professor("Nebojsa","Ralevic", LocalDate.of(1959, 1, 1),adresa4,15,"nebojsaralevic@yahoo.com",adresa4,"4","Diplomirani inzenjer elektrotehnike",10,null));
-	}
-
 	public List<Professor> getProfessorList() {
-		return professorList;
+		return this.professorList;
 	}
 
 	public void setProfessorList(List<Professor> professorList) {
@@ -241,6 +203,11 @@ public class ProfessorBase {
 		}
 	}
 	
-	
-	
+	public Professor findProfessor(String id) {
+		for(int i = 0; i < this.professorList.size(); i++) {
+			if(this.professorList.get(i).getIdNumber().equals(id)) 
+				return this.professorList.get(i);
+		}
+		return null;
+	}
 }

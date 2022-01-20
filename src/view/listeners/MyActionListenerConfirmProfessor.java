@@ -20,14 +20,14 @@ public class MyActionListenerConfirmProfessor implements ActionListener{
 		String name=AddProfessorDialog.getInstance().getNameText().getText();
 		LocalDate dateOfBirth = LocalDate.parse(AddProfessorDialog.getInstance().getDateOfBirthText().getText());
 		String street = AddProfessorDialog.getInstance().getStreetText().getText();
-		int number = Integer.parseInt(AddProfessorDialog.getInstance().getNosText().getText());
+		String number = AddProfessorDialog.getInstance().getNosText().getText();
 		String city = AddProfessorDialog.getInstance().getCityText().getText();
 		String country = AddProfessorDialog.getInstance().getCountryText().getText();
 		Adress residentialAddress = new Adress(street, number, city, country);
-		int telephoneNumber=Integer.parseInt(AddProfessorDialog.getInstance().getTelephoneNumberText().getText());	
+		String telephoneNumber= AddProfessorDialog.getInstance().getTelephoneNumberText().getText();	
 		String eMail = AddProfessorDialog.getInstance().geteMailText().getText();
 		String streetOffice = AddProfessorDialog.getInstance().getStreetOfficeText().getText();
-		int numberOffice = Integer.parseInt(AddProfessorDialog.getInstance().getNosOfficeText().getText());
+		String numberOffice = AddProfessorDialog.getInstance().getNosOfficeText().getText();
 		String cityOffice = AddProfessorDialog.getInstance().getCityOfficeText().getText();
 		String countryOffice = AddProfessorDialog.getInstance().getCountryOfficeText().getText();
 		Adress officeAddress = new Adress(streetOffice, numberOffice, cityOffice, countryOffice);

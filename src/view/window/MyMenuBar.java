@@ -110,6 +110,7 @@ public class MyMenuBar extends JMenuBar{
 		miAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
 		
 		miNew.addActionListener(new MyActionListenerAddStudent());
+		miKatedre.addActionListener(new view.listeners.MyActionListenerDepartmentDialog());
 		
 		add(file);
 		add(edit);

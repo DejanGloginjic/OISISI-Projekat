@@ -32,7 +32,7 @@ public class MyActionListenerEdit implements ActionListener{
 			StudentBase.getInstance().setSelectedStudent(s);
 
 			PassedExamsBase.getInstance().setGradeList(s.getPassedExams());
-			//RemainingExamsBase.getInstance().setGradeList(s.getRemainingExams());
+			RemainingExamsBase.getInstance().setCourseList(s.getRemainingExams());
 			MyPanelPassedExams.getInstance().getGrade().setText(String.valueOf(s.getAverageGrade()));
 			PassedExamsBase.getInstance().setNumberOfESPB();
 			

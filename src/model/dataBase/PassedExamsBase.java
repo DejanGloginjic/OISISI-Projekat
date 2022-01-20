@@ -24,8 +24,7 @@ public class PassedExamsBase {
 	private List<String> columnList;
 	
 	private PassedExamsBase(){
-		
-		
+	
 		columnList = new ArrayList<>();
 		this.getColumnList().add("Šifra predmeta");
 		this.getColumnList().add("Naziv predmeta");

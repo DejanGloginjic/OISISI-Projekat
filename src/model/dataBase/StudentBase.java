@@ -1,16 +1,12 @@
 package model.dataBase;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import enumerations.Semester;
+
 import localization.Language;
-import model.entities.Adress;
 import model.entities.Course;
 import model.entities.Grade;
-import model.entities.Professor;
-
 import model.entities.Student;
 import view.window.MyTabbedPane;
 
@@ -32,7 +28,6 @@ public class StudentBase {
 	private Student selectedStudent = new Student();
 
 	private StudentBase(){
-		initStudents();
 		
 		columnList = new ArrayList<>();
 		this.getColumnList().add("Indeks");
@@ -43,61 +38,7 @@ public class StudentBase {
 		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("averageGrade"));
 	}
 	
-	private void initStudents() {
-		Adress a1 = new Adress("Sportska", 2, "Mkronjic Grad", "BiH");
-		LocalDate date = LocalDate.of(2020, 1, 8);
-
-		List<Grade> g1 = new ArrayList<>();
-		List<Grade> g3 = new ArrayList<>();
-		List<Course> remainingExames = new ArrayList<>();
-		
-		Student s = new Student();
-		
-		Professor p1 = new Professor();
-		Professor p2 = new Professor();
-		
-		Course c = new Course("1","Baze podataka",Semester.WINTER,3,p1,10,null,null);
-		Course c1 = new Course("2","OISISI",Semester.WINTER,3,p2,8,null,null);
-		Course cn1 = new Course("3","Operativni sistemi",Semester.SUMMER,4,p1,10,null,null);
-		Course cn2 = new Course("4","Matematicka Analiza 2",Semester.WINTER,3,p1,10,null,null);
-		
-		Grade g2 = new Grade(s, c, 10, date);
-		Grade g4 = new Grade(s, c1, 12, date);
-		Grade gn1 = new Grade(s, cn1, 9, date);
-		Grade gn2 = new Grade(s, cn2, 7, date);
-		g1.add(g2);
-		
-		
-		g3.add(g4);
-		g1.add(g4);
-		
-		Course remc = new Course("7","Baze podataka 6",Semester.WINTER,3,p1,10,null,null);
-		
-		remainingExames.add(remc);
-		
-		Student s1 = new Student("Gloginjic", "Dejan", date, a1, 2, "deki555@hotmail.com", "ra-241-2020", 2019, 2, enumerations.Status.B, g1, remainingExames);
-		
-		Adress a2 = new Adress("Sportska", 2, "Mkronjic Grad", "BiH");
-		LocalDate date1 = LocalDate.of(2020, 1, 8);
-		Student s2 = new Student("Antic", "Tamara", date1, a1, 2, "tamara555@hotmail.com", "sw-1-2019", 2019, 2, enumerations.Status.B, g1, remainingExames);
-		
-		Adress a3 = new Adress("Sportska", 2, "Mkronjic Grad", "BiH");
-		Student s3 = new Student("Tesanovic", "Ivana", date1, a1, 2, "ivana555@hotmail.com", "ra-24-2020", 2019, 2, enumerations.Status.B, g3, remainingExames);
-		
-		Adress a4 = new Adress("Sportska", 2, "Mkronjic Grad", "BiH");
-		Student s4 = new Student("Boskic", "Slavko", date1, a1, 2, "ivana555@hotmail.com", "ra-2-2020", 2019, 2, enumerations.Status.B, g3, remainingExames);
-
-		
-		this.studentList.add(s1);
-		this.studentList.add(s2);
-		this.studentList.add(s3);
-		this.studentList.add(s4);
-
-		this.studentListForSearch.add(s1);
-		this.studentListForSearch.add(s2);
-		this.studentListForSearch.add(s3);
-		this.studentListForSearch.add(s4);
-	}
+	
 
 	public List<Student> getStudentList() {
 		return studentList;
@@ -171,9 +112,10 @@ public class StudentBase {
 	
 	public void deleteStudent(Student student) {
 		for(Student m : this.studentList) {
-			if(m.getIndexNumber().equals(student.getIndexNumber()))
+			if(m.getIndexNumber().equals(student.getIndexNumber())) {
 				this.studentList.remove(m);
 				break;
+			}
 		}
 		studentListForSearch = studentList;
 	}
@@ -199,7 +141,6 @@ public class StudentBase {
 				student.setStatus(s.getStatus());
 				break;
 			}
-			break;
 		}
 		studentListForSearch = studentList;
 	}
@@ -233,6 +174,35 @@ public class StudentBase {
 		for(Student st : this.studentList) {
 			if(st.getIndexNumber().equals(s.getIndexNumber())) {
 				st.getRemainingExams().remove(c);
+				break;
+			}
+		}
+	}
+	
+	public Student findStudent(String index) {
+		Student s = new Student();
+		for(int i = 0; i < this.studentList.size(); i++) {
+			if(this.studentList.get(i).getIndexNumber().equals(index)) {
+				s = this.studentList.get(i);
+			}
+		}
+		return s;
+	}
+	
+	public void addGradesToStudents(List<Grade> grades){
+		for(Student student : this.studentList){
+			for(int i = 0; i < grades.size(); i++){
+				if(student.getIndexNumber().equals(grades.get(i).getStudent().getIndexNumber())) {
+					student.getPassedExams().add(grades.get(i));
+				}
+			}
+		}
+	}
+	
+	public void addCourseToStudent(Student student, Course course) {
+		for(Student s : this.studentList) {
+			if(s.getIndexNumber().equals(student.getIndexNumber())) {
+				s.getRemainingExams().add(course);
 				break;
 			}
 		}

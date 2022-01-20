@@ -33,11 +33,11 @@ public class MyActionListenerConfirmEditStudent implements ActionListener{
 		String surname = MyTabbedPaneStudentEdit.getInstance().getMpes().getSurnameText().getText();
 		LocalDate dob = LocalDate.parse(MyTabbedPaneStudentEdit.getInstance().getMpes().getDobText().getText());
 		String street = MyTabbedPaneStudentEdit.getInstance().getMpes().getCityText().getText();
-		int number = Integer.parseInt(MyTabbedPaneStudentEdit.getInstance().getMpes().getNosText().getText());
+		String number = MyTabbedPaneStudentEdit.getInstance().getMpes().getNosText().getText();
 		String city = MyTabbedPaneStudentEdit.getInstance().getMpes().getCityText().getText();
 		String country = MyTabbedPaneStudentEdit.getInstance().getMpes().getCountryText().getText();
 		Adress residentialAddress = new Adress(street, number, city, country);
-		int telephoneNumber = Integer.parseInt(MyTabbedPaneStudentEdit.getInstance().getMpes().getTelText().getText());
+		String telephoneNumber = MyTabbedPaneStudentEdit.getInstance().getMpes().getTelText().getText();
 		String eMail = MyTabbedPaneStudentEdit.getInstance().getMpes().getMailText().getText();
 		String indexNumber = MyTabbedPaneStudentEdit.getInstance().getMpes().getIndexText().getText();
 		int yearOfEnrollment = Integer.parseInt(MyTabbedPaneStudentEdit.getInstance().getMpes().getYoeText().getText());
@@ -64,11 +64,12 @@ public class MyActionListenerConfirmEditStudent implements ActionListener{
 		}
 		
 		Status status = MyTabbedPaneStudentEdit.getInstance().getMpes().getStatus().getSelectedItem() == "Budžet" ? Status.B : Status.S;
-		List<Grade> passedExams = null;
-		List<Course> remainingExams = null;
+		List<Grade> passedExams = new ArrayList<>();
+		List<Course> remainingExams = new ArrayList<>();
+		double averageGrade = 0;
 		
 		Student student = new Student(surname, name, dob, residentialAddress, telephoneNumber, eMail, indexNumber, yearOfEnrollment, currentYearOfStudy,
-				status,passedExams, remainingExams);
+				status,averageGrade, passedExams, remainingExams);
 		
 		StudentController.getInstance().editStudent(student);
 		
