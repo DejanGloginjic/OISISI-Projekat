@@ -1,7 +1,9 @@
 package view.window;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
@@ -11,8 +13,13 @@ import javax.swing.KeyStroke;
 
 import localization.Language;
 import view.listeners.MyActionListenerAddStudent;
+import view.listeners.MyActionListenerClose;
+import view.listeners.MyActionListenerDeleteFromMenu;
+import view.listeners.MyActionListenerEditFromMeni;
 import view.listeners.MyActionListenerEnglish;
+import view.listeners.MyActionListenerSave;
 import view.listeners.MyActionListenerSerbian;
+import view.listeners.MyWindowListener;
 
 public class MyMenuBar extends JMenuBar{
 	
@@ -83,20 +90,20 @@ public class MyMenuBar extends JMenuBar{
 		help.addSeparator();
 		help.add(miAbout);
 		
-		miNew.setIcon(new ImageIcon("images/newf.png"));
-		miSave.setIcon(new ImageIcon("images/savef.png"));
-		miClose.setIcon(new ImageIcon("images/closef.png"));
-		miHelp.setIcon(new ImageIcon("images/helpf.png"));
-		miDelete.setIcon(new ImageIcon("images/deletef.png"));
-		miEdit.setIcon(new ImageIcon("images/editf.png"));
-		miAbout.setIcon(new ImageIcon("images/aboutf.png"));
-		open.setIcon(new ImageIcon("images/openf.png"));
-		miStudenti.setIcon(new ImageIcon("images/studentf.png"));
-		miPredmeti.setIcon(new ImageIcon("images/predmetf.png"));
-		miProfesori.setIcon(new ImageIcon("images/profesorf.png"));
-		miKatedre.setIcon(new ImageIcon("images/katedraf.png"));
+		miNew.setIcon(new ImageIcon("images"+ File.separator +"newf.png"));
+		miSave.setIcon(new ImageIcon("images"+ File.separator +"savef.png"));
+		miClose.setIcon(new ImageIcon("images"+ File.separator +"closef.png"));
+		miHelp.setIcon(new ImageIcon("images"+ File.separator +"helpf.png"));
+		miDelete.setIcon(new ImageIcon("images"+ File.separator +"deletef.png"));
+		miEdit.setIcon(new ImageIcon("images"+ File.separator +"editf.png"));
+		miAbout.setIcon(new ImageIcon("images"+ File.separator +"aboutf.png"));
+		open.setIcon(new ImageIcon("images"+ File.separator +"openf.png"));
+		miStudenti.setIcon(new ImageIcon("images"+ File.separator +"studentf.png"));
+		miPredmeti.setIcon(new ImageIcon("images"+ File.separator +"predmetf.png"));
+		miProfesori.setIcon(new ImageIcon("images"+ File.separator +"profesorf.png"));
+		miKatedre.setIcon(new ImageIcon("images"+ File.separator +"katedraf.png"));
 		
-		file.setMnemonic('E');
+		file.setMnemonic('F');
 		edit.setMnemonic('E');
 		help.setMnemonic('H');
 		miNew.setMnemonic('N');
@@ -127,6 +134,10 @@ public class MyMenuBar extends JMenuBar{
 		miAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
 		
 		miNew.addActionListener(new MyActionListenerAddStudent());
+		miClose.addActionListener(new MyActionListenerClose());
+		miEdit.addActionListener(new MyActionListenerEditFromMeni());
+		miSave.addActionListener(new MyActionListenerSave());
+		miDelete.addActionListener(new MyActionListenerDeleteFromMenu());
 		miKatedre.addActionListener(new view.listeners.MyActionListenerDepartmentDialog());
 		
 		add(file);

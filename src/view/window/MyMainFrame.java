@@ -4,12 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.File;
 import java.util.ResourceBundle;
 
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 import localization.Language;
+import model.dataBase.DatabaseReader;
 import view.dialogs.AddBossOfDepartmentDialog;
 import view.dialogs.AddCourseDialog;
 import view.dialogs.AddCourseToProfessorDialog;
@@ -35,7 +37,6 @@ public class MyMainFrame extends JFrame{
 		}
 		return instance;
 	}
-	
 	private MyMenuBar mb=new MyMenuBar();
 	private MyToolbar tb=MyToolbar.getInstance();
 	private MyStatusBar sb = new MyStatusBar();
@@ -58,7 +59,7 @@ public class MyMainFrame extends JFrame{
 		
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
-		Image img=kit.getImage("images/ikonica.jpeg");
+		Image img=kit.getImage("images" + File.separator + "ikonica.jpeg");
 		setIconImage(img);
 	
 		this.setJMenuBar(mb);

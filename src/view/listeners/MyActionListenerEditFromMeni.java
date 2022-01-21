@@ -2,6 +2,8 @@ package view.listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.List;
 
 import model.dataBase.CourseBase;
@@ -13,8 +15,11 @@ import model.dataBase.StudentBase;
 import model.entities.Course;
 import model.entities.Professor;
 import model.entities.Student;
+import view.dialogs.AddCourseDialog;
 import view.dialogs.AddCourseToProfessorDialog;
 import view.dialogs.AddCourseToStudentDialog;
+import view.dialogs.AddProfessorDialog;
+import view.dialogs.AddStudentDialog;
 import view.dialogs.EditCourseDialog;
 import view.dialogs.EditProfessorDialog;
 import view.dialogs.EditStudentDialog;
@@ -23,8 +28,7 @@ import view.window.MyTabbedPane;
 import view.window.MyTabbedPaneProfessorEdit;
 import view.window.MyTabbedPaneStudentEdit;
 
-
-public class MyActionListenerEdit implements ActionListener{
+public class MyActionListenerEditFromMeni implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -172,10 +176,8 @@ public class MyActionListenerEdit implements ActionListener{
 			}
 			
 			EditCourseDialog.getInstance().getNumberOfESPBText().setText(String.valueOf(c.getNumberOfESPB()));
-			
-			
 			if (c.getSubjectProfessor() != null) {
-				EditCourseDialog.getInstance().getSubjectProfessorText().setText(c.getSubjectProfessor().getIdNumber() + " " + c.getSubjectProfessor().getName() + " " + c.getSubjectProfessor().getSurname());
+				EditCourseDialog.getInstance().getSubjectProfessorText().setText(c.getSubjectProfessor().getName() + " " + c.getSubjectProfessor().getSurname());
 			}else {
 				EditCourseDialog.getInstance().getSubjectProfessorText().setText("-");
 			}
@@ -188,3 +190,4 @@ public class MyActionListenerEdit implements ActionListener{
 		}
 	}
 }
+

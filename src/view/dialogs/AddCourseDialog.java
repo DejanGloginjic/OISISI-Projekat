@@ -2,6 +2,8 @@ package view.dialogs;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
@@ -145,6 +147,14 @@ public class AddCourseDialog extends JDialog{
 		confirm.addActionListener(new MyActionListenerConfirmCourse());
 		//confirm.setEnabled(false);
 		cancel = new JButton(Language.getInstance().getResourceBundle().getString("cancel"));
+		cancel.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AddCourseDialog.getInstance().setVisible(false);
+				
+			}
+		});
 		//cancel.addActionListener(new MyActionListenerCancelStudent());
 		buttonPanel.add(confirm);
 		buttonPanel.add(cancel);

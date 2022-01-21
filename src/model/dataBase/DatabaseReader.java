@@ -49,7 +49,7 @@ public class DatabaseReader {
 	}
 	
 	public List<Student> readStudentDatabase() throws Exception{
-		File text = new File("src/files/students.txt");
+		File text = new File("src" + File.separator + "files" + File.separator + "students.txt");
 		List<Student> students = new ArrayList<>();
         Scanner scanner;
 		scanner = new Scanner(text);
@@ -79,7 +79,7 @@ public class DatabaseReader {
 	}
 	
 	public List<Professor> readProfessorDatabase() throws Exception{
-		File text = new File("src/files/professors.txt");
+		File text = new File("src" + File.separator + "files" + File.separator + "professors.txt");
 		List<Professor> professors = new ArrayList<>();
         Scanner scanner;
 		scanner = new Scanner(text);
@@ -97,7 +97,7 @@ public class DatabaseReader {
 	}
 	
 	public List<Course> readCourseDatabase() throws Exception{
-		File text = new File("src/files/courses.txt");
+		File text = new File("src" + File.separator + "files" + File.separator + "courses.txt");
 		List<Course> subjects = new ArrayList<>();
         Scanner scanner = new Scanner(text);
         while(scanner.hasNextLine()){
@@ -112,7 +112,7 @@ public class DatabaseReader {
 	}
 	
 	public List<Department> readDepartmentDatabase() throws Exception{
-		File text = new File("src/files/departments.txt");
+		File text = new File("src" + File.separator + "files" + File.separator + "departments.txt");
 		List<Department> departments = new ArrayList<>();
 		Scanner scanner = new Scanner(text);
 		while(scanner.hasNextLine()){
@@ -126,7 +126,7 @@ public class DatabaseReader {
 	}
 	
 	public List<Grade> readGradesForStudent() throws Exception {
-		File text = new File("src/files/grades.txt");
+		File text = new File("src" + File.separator + "files" + File.separator + "grades.txt");
 		List<Grade> grades = new ArrayList<>();
 		Scanner scanner;
 		scanner = new Scanner(text);
@@ -141,7 +141,7 @@ public class DatabaseReader {
 	}
 	
 	private void linkRemainingExamsToStudent() throws Exception {
-		File text = new File("src/files/remainingExams.txt");
+		File text = new File("src" + File.separator + "files" + File.separator + "remainingExams.txt");
 		Scanner scanner;
 		scanner = new Scanner(text);
 		while(scanner.hasNextLine()){
@@ -156,7 +156,7 @@ public class DatabaseReader {
 	}
 	
 	private void linkCoursesToProfessors() throws Exception {
-		File text = new File("src/files/professorsCourses.txt");
+		File text = new File("src" + File.separator + "files" + File.separator + "professorsCourses.txt");
 		Scanner scanner;
 		scanner = new Scanner(text);
 		while(scanner.hasNextLine()){

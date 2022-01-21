@@ -5,6 +5,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import localization.Language;
 import view.abstractTableModels.AbstractTableModelCourse;
@@ -36,6 +38,9 @@ public class MyTabbedPane extends JTabbedPane{
 		JScrollPane scrollPane = new JScrollPane(st);
 		JScrollPane scrollPane1 = new JScrollPane(pt);
 		JScrollPane scrollPane2 = new JScrollPane(ct);
+		
+		//TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(pt.getModel());
+		//pt.setRowSorter(sorter);
 		
 		addTab(Language.getInstance().getResourceBundle().getString("students"), scrollPane);
 		updateViewStudent();

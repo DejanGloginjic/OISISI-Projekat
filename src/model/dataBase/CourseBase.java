@@ -325,4 +325,13 @@ public class CourseBase {
 			}
 		}
 	}
+	
+	public void addProfessorToCourse(Professor p, Course c) {
+        for(Course course : this.courseList) {
+            if(course.getCode().equals(c.getCode())) {
+                course.setSubjectProfessor(p);
+                break;
+            }
+        }
+    }
 }

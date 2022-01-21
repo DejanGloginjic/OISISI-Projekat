@@ -118,14 +118,14 @@ public class ProfessorBase {
 		return null;
 	}
 	
-	public void addToCourseList(Course c,Professor p) {
-		for (Course course: p.getListOfSubjects()) {
-			if (course.getCode() == c.getCode()) {
-				return;
-			}
-		}
-		p.getListOfSubjects().add(c);
-	}
+//	public void addToCourseList(Course c,Professor p) {
+//		for (Course course: p.getListOfSubjects()) {
+//			if (course.getCode() == c.getCode()) {
+//				return;
+//			}
+//		}
+//		p.getListOfSubjects().add(c);
+//	}
 	
 	public void removeFromCourseList(Course c,Professor p) {
 		for (Course course : p.getListOfSubjects()) {

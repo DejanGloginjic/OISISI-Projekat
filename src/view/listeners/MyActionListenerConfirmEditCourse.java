@@ -4,7 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import controller.CourseController;
+import controller.ProfessorController;
 import enumerations.Semester;
+import model.dataBase.CourseBase;
 import model.entities.Course;
 import model.entities.Professor;
 import view.dialogs.EditCourseDialog;
@@ -41,10 +43,13 @@ public class MyActionListenerConfirmEditCourse implements ActionListener{
 		}
 		
 		int espb = Integer.parseInt(EditCourseDialog.getInstance().getNumberOfESPBText().getText());
-		Professor p = new Professor();
+		String[] words = EditCourseDialog.getInstance().getSubjectProfessorText().getText().split(" ");
+		String id =  words[0];
+		Professor p = ProfessorController.getInstance().findProfessor(id);
 		
-		Course c = new Course(code, name, s, year, p, espb, null, null);
 		
+		Course c = new Course(code, name, s, year, p, espb);
+		//CourseBase.getInstance().addSelectedProfessorToCourse(c);
 		CourseController.getInstance().editCourse(c);
 		
 		EditCourseDialog.getInstance().setVisible(false);

@@ -24,10 +24,13 @@ public class MyActionListenerUndoGrade implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		int rowSelected = MyPanelPassedExams.getInstance().getTable().getSelectedRow();
+		if(rowSelected < 0)
+			return;
 		int dialogResult = JOptionPane.showConfirmDialog(EditStudentDialog.getInstance(), "Da li ste sigurni?", "Poništi ocenu", JOptionPane.YES_NO_OPTION);
 		if(dialogResult == JOptionPane.YES_OPTION){
-			int rowSelected = MyPanelPassedExams.getInstance().getTable().getSelectedRow();
-			if(rowSelected < 0)
+			int rowSelected1 = MyPanelPassedExams.getInstance().getTable().getSelectedRow();
+			if(rowSelected1 < 0)
 				return;
 			Grade g = PassedExamsBase.getInstance().getRow(rowSelected);
 		

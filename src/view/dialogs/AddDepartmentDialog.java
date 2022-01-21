@@ -2,6 +2,8 @@ package view.dialogs;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
@@ -109,6 +111,13 @@ public class AddDepartmentDialog extends JDialog{
 		//confirm.setEnabled(false);
 		cancel = new JButton(Language.getInstance().getResourceBundle().getString("close"));
 		//cancel.addActionListener(new MyActionListenerAddBossOfDepartment());
+		cancel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AddDepartmentDialog.getInstance().setVisible(false);
+				
+			}
+		});
 		buttonPanel.add(confirm);
 		buttonPanel.add(cancel);
 		panelCenter.add(buttonPanel);

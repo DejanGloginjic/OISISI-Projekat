@@ -2,6 +2,8 @@ package view.dialogs;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
@@ -70,6 +72,7 @@ public class GradeEntryDialog extends JDialog{
 		codeLab = new JLabel(Language.getInstance().getResourceBundle().getString("courseCode*"));
 		codeLab.setPreferredSize(dim);
 		codeText = new JTextField();
+		codeText.setEditable(false);
 		codeText.setPreferredSize(dim);
 		codePan.add(codeLab);
 		codePan.add(codeText);
@@ -80,6 +83,7 @@ public class GradeEntryDialog extends JDialog{
 		nameLab.setPreferredSize(dim);
 		nameText = new JTextField();
 		nameText.setPreferredSize(dim);
+		nameText.setEditable(false);
 		namePan.add(nameLab);
 		namePan.add(nameText);
 		panelCenter.add(namePan);
@@ -114,6 +118,14 @@ public class GradeEntryDialog extends JDialog{
 		buttonPanel = new JPanel();
 		confirm = new JButton(Language.getInstance().getResourceBundle().getString("confirm"));
 		cancel = new JButton(Language.getInstance().getResourceBundle().getString("close"));
+		cancel.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GradeEntryDialog.getInstance().setVisible(false);
+				
+			}
+		});
 		confirm.addActionListener(new MyActionListenerConfirmPassingExam());
 		buttonPanel.add(confirm);
 		buttonPanel.add(cancel);

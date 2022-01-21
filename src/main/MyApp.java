@@ -14,9 +14,6 @@ public class MyApp {
 	
 		DatabaseReader dr = DatabaseReader.getInstance();
 		MyMainFrame mf = MyMainFrame.getInstance();
-		StudentBase sb = StudentBase.getInstance();
-		ProfessorBase pb = ProfessorBase.getInstance();
-		CourseBase cb = CourseBase.getInstance();
 		
 	}
 

@@ -2,6 +2,7 @@
 package view.window;
 
 import java.awt.Dimension;
+import java.io.File;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -55,10 +56,10 @@ public class MyToolbar extends JToolBar{
 		bSearch2.setToolTipText(Language.getInstance().getResourceBundle().getString("search"));
 		bSearch.setToolTipText(Language.getInstance().getResourceBundle().getString("search"));
 		
-		bNew.setIcon(new ImageIcon("images/plus.png"));
-		bEdit.setIcon(new ImageIcon("images/pencilstraight.png"));
-		bDelete.setIcon(new ImageIcon("images/trash.png"));
-		bSearch.setIcon(new ImageIcon("images/magnifyingglass.png"));
+		bNew.setIcon(new ImageIcon("images" + File.separator + "plus.png"));
+		bEdit.setIcon(new ImageIcon("images" + File.separator + "pencilstraight.png"));
+		bDelete.setIcon(new ImageIcon("images" + File.separator + "trash.png"));
+		bSearch.setIcon(new ImageIcon("images" + File.separator + "magnifyingglass.png"));
 		
 		bSearch2.setPreferredSize(new Dimension(130,30));
 		bSearch2.setMaximumSize(new Dimension(130,30));

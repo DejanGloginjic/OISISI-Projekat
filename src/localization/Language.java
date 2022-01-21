@@ -18,8 +18,8 @@ public class Language {
 	}
 	
 	private Language() {
-		Locale.setDefault(new Locale("sr","RS"));
-		//Locale.setDefault(new Locale("en","US"));
+		//Locale.setDefault(new Locale("sr","RS"));
+		Locale.setDefault(new Locale("en","US"));
 		resourceBundle = ResourceBundle.getBundle("localization.MessageResources",Locale.getDefault());
 	}
 

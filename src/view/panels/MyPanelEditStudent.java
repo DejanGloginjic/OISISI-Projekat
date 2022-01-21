@@ -2,6 +2,8 @@ package view.panels;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
@@ -12,7 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import localization.Language;
+import view.dialogs.AddBossOfDepartmentDialog;
 import view.dialogs.AddStudentDialog;
+import view.dialogs.EditStudentDialog;
 import view.listeners.MyActionListenerCancelStudent;
 import view.listeners.MyActionListenerCofirmStudent;
 import view.listeners.MyActionListenerConfirmEditStudent;
@@ -247,6 +251,13 @@ public class MyPanelEditStudent extends JPanel{
 		confirm = new JButton(Language.getInstance().getResourceBundle().getString("confirm"));
 		confirm.addActionListener(new MyActionListenerConfirmEditStudent());
 		cancel = new JButton(Language.getInstance().getResourceBundle().getString("cancel"));
+		cancel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				EditStudentDialog.getInstance().setVisible(false);
+				
+			}
+		});
 		//cancel.addActionListener(new MyActionListenerCancelStudent());
 		buttonPanel.add(confirm);
 		buttonPanel.add(cancel);

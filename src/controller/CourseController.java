@@ -3,6 +3,7 @@ package controller;
 import model.dataBase.CourseBase;
 import model.dataBase.StudentBase;
 import model.entities.Course;
+import model.entities.Professor;
 import model.entities.Student;
 import view.window.MyTabbedPane;
 
@@ -60,4 +61,8 @@ public class CourseController {
 	public void removeSelectedProfessorFromCourse(Course c) {
 		CourseBase.getInstance().removeSelectedProfessorFromCourse(c);
 	}
+	
+	public void addProfessorToCourse(Professor p, Course c) {
+		CourseBase.getInstance().addProfessorToCourse(p, c);
+    }
 }

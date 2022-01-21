@@ -3,6 +3,8 @@ package view.listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import controller.CourseController;
+import controller.ProfessorController;
 import model.dataBase.CourseBase;
 import model.dataBase.ProfessorBase;
 import model.entities.Course;
@@ -30,9 +32,8 @@ public class MyActionListenerConfirmAddProfessorToCourse implements ActionListen
 		int rowSelected = MyTabbedPane.getInstance().getCt().getSelectedRow();
 		Course c = CourseBase.getInstance().getRow(rowSelected);
 		
-		Professor professor = ProfessorBase.getInstance().findByIdNum(idNum);
-		c.setSubjectProfessor(professor);
-		ProfessorBase.getInstance().addToCourseList(c,professor);
+		Professor professor = ProfessorController.getInstance().findProfessor(idNum);
+		CourseController.getInstance().addProfessorToCourse(professor, c);
 		
 		EditCourseDialog.getInstance().getSubjectProfessorText().setText(professor.toString());
 		

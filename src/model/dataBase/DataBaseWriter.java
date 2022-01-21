@@ -18,7 +18,7 @@ public class DataBaseWriter {
 	public DataBaseWriter() {}
 		
 	public static void WriteStudent(ArrayList<Student> students) throws IOException {
-		FileWriter f = new FileWriter("src/files/students.txt");
+		FileWriter f = new FileWriter("src" + File.separator + "files" + File.separator + "students.txt");
 		BufferedWriter writer = new BufferedWriter(f);
 		try {
 			for(Student s:students) {
@@ -33,7 +33,7 @@ public class DataBaseWriter {
 	}
 
 	public static void WriteProfessor(ArrayList<Professor> professor) throws IOException {
-		FileWriter f = new FileWriter("src/files/professors.txt");
+		FileWriter f = new FileWriter("src" + File.separator + "files" + File.separator + "professors.txt");
 		BufferedWriter writer = new BufferedWriter(f);
 		try {
 			for(Professor p:professor) {
@@ -48,7 +48,7 @@ public class DataBaseWriter {
 	}
 	
 	public static void WriteCourse(ArrayList<Course> course) throws IOException {
-		FileWriter f = new FileWriter("src/files/courses.txt");
+		FileWriter f = new FileWriter("src" + File.separator + "files" + File.separator + "courses.txt");
 		BufferedWriter writer = new BufferedWriter(f);
 		try {
 			for(Course c:course) {
@@ -63,7 +63,7 @@ public class DataBaseWriter {
 	}
 	
 	public static void WriteDepartment(ArrayList<Department> departments) throws IOException {
-		FileWriter f = new FileWriter("src/files/departments.txt");
+		FileWriter f = new FileWriter("src" + File.separator + "files" + File.separator + "departments.txt");
 		BufferedWriter writer = new BufferedWriter(f);
 		try {
 			for(Department d:departments) {
@@ -78,7 +78,7 @@ public class DataBaseWriter {
 	}
 	
 	public static void WriteGrade() throws IOException {
-		FileWriter f = new FileWriter("src/files/grades.txt");
+		FileWriter f = new FileWriter("src" + File.separator + "files" + File.separator + "grades.txt");
 		BufferedWriter writer = new BufferedWriter(f);
 		try {
 			for(Student s:StudentBase.getInstance().getStudentList()) {
@@ -95,7 +95,7 @@ public class DataBaseWriter {
 	}
 	
 	public static void WriteRemainingExams() throws IOException {
-		FileWriter f = new FileWriter("src/files/remainingExams.txt");
+		FileWriter f = new FileWriter("src" + File.separator + "files" + File.separator + "remainingExams.txt");
 		BufferedWriter writer = new BufferedWriter(f);
 		try {
 			for(Student s:StudentBase.getInstance().getStudentList()) {
@@ -112,7 +112,7 @@ public class DataBaseWriter {
 	}
 	
 	public static void WriteProfessorsCourses() throws IOException {
-		FileWriter f = new FileWriter("src/files/professorsCourses.txt");
+		FileWriter f = new FileWriter("src" + File.separator + "files" + File.separator + "professorsCourses.txt");
 		BufferedWriter writer = new BufferedWriter(f);
 		try {
 			for(Professor p:ProfessorBase.getInstance().getProfessorList()) {

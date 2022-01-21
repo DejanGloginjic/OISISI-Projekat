@@ -289,7 +289,14 @@ public class AddProfessorDialog extends JDialog{
 		confirm = new JButton(Language.getInstance().getResourceBundle().getString("confirm"));
 		confirm.addActionListener(new MyActionListenerConfirmProfessor());
 		cancel = new JButton(Language.getInstance().getResourceBundle().getString("cancel"));
-		cancel.addActionListener(new MyActionListenerCancleProfessor());
+		//cancel.addActionListener(new MyActionListenerCancleProfessor());
+		cancel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AddProfessorDialog.getInstance().setVisible(false);
+				
+			}
+		});
 		buttonPanel.add(confirm);
 		buttonPanel.add(cancel);
 		panelCenter.add(buttonPanel);

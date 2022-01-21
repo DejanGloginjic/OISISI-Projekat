@@ -1,6 +1,8 @@
 package view.panels;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -9,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import localization.Language;
+import view.dialogs.AddBossOfDepartmentDialog;
+import view.dialogs.EditProfessorDialog;
 import view.listeners.MyActionListenerCancleProfessor;
 import view.listeners.MyActionListenerConfirmEditProfessor;
 import view.listeners.MyActionListenerConfirmProfessor;
@@ -267,6 +271,13 @@ public class MyPanelEditProfessor extends JPanel{
 		confirm = new JButton(Language.getInstance().getResourceBundle().getString("confirm"));
 		confirm.addActionListener(new MyActionListenerConfirmEditProfessor());
 		cancel = new JButton(Language.getInstance().getResourceBundle().getString("cancel"));
+		cancel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				EditProfessorDialog.getInstance().setVisible(false);
+				
+			}
+		});
 		//cancel.addActionListener(new MyActionListenerCancleProfessor());
 		buttonPanel.add(confirm);
 		buttonPanel.add(cancel);

@@ -1,6 +1,8 @@
 package view.dialogs;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.ArrayList;
@@ -90,6 +92,14 @@ public class AddCourseToProfessorDialog extends JDialog{
 		addButton = new JButton(Language.getInstance().getResourceBundle().getString("add"));
 		addButton.addActionListener(new MyActionListenerConfirmAddCourseToProfessor());
 		cancelButton = new JButton(Language.getInstance().getResourceBundle().getString("close"));
+		cancelButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AddCourseToProfessorDialog.getInstance().setVisible(false);
+				
+			}
+		});
 		
 		buttonPanel.add(Box.createHorizontalStrut(20));
 		buttonPanel.add(addButton);
