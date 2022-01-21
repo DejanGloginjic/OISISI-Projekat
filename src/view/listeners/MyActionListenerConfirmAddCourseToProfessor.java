@@ -29,6 +29,7 @@ public class MyActionListenerConfirmAddCourseToProfessor implements ActionListen
 		        Course course = CourseBase.getInstance().findCourseByCode(code);
 				
 		        ProfessorController.getInstance().addCourseToSelectedProfessor(course);
+		        CourseController.getInstance().addSelectedProfessorToCourse(course);
 		        
 		        int index =  AddCourseToProfessorDialog.getInstance().getCourseList().getSelectedIndex();
 		        AddCourseToProfessorDialog.getInstance().getDlm().removeElementAt(index);

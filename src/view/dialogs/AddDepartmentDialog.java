@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.ProfessorController;
 import localization.Language;
 import model.dataBase.ProfessorBase;
 import model.entities.Professor;
@@ -54,7 +55,7 @@ public class AddDepartmentDialog extends JDialog{
 	
 	private AddDepartmentDialog() {
 		
-		setTitle("Dodavanje katedre");
+		setTitle(Language.getInstance().getResourceBundle().getString("addDepartment"));
 		setSize(350, 250);
 		setLocationRelativeTo(DepartmentDialog.getInstance());
 		setModal(true);
@@ -67,7 +68,7 @@ public class AddDepartmentDialog extends JDialog{
 		add(panelCenter);
 		
 		codePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		codeLab = new JLabel("Šifra*");
+		codeLab = new JLabel(Language.getInstance().getResourceBundle().getString("courseCode*"));
 		codeLab.setPreferredSize(dim);
 		codeText = new JTextField();
 		codeText.setPreferredSize(dim);
@@ -77,7 +78,7 @@ public class AddDepartmentDialog extends JDialog{
 		panelCenter.add(codePan);
 		
 		namePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		nameLab = new JLabel("Naziv*");
+		nameLab = new JLabel(Language.getInstance().getResourceBundle().getString("courseName*"));
 		nameLab.setPreferredSize(dim);
 		nameText = new JTextField();
 		nameText.setPreferredSize(dim);
@@ -87,11 +88,12 @@ public class AddDepartmentDialog extends JDialog{
 		panelCenter.add(namePan);
 		
 		bossIdPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		bossIdLab = new JLabel("ID šefa katedre");
+		bossIdLab = new JLabel(Language.getInstance().getResourceBundle().getString("bossId"));
 		bossIdLab.setPreferredSize(dim);
 		bossId = new JComboBox<String>();
 		bossIdModel = new DefaultComboBoxModel<String>();
-		for(Professor p : ProfessorBase.getInstance().getProfessorList()) {
+
+		for(Professor p : ProfessorController.getInstance().findProfessorThatSuitDepartments()) {
 			bossIdModel.addElement(p.getIdNumber() +" " + p.getName() + " " + p.getSurname());
 		}
 		bossId.setModel(bossIdModel);
@@ -102,10 +104,10 @@ public class AddDepartmentDialog extends JDialog{
 		panelCenter.add(bossIdPan);
 		
 		buttonPanel = new JPanel();
-		confirm = new JButton("Potvrdi");
+		confirm = new JButton(Language.getInstance().getResourceBundle().getString("confirm"));
 		confirm.addActionListener(new MyActionListenerConfirmAddDepartment());
 		//confirm.setEnabled(false);
-		cancel = new JButton("Odustani");
+		cancel = new JButton(Language.getInstance().getResourceBundle().getString("close"));
 		//cancel.addActionListener(new MyActionListenerAddBossOfDepartment());
 		buttonPanel.add(confirm);
 		buttonPanel.add(cancel);
@@ -236,5 +238,12 @@ public class AddDepartmentDialog extends JDialog{
 		AddDepartmentDialog.instance = instance;
 	}
 	
-	
+	public void updateComponent() {
+		this.setTitle(Language.getInstance().getResourceBundle().getString("addDepartment"));
+		codeLab.setText(Language.getInstance().getResourceBundle().getString("courseCode*"));
+		nameLab.setText(Language.getInstance().getResourceBundle().getString("courseName*"));
+		bossIdLab.setText(Language.getInstance().getResourceBundle().getString("bossId"));
+		confirm.setText(Language.getInstance().getResourceBundle().getString("confirm"));
+		cancel.setText(Language.getInstance().getResourceBundle().getString("close"));
+	}
 }

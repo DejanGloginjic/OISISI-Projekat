@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
+import localization.Language;
 import model.dataBase.CourseBase;
 import model.dataBase.ProfessorBase;
 import model.entities.Course;
@@ -53,7 +54,7 @@ public class AddProfessorToCourseDialog extends JDialog{
 	
 	private AddProfessorToCourseDialog() {
 		
-		setTitle("Dodavanje profesora");
+		setTitle(Language.getInstance().getResourceBundle().getString("addProfessorToCourse"));
 		setSize(450, 400);
 		setLocationRelativeTo(EditCourseDialog.getInstance());
 		setModal(true);
@@ -63,7 +64,7 @@ public class AddProfessorToCourseDialog extends JDialog{
 		centerPanel.setLayout(box1);
 		
 		labelPanel = new JPanel();
-		label = new JLabel("Profesori");
+		label = new JLabel(Language.getInstance().getResourceBundle().getString("professors"));
 		
 		listPanel = new JPanel();
 		professorList = new JList<>();
@@ -86,9 +87,9 @@ public class AddProfessorToCourseDialog extends JDialog{
 		buttonPanel = new JPanel();
 		box2 = new BoxLayout(buttonPanel, BoxLayout.X_AXIS);
 		buttonPanel.setLayout(box2);
-		addButton = new JButton("Dodaj");
+		addButton = new JButton(Language.getInstance().getResourceBundle().getString("add"));
 		addButton.addActionListener(new MyActionListenerConfirmAddProfessorToCourse());
-		cancelButton = new JButton("Odustani");
+		cancelButton = new JButton(Language.getInstance().getResourceBundle().getString("close"));
 		cancelButton.addActionListener(new MyActionListenerCancelAddProfessorToCourse());
 		
 		
@@ -198,4 +199,10 @@ public class AddProfessorToCourseDialog extends JDialog{
 		this.dlm = dlm;
 	}
 	
+	public void updateComponent() {
+		this.setTitle(Language.getInstance().getResourceBundle().getString("addProfessorToCourse"));
+		label.setText(Language.getInstance().getResourceBundle().getString("professors"));
+		addButton.setText(Language.getInstance().getResourceBundle().getString("add"));
+		cancelButton.setText(Language.getInstance().getResourceBundle().getString("close"));
+	}
 }

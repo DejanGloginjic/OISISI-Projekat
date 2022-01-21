@@ -7,12 +7,15 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import localization.Language;
+import view.abstractTableModels.AbstractTableModelCourse;
 import view.abstractTableModels.AbstractTableModelDepartment;
 import view.abstractTableModels.AbstractTableModelProfessor;
 import view.abstractTableModels.AbstractTableModelProfessorCourses;
 import view.listeners.MyActionListenerAddBossOfDepartment;
 import view.listeners.MyActionListenerAddDepartment;
 import view.listeners.MyActionListenerDeleteCourseFromProfessor;
+import view.listeners.MyActionListenerDeleteDepartment;
 import view.panels.MyPanelProfessorCourses;
 import view.tables.DepartmentTable;
 import view.tables.TableProfessorCourses;
@@ -34,6 +37,7 @@ public class DepartmentDialog extends JDialog{
 	private JPanel btnPanel;
 	private JButton btn1;
 	private JButton btn2;
+	private JButton btn3;
 	
 	private JPanel tablePanel;
 	private DepartmentTable table;
@@ -43,7 +47,7 @@ public class DepartmentDialog extends JDialog{
 	
 	private DepartmentDialog() {
 		
-		setTitle("Katedre");
+		setTitle(Language.getInstance().getResourceBundle().getString("departments"));
 		setSize(480, 500);
 		setLocationRelativeTo(MyMainFrame.getInstance());
 		setModal(true);
@@ -58,17 +62,21 @@ public class DepartmentDialog extends JDialog{
 		btnPanel = new JPanel();
 		box2 = new BoxLayout(btnPanel, BoxLayout.X_AXIS);
 		btnPanel.setLayout(box2);
-		btn1 = new JButton("Dodaj katedru");
-		btn2 = new JButton("Dodaj šefa katedre");
+		btn1 = new JButton(Language.getInstance().getResourceBundle().getString("addDepartment"));
+		btn2 = new JButton(Language.getInstance().getResourceBundle().getString("addEditBossOfDepartment"));
+		btn3 = new JButton(Language.getInstance().getResourceBundle().getString("deleteDepartment"));
 		btnPanel.add(Box.createHorizontalStrut(5));
 		btnPanel.add(btn1);
 		btnPanel.add(Box.createHorizontalStrut(10));
 		btnPanel.add(btn2);
+		btnPanel.add(Box.createHorizontalStrut(5));
+		btnPanel.add(btn3);
 		btnPanel.add(Box.createHorizontalGlue());
 		centerPanel.add(btnPanel);
 		
 		btn1.addActionListener(new MyActionListenerAddDepartment());
 		btn2.addActionListener(new MyActionListenerAddBossOfDepartment());
+		btn3.addActionListener(new MyActionListenerDeleteDepartment());
 		
 		table = new DepartmentTable();
 		JScrollPane scrollPane = new JScrollPane(table);
@@ -151,5 +159,12 @@ public class DepartmentDialog extends JDialog{
 		AbstractTableModelDepartment model = (AbstractTableModelDepartment) table.getModel();
 		model.fireTableDataChanged();
 		validate();
+	}
+	
+	public void updateComponent() {
+		this.setTitle(Language.getInstance().getResourceBundle().getString("departments"));
+		btn1.setText(Language.getInstance().getResourceBundle().getString("addDepartment"));
+		btn2.setText(Language.getInstance().getResourceBundle().getString("addEditBossOfDepartment"));
+		btn3.setText(Language.getInstance().getResourceBundle().getString("deleteDepartment"));
 	}
 }

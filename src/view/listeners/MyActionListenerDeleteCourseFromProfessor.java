@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import controller.CourseController;
 import controller.ProfessorCoursesController;
 import model.dataBase.ProfesorCoursesBase;
 import model.dataBase.ProfessorBase;
@@ -22,18 +23,22 @@ public class MyActionListenerDeleteCourseFromProfessor implements ActionListener
 		
 		int dialogResult = JOptionPane.showConfirmDialog(EditProfessorDialog.getInstance(), "Da li ste sigurni?", "Ukloni predmet", JOptionPane.YES_NO_OPTION);
 		if(dialogResult == JOptionPane.YES_OPTION){
-			int rowSelected = MyPanelProfessorCourses.getInstance().getTable().getSelectedRow();
-			if(rowSelected < 0)
+			int[] rowsSelected = MyPanelProfessorCourses.getInstance().getTable().getSelectedRows();
+			if(rowsSelected.length == 0)
 				return;
-			Course c = ProfesorCoursesBase.getInstance().getRow(rowSelected);
 			
-			ProfessorCoursesController.getInstance().deleteProfessorCourse(c);
+			for(int i = rowsSelected.length - 1; i >= 0; i--) {
+				Course c = ProfesorCoursesBase.getInstance().getRow(rowsSelected[i]);
+				ProfessorCoursesController.getInstance().deleteProfessorCourse(c);
+				CourseController.getInstance().removeSelectedProfessorFromCourse(c);
+			}
 			
 			int rowSelected1 = MyTabbedPane.getInstance().getPt().getSelectedRow();
 			Professor p = ProfessorBase.getInstance().getRow(rowSelected1);
 			List<Course> courseList = ProfesorCoursesBase.getInstance().getCourseList();
 			p.setListOfSubjects(courseList);
 			ProfessorBase.getInstance().setProfesorCoursesAfterRemovingCourse(p);
+			
 		}
 	}
 

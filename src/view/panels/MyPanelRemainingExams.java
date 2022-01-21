@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import localization.Language;
 import view.abstractTableModels.AbstractTableModelCourse;
 import view.abstractTableModels.AbstractTableModelRemainingExams;
 import view.listeners.MyActionListenerAddCourseToStudent;
@@ -48,9 +49,9 @@ public class MyPanelRemainingExams extends JPanel{
 		btnPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		//box1 = new BoxLayout(btnPanel, BoxLayout.Y_AXIS);
 		//btnPanel.setLayout(box1);
-		bAdd = new JButton("Dodaj");
-		bDelete = new JButton("Obrisi");
-		bPass = new JButton("Polaganje");
+		bAdd = new JButton(Language.getInstance().getResourceBundle().getString("add"));
+		bDelete = new JButton(Language.getInstance().getResourceBundle().getString("delete"));
+		bPass = new JButton(Language.getInstance().getResourceBundle().getString("takingTheCourse"));
 		bPass.addActionListener(new MyActionListenerPassExam());
 		btnPanel.add(bAdd);
 		btnPanel.add(bDelete);
@@ -149,5 +150,11 @@ public class MyPanelRemainingExams extends JPanel{
 		AbstractTableModelRemainingExams model = (AbstractTableModelRemainingExams) table.getModel();
 		model.fireTableDataChanged();
 		validate();
+	}
+	
+	public void updateComonents() {
+		bAdd.setText(Language.getInstance().getResourceBundle().getString("add"));
+		bDelete.setText(Language.getInstance().getResourceBundle().getString("delete"));
+		bPass.setText(Language.getInstance().getResourceBundle().getString("takingTheCourse"));
 	}
 }

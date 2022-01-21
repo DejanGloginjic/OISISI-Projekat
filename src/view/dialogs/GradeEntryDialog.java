@@ -11,9 +11,9 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import view.listeners.MyActionListenerConfirmPassingExam;
-import view.panels.MyPanelRemainingExams;
+import localization.Language;
+
 
 
 public class GradeEntryDialog extends JDialog{
@@ -54,7 +54,7 @@ public class GradeEntryDialog extends JDialog{
 	
 	private GradeEntryDialog() {
 		
-		setTitle("Unos ocene");
+		setTitle(Language.getInstance().getResourceBundle().getString("gradeEntry"));
 		setSize(350, 250);
 		setLocationRelativeTo(EditStudentDialog.getInstance());
 		setModal(true);
@@ -67,7 +67,7 @@ public class GradeEntryDialog extends JDialog{
 		add(panelCenter);
 		
 		codePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		codeLab = new JLabel("Šifra*");
+		codeLab = new JLabel(Language.getInstance().getResourceBundle().getString("courseCode*"));
 		codeLab.setPreferredSize(dim);
 		codeText = new JTextField();
 		codeText.setPreferredSize(dim);
@@ -76,7 +76,7 @@ public class GradeEntryDialog extends JDialog{
 		panelCenter.add(codePan);
 		
 		namePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		nameLab = new JLabel("Naziv*");
+		nameLab = new JLabel(Language.getInstance().getResourceBundle().getString("courseName*"));
 		nameLab.setPreferredSize(dim);
 		nameText = new JTextField();
 		nameText.setPreferredSize(dim);
@@ -85,7 +85,7 @@ public class GradeEntryDialog extends JDialog{
 		panelCenter.add(namePan);
 		
 		gradePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		gradeLab = new JLabel("Ocena*");
+		gradeLab = new JLabel(Language.getInstance().getResourceBundle().getString("grade*"));
 		gradeLab.setPreferredSize(dim);
 		grade = new JComboBox<Integer>();
 		gradeModel = new DefaultComboBoxModel<Integer>();
@@ -103,7 +103,7 @@ public class GradeEntryDialog extends JDialog{
 		
 		
 		datePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		dateLab = new JLabel("Datum*");
+		dateLab = new JLabel(Language.getInstance().getResourceBundle().getString("date*"));
 		dateLab.setPreferredSize(dim);
 		dateText = new JTextField();
 		dateText.setPreferredSize(dim);
@@ -112,9 +112,9 @@ public class GradeEntryDialog extends JDialog{
 		panelCenter.add(datePan);
 		
 		buttonPanel = new JPanel();
-		confirm = new JButton("Potvrdi");
+		confirm = new JButton(Language.getInstance().getResourceBundle().getString("confirm"));
+		cancel = new JButton(Language.getInstance().getResourceBundle().getString("close"));
 		confirm.addActionListener(new MyActionListenerConfirmPassingExam());
-		cancel = new JButton("Odustani");
 		buttonPanel.add(confirm);
 		buttonPanel.add(cancel);
 		panelCenter.add(buttonPanel);
@@ -269,4 +269,14 @@ public class GradeEntryDialog extends JDialog{
 		GradeEntryDialog.instance = instance;
 	}
 
+	public void updateComponents() {
+		this.setTitle(Language.getInstance().getResourceBundle().getString("gradeEntry"));
+		codeLab.setText(Language.getInstance().getResourceBundle().getString("courseCode*"));
+		nameLab.setText(Language.getInstance().getResourceBundle().getString("courseName*"));
+		gradeLab.setText(Language.getInstance().getResourceBundle().getString("grade*"));
+		dateLab.setText(Language.getInstance().getResourceBundle().getString("date*"));
+		confirm.setText(Language.getInstance().getResourceBundle().getString("confirm"));
+		cancel.setText(Language.getInstance().getResourceBundle().getString("close"));
+
+	}
 }

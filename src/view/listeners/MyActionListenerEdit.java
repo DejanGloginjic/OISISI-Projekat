@@ -2,6 +2,7 @@ package view.listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import model.dataBase.CourseBase;
 import model.dataBase.PassedExamsBase;
@@ -12,7 +13,8 @@ import model.dataBase.StudentBase;
 import model.entities.Course;
 import model.entities.Professor;
 import model.entities.Student;
-
+import view.dialogs.AddCourseToProfessorDialog;
+import view.dialogs.AddCourseToStudentDialog;
 import view.dialogs.EditCourseDialog;
 import view.dialogs.EditProfessorDialog;
 import view.dialogs.EditStudentDialog;
@@ -28,13 +30,25 @@ public class MyActionListenerEdit implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		switch(MyTabbedPane.getOpenTab()) {
 		case 0:
-			Student s = StudentBase.getInstance().getSelectedStudent();
+			int rowSelected1 = MyTabbedPane.getInstance().getSt().getSelectedRow();
+			
+			if(rowSelected1 < 0)
+				return;
+			
+			Student s = StudentBase.getInstance().getRow(rowSelected1);
 			StudentBase.getInstance().setSelectedStudent(s);
 
 			PassedExamsBase.getInstance().setGradeList(s.getPassedExams());
 			RemainingExamsBase.getInstance().setCourseList(s.getRemainingExams());
-			MyPanelPassedExams.getInstance().getGrade().setText(String.valueOf(s.getAverageGrade()));
+			MyPanelPassedExams.getInstance().calculateAverageGrade();
 			PassedExamsBase.getInstance().setNumberOfESPB();
+			
+			List<Course> coursesForCourseList = CourseBase.getInstance().getListOfCoursesThatSuitTheStudent();
+			AddCourseToStudentDialog.getInstance().getDlm().removeAllElements();
+			for(Course c : coursesForCourseList) {
+				String courseString = c.getCode() + " " + c.getName();
+				AddCourseToStudentDialog.getInstance().getDlm().addElement(courseString);
+			}
 			
 			MyTabbedPaneStudentEdit.getInstance().getMpes().getNameText().setText(s.getName());
 			MyTabbedPaneStudentEdit.getInstance().getMpes().getSurnameText().setText(s.getSurname());
@@ -83,8 +97,20 @@ public class MyActionListenerEdit implements ActionListener{
 		case 1:
 			
 			int rowSelected = MyTabbedPane.getInstance().getPt().getSelectedRow();
+			
+			if(rowSelected < 0)
+				return;
+			
 			Professor p = ProfessorBase.getInstance().getRow(rowSelected);
 			ProfesorCoursesBase.getInstance().setCourseList(p.getListOfSubjects());
+			
+			List<Course> coursesForCourseList1 = CourseBase.getInstance().getListOfCoursesThatSuitTheProfessor();
+			AddCourseToProfessorDialog.getInstance().getDlm().removeAllElements();
+			
+			for(Course c : coursesForCourseList1) {
+				String courseString = c.getCode() + " " + c.getName();
+				AddCourseToProfessorDialog.getInstance().getDlm().addElement(courseString);
+			}
 
 			MyTabbedPaneProfessorEdit.getInstance().getMpep().getNameText().setText(p.getName());
 			MyTabbedPaneProfessorEdit.getInstance().getMpep().getSurnameText().setText(p.getSurname());
@@ -107,6 +133,10 @@ public class MyActionListenerEdit implements ActionListener{
 			break;
 		case 2:
 			int rowSelected2 = MyTabbedPane.getInstance().getCt().getSelectedRow();
+			
+			if(rowSelected2 < 0)
+				return;
+			
 			Course c = CourseBase.getInstance().getRow(rowSelected2);
 			
 			EditCourseDialog.getInstance().getCodeText().setText(String.valueOf(c.getCode()));

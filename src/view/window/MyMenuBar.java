@@ -17,24 +17,41 @@ import view.listeners.MyActionListenerSerbian;
 public class MyMenuBar extends JMenuBar{
 	
 		public JMenu file;
+		private JMenu edit;
+		private JMenu help;
+		private JMenu language;
+		private JMenuItem miNew;
+		private JMenuItem miSave;
+		private JMenu open;
+		private JMenuItem miStudenti;
+		private JMenuItem miPredmeti;
+		private JMenuItem miProfesori;
+		private JMenuItem miKatedre;
+		private JMenuItem miClose;
+		private JMenuItem serbian;
+		private JMenuItem english;
+		private JMenuItem miEdit;
+		private JMenuItem miDelete;
+		private JMenuItem miHelp;
+		private JMenuItem miAbout;
 
 	public MyMenuBar() {
 		
 		file = new JMenu(Language.getInstance().getResourceBundle().getString("file"));
-		JMenu edit = new JMenu(Language.getInstance().getResourceBundle().getString("edit"));
-		JMenu help = new JMenu(Language.getInstance().getResourceBundle().getString("help"));
-		JMenu language = new JMenu(Language.getInstance().getResourceBundle().getString("language"));
+		edit = new JMenu(Language.getInstance().getResourceBundle().getString("edit"));
+		help = new JMenu(Language.getInstance().getResourceBundle().getString("help"));
+		language = new JMenu(Language.getInstance().getResourceBundle().getString("language"));
 		
-		JMenuItem miNew = new JMenuItem(Language.getInstance().getResourceBundle().getString("new"));
-		JMenuItem miSave = new JMenuItem(Language.getInstance().getResourceBundle().getString("save"));
-		JMenu open = new JMenu(Language.getInstance().getResourceBundle().getString("open"));
-		JMenuItem miStudenti = new JMenuItem(Language.getInstance().getResourceBundle().getString("students"));
-		JMenuItem miPredmeti = new JMenuItem(Language.getInstance().getResourceBundle().getString("courses"));
-		JMenuItem miProfesori = new JMenuItem(Language.getInstance().getResourceBundle().getString("professors"));
-		JMenuItem miKatedre = new JMenuItem(Language.getInstance().getResourceBundle().getString("departments"));
-		JMenuItem miClose = new JMenuItem(Language.getInstance().getResourceBundle().getString("close"));
-		JMenuItem serbian = new JMenuItem(Language.getInstance().getResourceBundle().getString("serbian"));
-		JMenuItem english = new JMenuItem(Language.getInstance().getResourceBundle().getString("english"));
+		miNew = new JMenuItem(Language.getInstance().getResourceBundle().getString("new"));
+		miSave = new JMenuItem(Language.getInstance().getResourceBundle().getString("save"));
+		open = new JMenu(Language.getInstance().getResourceBundle().getString("open"));
+		miStudenti = new JMenuItem(Language.getInstance().getResourceBundle().getString("students"));
+		miPredmeti = new JMenuItem(Language.getInstance().getResourceBundle().getString("courses"));
+		miProfesori = new JMenuItem(Language.getInstance().getResourceBundle().getString("professors"));
+		miKatedre = new JMenuItem(Language.getInstance().getResourceBundle().getString("departments"));
+		miClose = new JMenuItem(Language.getInstance().getResourceBundle().getString("close"));
+		serbian = new JMenuItem(Language.getInstance().getResourceBundle().getString("serbian"));
+		english = new JMenuItem(Language.getInstance().getResourceBundle().getString("english"));
 		
 		serbian.addActionListener(new MyActionListenerSerbian());
 		english.addActionListener(new MyActionListenerEnglish());
@@ -52,15 +69,15 @@ public class MyMenuBar extends JMenuBar{
 	    language.add(serbian);
 	    language.add(english);
 		
-		JMenuItem miEdit = new JMenuItem(Language.getInstance().getResourceBundle().getString("edit"));
-		JMenuItem miDelete = new JMenuItem(Language.getInstance().getResourceBundle().getString("delete"));
+		miEdit = new JMenuItem(Language.getInstance().getResourceBundle().getString("edit"));
+		miDelete = new JMenuItem(Language.getInstance().getResourceBundle().getString("delete"));
 		
 		edit.add(miEdit);
 		edit.addSeparator();
 		edit.add(miDelete);
 		
-		JMenuItem miHelp = new JMenuItem(Language.getInstance().getResourceBundle().getString("help"));
-		JMenuItem miAbout = new JMenuItem(Language.getInstance().getResourceBundle().getString("about"));
+		miHelp = new JMenuItem(Language.getInstance().getResourceBundle().getString("help"));
+		miAbout = new JMenuItem(Language.getInstance().getResourceBundle().getString("about"));
 		
 		help.add(miHelp);
 		help.addSeparator();
@@ -120,5 +137,23 @@ public class MyMenuBar extends JMenuBar{
 
 	public void updateComponents() {
 		file.setText(Language.getInstance().getResourceBundle().getString("file"));
+		edit.setText(Language.getInstance().getResourceBundle().getString("edit"));
+		help.setText(Language.getInstance().getResourceBundle().getString("help"));
+		language.setText(Language.getInstance().getResourceBundle().getString("language"));
+		miNew.setText(Language.getInstance().getResourceBundle().getString("new"));
+		miSave.setText(Language.getInstance().getResourceBundle().getString("save"));
+		miStudenti.setText(Language.getInstance().getResourceBundle().getString("students"));
+		open.setText(Language.getInstance().getResourceBundle().getString("open"));
+		miProfesori.setText(Language.getInstance().getResourceBundle().getString("professors"));
+		miPredmeti.setText(Language.getInstance().getResourceBundle().getString("courses"));
+		miKatedre.setText(Language.getInstance().getResourceBundle().getString("departments"));
+		miClose.setText(Language.getInstance().getResourceBundle().getString("close"));
+		serbian.setText(Language.getInstance().getResourceBundle().getString("serbian"));
+		english.setText(Language.getInstance().getResourceBundle().getString("english"));
+		miEdit.setText(Language.getInstance().getResourceBundle().getString("edit"));
+		miDelete.setText(Language.getInstance().getResourceBundle().getString("delete"));
+		miHelp.setText(Language.getInstance().getResourceBundle().getString("help"));
+		miAbout.setText(Language.getInstance().getResourceBundle().getString("about"));
+		
 	}
 }

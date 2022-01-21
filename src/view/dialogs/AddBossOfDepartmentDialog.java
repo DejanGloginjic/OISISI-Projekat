@@ -2,6 +2,8 @@ package view.dialogs;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
@@ -12,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import localization.Language;
 import model.dataBase.ProfessorBase;
 import model.entities.Professor;
 import view.dialogs.AddCourseDialog;
@@ -43,9 +46,11 @@ public class AddBossOfDepartmentDialog extends JDialog{
 	private JButton cancel;
 	private JButton confirm;
 	
+	private String title;
+	
 	private AddBossOfDepartmentDialog() {
 		
-		setTitle("Dodavanje šefa katedre");
+		setTitle(Language.getInstance().getResourceBundle().getString("addBossOfDepartment"));
 		setSize(350, 150);
 		setLocationRelativeTo(AddDepartmentDialog.getInstance());
 		setModal(true);
@@ -58,7 +63,7 @@ public class AddBossOfDepartmentDialog extends JDialog{
 		add(panelCenter);
 		
 		bossIdPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		bossIdLab = new JLabel("ID šefa katedre");
+		bossIdLab = new JLabel(Language.getInstance().getResourceBundle().getString("bossId"));
 		bossIdLab.setPreferredSize(dim);
 		bossId = new JComboBox<String>();
 		bossIdModel = new DefaultComboBoxModel<String>();
@@ -67,16 +72,21 @@ public class AddBossOfDepartmentDialog extends JDialog{
 		}
 		bossId.setModel(bossIdModel);
 		bossId.setSelectedIndex(0);
-		//bossIdText.addFocusListener(new MyFocusListenerNameValidationForCourse());
 		bossIdPan.add(bossIdLab);
 		bossIdPan.add(bossId);
 		panelCenter.add(bossIdPan);
 		
 		buttonPanel = new JPanel();
-		confirm = new JButton("Potvrdi");
+		confirm = new JButton(Language.getInstance().getResourceBundle().getString("confirm"));
 		confirm.addActionListener(new MyActionListenerConfirmAddBossOfDepartment());
-		cancel = new JButton("Odustani");
-		//cancel.addActionListener(new MyActionListenerCancelStudent());
+		cancel = new JButton(Language.getInstance().getResourceBundle().getString("close"));
+		cancel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AddBossOfDepartmentDialog.getInstance().setVisible(false);
+				
+			}
+		});
 		buttonPanel.add(confirm);
 		buttonPanel.add(cancel);
 		panelCenter.add(buttonPanel);
@@ -160,5 +170,10 @@ public class AddBossOfDepartmentDialog extends JDialog{
 		AddBossOfDepartmentDialog.instance = instance;
 	}
 	
-	
+	public void updateComponents() {
+		bossIdLab.setText(Language.getInstance().getResourceBundle().getString("bossId"));
+		confirm.setText(Language.getInstance().getResourceBundle().getString("confirm"));
+		cancel.setText(Language.getInstance().getResourceBundle().getString("close"));
+		this.setTitle(Language.getInstance().getResourceBundle().getString("addBossOfDepartment"));
+	}
 }

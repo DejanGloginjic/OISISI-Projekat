@@ -12,6 +12,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import localization.Language;
 import model.dataBase.CourseBase;
 import model.entities.Course;
 import view.listeners.MyActionListenerAddCourseToStudent;
@@ -42,9 +43,11 @@ public class AddCourseToStudentDialog extends JDialog{
 	private BoxLayout box1;
 	private BoxLayout box2;
 	
+	private List<Course> coursesForCourseList;
+	
 	private AddCourseToStudentDialog() {
 		
-		setTitle("Dodavanje predmeta");
+		setTitle(Language.getInstance().getResourceBundle().getString("addCourseToStudent"));
 		setSize(450, 400);
 		setLocationRelativeTo(EditStudentDialog.getInstance());
 		setModal(true);
@@ -58,7 +61,7 @@ public class AddCourseToStudentDialog extends JDialog{
 		dlm = new DefaultListModel<>();
 		courseList.setModel(dlm);
 		
-		List<Course> coursesForCourseList = CourseBase.getInstance().getListOfCoursesThatSuitTheStudent();
+		coursesForCourseList = CourseBase.getInstance().getListOfCoursesThatSuitTheStudent();
 		
 		for(Course c : coursesForCourseList) {
 			String courseString = c.getCode() + " " + c.getName();
@@ -75,9 +78,9 @@ public class AddCourseToStudentDialog extends JDialog{
 		buttonPanel = new JPanel();
 		box2 = new BoxLayout(buttonPanel, BoxLayout.X_AXIS);
 		buttonPanel.setLayout(box2);
-		addButton = new JButton("Dodaj");
+		addButton = new JButton(Language.getInstance().getResourceBundle().getString("add"));
 		addButton.addActionListener(new MyActionListenerConfirmAddCourseToStudent());
-		cancelButton = new JButton("Odustani");
+		cancelButton = new JButton(Language.getInstance().getResourceBundle().getString("close"));
 		buttonPanel.add(Box.createHorizontalStrut(20));
 		buttonPanel.add(addButton);
 		buttonPanel.add(Box.createHorizontalStrut(20));
@@ -86,6 +89,14 @@ public class AddCourseToStudentDialog extends JDialog{
 		centerPanel.add(buttonPanel);
 		
 		add(centerPanel);
+	}
+
+	public List<Course> getCoursesForCourseList() {
+		return coursesForCourseList;
+	}
+
+	public void setCoursesForCourseList(List<Course> coursesForCourseList) {
+		this.coursesForCourseList = coursesForCourseList;
 	}
 
 	public JPanel getCenterPanel() {
@@ -164,4 +175,9 @@ public class AddCourseToStudentDialog extends JDialog{
 		this.dlm = dlm;
 	}
 	
+	public void updateComponent() {
+		this.setTitle(Language.getInstance().getResourceBundle().getString("addCourseToStudent"));
+		addButton.setText(Language.getInstance().getResourceBundle().getString("add"));
+		cancelButton.setText(Language.getInstance().getResourceBundle().getString("close"));
+	}
 }

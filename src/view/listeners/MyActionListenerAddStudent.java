@@ -1,8 +1,10 @@
 package view.listeners;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import localization.Language;
 import view.dialogs.AddCourseDialog;
 import view.dialogs.AddProfessorDialog;
 import view.dialogs.AddStudentDialog;

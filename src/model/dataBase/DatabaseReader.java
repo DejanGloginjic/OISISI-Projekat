@@ -33,11 +33,15 @@ public class DatabaseReader {
 		try {
 			
 			StudentBase.getInstance().setStudentList(readStudentDatabase());
+			StudentBase.getInstance().setStudentListForSearch(readStudentDatabase());
 			ProfessorBase.getInstance().setProfessorList(readProfessorDatabase());
+			ProfessorBase.getInstance().setProfessorListForSearch(readProfessorDatabase());
 			CourseBase.getInstance().setCourseList(readCourseDatabase());
+			CourseBase.getInstance().setCourseListForSearch(readCourseDatabase());
 			StudentController.getInstance().addGradesToStudents(readGradesForStudent());
 			DepartmentBase.getInstance().setDepartmentList(readDepartmentDatabase());
-			linkSubjectsRemainingExamsToStudent();
+			linkRemainingExamsToStudent();
+			linkCoursesToProfessors();
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -136,7 +140,7 @@ public class DatabaseReader {
 		return grades;
 	}
 	
-	private void linkSubjectsRemainingExamsToStudent() throws Exception {
+	private void linkRemainingExamsToStudent() throws Exception {
 		File text = new File("src/files/remainingExams.txt");
 		Scanner scanner;
 		scanner = new Scanner(text);
@@ -146,6 +150,21 @@ public class DatabaseReader {
 			Student student = StudentController.getInstance().findStudent(subjData[0]);
 			Course c = CourseController.getInstance().findCourse(subjData[1]);
 			StudentController.getInstance().addCourseToStudent(student, c);
+		}
+		scanner.close();
+		
+	}
+	
+	private void linkCoursesToProfessors() throws Exception {
+		File text = new File("src/files/professorsCourses.txt");
+		Scanner scanner;
+		scanner = new Scanner(text);
+		while(scanner.hasNextLine()){
+			String subj = scanner.nextLine();
+			String[] subjData = trimData(subj.split(","));
+			Professor p = ProfessorController.getInstance().findProfessor(subjData[0]);
+			Course c = CourseController.getInstance().findCourse(subjData[1]);
+			ProfessorController.getInstance().linkCourseToProfessor(p, c);
 		}
 		scanner.close();
 		

@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import enumerations.Semester;
+import localization.Language;
 import model.entities.Professor;
 import view.listeners.MyActionListenerAddProfessorToCourse;
 import view.listeners.MyActionListenerCancelStudent;
@@ -76,7 +77,7 @@ public class EditCourseDialog extends JDialog{
 	
 	private EditCourseDialog() {
 		
-		setTitle("Izmena predmeta");
+		setTitle(Language.getInstance().getResourceBundle().getString("editCourse"));
 		setSize(350, 300);
 		setLocationRelativeTo(MyMainFrame.getInstance());
 		setModal(true);
@@ -89,7 +90,7 @@ public class EditCourseDialog extends JDialog{
 		add(panelCenter);
 		
 		codePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		codeLab = new JLabel("Šifra*");
+		codeLab = new JLabel(Language.getInstance().getResourceBundle().getString("courseCode*"));
 		codeLab.setPreferredSize(dim);
 		codeText = new JTextField();
 		codeText.setPreferredSize(dim);
@@ -99,7 +100,7 @@ public class EditCourseDialog extends JDialog{
 		panelCenter.add(codePan);
 		
 		namePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		nameLab = new JLabel("Naziv*");
+		nameLab = new JLabel(Language.getInstance().getResourceBundle().getString("courseName*"));
 		nameLab.setPreferredSize(dim);
 		nameText = new JTextField();
 		nameText.setPreferredSize(dim);
@@ -109,16 +110,16 @@ public class EditCourseDialog extends JDialog{
 		panelCenter.add(namePan);
 		
 		yearOfTheCoursePan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		yearOfTheCourseLab = new JLabel("Godina*");
+		yearOfTheCourseLab = new JLabel(Language.getInstance().getResourceBundle().getString("courseYear*"));
 		yearOfTheCourseLab.setPreferredSize(dim);
 		yearOfTheCourse = new JComboBox<String>();
 		yearOfTheCourseModel = new DefaultComboBoxModel<String>();
-		yearOfTheCourseModel.addElement("I (prva)");
-		yearOfTheCourseModel.addElement("II (druga)");
-		yearOfTheCourseModel.addElement("III (treća)");
-		yearOfTheCourseModel.addElement("IV (četvrta)");
-		yearOfTheCourseModel.addElement("V (peta)");
-		yearOfTheCourseModel.addElement("VI (šesta)");
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("first"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("second"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("third"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("fourth"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("fifth"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("sixth"));
 		yearOfTheCourse.setModel(yearOfTheCourseModel);
 		yearOfTheCourse.setSelectedIndex(0);
 		yearOfTheCourse.setPreferredSize(dim);
@@ -127,12 +128,12 @@ public class EditCourseDialog extends JDialog{
 		panelCenter.add(yearOfTheCoursePan);
 		
 		semesterPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		semesterLab = new JLabel("Semestar*");
+		semesterLab = new JLabel(Language.getInstance().getResourceBundle().getString("courseSemester"));
 		semesterLab.setPreferredSize(dim);
 		semester = new JComboBox<String>();
 		semesterModel = new DefaultComboBoxModel<String>();
-		semesterModel.addElement("Ljeto");
-		semesterModel.addElement("Zima");
+		semesterModel.addElement(Language.getInstance().getResourceBundle().getString("summer"));
+		semesterModel.addElement(Language.getInstance().getResourceBundle().getString("winter"));
 		semester.setModel(semesterModel);
 		semester.setSelectedIndex(0);
 		semester.setPreferredSize(dim);
@@ -154,7 +155,7 @@ public class EditCourseDialog extends JDialog{
 		Dimension btn = new Dimension(20,20);
 		
 		subjectProfessorPan = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		subjectProfessorLab = new JLabel("Profesor*");
+		subjectProfessorLab = new JLabel(Language.getInstance().getResourceBundle().getString("courseProfessor"));
 		subjectProfessorLab.setPreferredSize(dim);
 		subjectProfessorText = new JTextField();
 		subjectProfessorText.setPreferredSize(dim1);
@@ -174,9 +175,9 @@ public class EditCourseDialog extends JDialog{
 		panelCenter.add(subjectProfessorPan);
 		
 		buttonPanel = new JPanel();
-		confirm = new JButton("Potvrdi");
+		confirm = new JButton(Language.getInstance().getResourceBundle().getString("confirm"));
 		confirm.addActionListener(new MyActionListenerConfirmEditCourse());
-		cancel = new JButton("Odustani");
+		cancel = new JButton(Language.getInstance().getResourceBundle().getString("close"));
 		//cancel.addActionListener(new MyActionListenerCancelStudent());
 		buttonPanel.add(confirm);
 		buttonPanel.add(cancel);
@@ -384,5 +385,30 @@ public class EditCourseDialog extends JDialog{
 		this.confirm = confirm;
 	}
 	
-	
+	public void updateComponent() {
+		
+		this.setTitle(Language.getInstance().getResourceBundle().getString("editCourse"));
+		codeLab.setText(Language.getInstance().getResourceBundle().getString("courseCode*"));
+		nameLab.setText(Language.getInstance().getResourceBundle().getString("courseName*"));
+		yearOfTheCourseLab.setText(Language.getInstance().getResourceBundle().getString("courseYear*"));
+		
+		this.yearOfTheCourseModel.removeAllElements();
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("first"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("second"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("third"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("fourth"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("fifth"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("sixth"));
+		semesterLab.setText(Language.getInstance().getResourceBundle().getString("courseSemester"));
+		
+		this.semesterModel.removeAllElements();
+		semesterModel.addElement(Language.getInstance().getResourceBundle().getString("summer"));
+		semesterModel.addElement(Language.getInstance().getResourceBundle().getString("winter"));
+		
+		subjectProfessorLab.setText(Language.getInstance().getResourceBundle().getString("courseProfessor"));
+
+		confirm.setText(Language.getInstance().getResourceBundle().getString("confirm"));
+		cancel.setText(Language.getInstance().getResourceBundle().getString("close"));
+
+	}
 }

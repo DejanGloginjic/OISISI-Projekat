@@ -5,6 +5,7 @@ import java.util.List;
 
 import model.entities.Department;
 import model.entities.Professor;
+import model.entities.Student;
 
 public class DepartmentBase {
 	
@@ -114,5 +115,14 @@ public class DepartmentBase {
 			}
 		}
 		return false;
+	}
+	
+	public void deleteDepartment(Department d) {
+		for(Department dep : this.depList) {
+			if(dep.getCode().equals(d.getCode())) {
+				this.depList.remove(d);
+				break;
+			}
+		}
 	}
 }

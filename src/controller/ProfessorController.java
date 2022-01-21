@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import model.dataBase.ProfessorBase;
 import model.dataBase.StudentBase;
 import model.entities.Course;
@@ -44,5 +46,13 @@ public class ProfessorController {
 	
 	public Professor findProfessor(String id) {
 		return ProfessorBase.getInstance().findProfessor(id);
+	}
+	
+	public List<Professor> findProfessorThatSuitDepartments(){
+		return ProfessorBase.getInstance().findProfessorThatSuitDepartments();
+	}
+	
+	public void linkCourseToProfessor(Professor p, Course c) {
+		ProfessorBase.getInstance().linkCourseToProfessor(p, c);
 	}
 }

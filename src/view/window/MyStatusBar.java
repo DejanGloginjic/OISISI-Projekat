@@ -15,12 +15,14 @@ import localization.Language;
 
 public class MyStatusBar extends JPanel{
 
-private static JLabel tabLabel = new JLabel(Language.getInstance().getResourceBundle().getString("students"));
+	private static JLabel tabLabel = new JLabel(Language.getInstance().getResourceBundle().getString("students"));
+	private JLabel clock;
+	private JLabel name;
 	
 	public MyStatusBar() {
       
-    	JLabel clock = new JLabel();
-    	JLabel name = new JLabel(Language.getInstance().getResourceBundle().getString("studentServicesStatusBar"));
+    	clock = new JLabel();
+    	name = new JLabel(Language.getInstance().getResourceBundle().getString("studentServicesStatusBar"));
     	
     	BoxLayout bl = new BoxLayout(this, BoxLayout.X_AXIS);
     	setLayout(bl);
@@ -51,4 +53,9 @@ private static JLabel tabLabel = new JLabel(Language.getInstance().getResourceBu
 		tabLabel.setText(tabName);
 	}
 	
+	public void updateComponents() {
+		tabLabel.setText(Language.getInstance().getResourceBundle().getString("students"));
+		name.setText(Language.getInstance().getResourceBundle().getString("studentServicesStatusBar"));
+		
+	}
 }

@@ -1,17 +1,12 @@
 package model.dataBase;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import enumerations.Semester;
 import localization.Language;
-import model.entities.Adress;
 import model.entities.Course;
 import model.entities.Professor;
-import model.entities.Student;
 import view.window.MyTabbedPane;
-import view.window.MyTabbedPaneProfessorEdit;
 
 public class ProfessorBase {
 	
@@ -210,5 +205,25 @@ public class ProfessorBase {
 				return this.professorList.get(i);
 		}
 		return null;
+	}
+	
+	public List<Professor> findProfessorThatSuitDepartments(){
+		List<Professor> retList = new ArrayList<>();
+		for(Professor p : this.professorList) {
+			if(p.getTitle().equals("REDOVNI_PROFESOR") || p.getTitle().equals("VANREDNI_PROFESOR")) {
+				if(p.getYearOfTrail() >= 5) {
+					retList.add(p);
+				}
+			}
+		}
+		return retList;
+	}
+	
+	public void linkCourseToProfessor(Professor p, Course c) {
+		for(Professor prof : this.professorList) {
+			if(p.getIdNumber().equals(prof.getIdNumber())) {
+				prof.getListOfSubjects().add(c);
+			}
+		}
 	}
 }

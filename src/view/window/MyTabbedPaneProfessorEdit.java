@@ -41,4 +41,11 @@ public class MyTabbedPaneProfessorEdit extends JTabbedPane{
 	public static void setInstance(MyTabbedPaneProfessorEdit instance) {
 		MyTabbedPaneProfessorEdit.instance = instance;
 	}
+	
+	public void updateComponents() {
+		this.setTitleAt(0, Language.getInstance().getResourceBundle().getString("informations"));
+		this.setTitleAt(1, Language.getInstance().getResourceBundle().getString("courses"));
+		mpep.updateComponent();
+		mppc.updateComponents();
+	}
 }

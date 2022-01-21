@@ -135,74 +135,26 @@ public class CourseBase {
 
 	public List<Course> getListOfCoursesThatSuitTheStudent(){
 		List<Course> retList = new ArrayList<>();
-		Student s = StudentController.getInstance().findSelectedStudent();
+		int rowSelected1 = MyTabbedPane.getInstance().getSt().getSelectedRow();
 		
-		//prvi slucaj: ako je prazna i lista remainingExams i passedExams kod studenta
-		if(s.getRemainingExams().size() == 0 && s.getPassedExams().size() == 0) {
-			for(Course c1 : this.courseList) {
-				if(c1.getYearOfTheCourse() <= s.getCurrentYearOfStudy()) {
-					retList.add(c1);
+		if(rowSelected1 < 0) {
+			return new ArrayList<>();
+		}else {
+			Student s = StudentBase.getInstance().getRow(rowSelected1);
+			
+			//prvi slucaj: ako je prazna i lista remainingExams i passedExams kod studenta
+			if(s.getRemainingExams().size() == 0 && s.getPassedExams().size() == 0) {
+				for(Course c1 : this.courseList) {
+					if(c1.getYearOfTheCourse() <= s.getCurrentYearOfStudy()) {
+						retList.add(c1);
+					}
 				}
+				return retList;
 			}
-			return retList;
-		}
-		
-		//drugi slucaj: ako je prazna lista remainingExams kod studenta
-		if(s.getRemainingExams().size() == 0) {
-			for(Course c1 : this.courseList) {
-				int j = 0;
-				for(Grade g : s.getPassedExams()) {
-					j++;
-					if(g.getCourse().getCode().equals(c1.getCode())) {
-						break;
-					}
-					if(j == s.getPassedExams().size()) {
-						//ako se nalazimo na ovoj tacki znaci da se predmet c1 ne nalazi u listi polozenih ispita
-						//sad jos trebamo ispitati da li predemet c1 odgovara godini studija studenta
-						if(c1.getYearOfTheCourse() > s.getCurrentYearOfStudy()) {
-							break;
-						}else {
-							retList.add(c1);
-						}
-					}
-				}
-			}
-			return retList;
-		}
-		
-		//treci slicaj: ako je prazna lista passedExams kod studenta
-		if(s.getPassedExams().size() == 0) {
-			for(Course c1 : this.courseList) {
-				int i = 0;
-				for(Course c2 : s.getRemainingExams()) {
-					i++;
-					if(c1.getCode().equals(c2.getCode())) {
-						break;
-					}
-					if(i == s.getRemainingExams().size()) {
-						//ako se nalazimo na ovoj tacki znaci da se predmet c1 ne nalazi u listi nepolozenih predmeta datog studenta
-						//sad ispitujemo da li se predemet c1 nalazi u listi polozenih ispita
-						if(c1.getYearOfTheCourse() > s.getCurrentYearOfStudy()) {
-							break;
-						}else {
-							retList.add(c1);
-						}
-					}
-				}
-			}
-		}
-		
-		//cetvrti slucaj: nista od gore navedenog
-		for(Course c1 : this.courseList) {
-			int i1 = 0;
-			for(Course c2 : s.getRemainingExams()) {
-				i1++;
-				if(c1.getCode().equals(c2.getCode())) {
-					break;
-				}
-				if(i1 == s.getRemainingExams().size()) {
-					//ako se nalazimo na ovoj tacki znaci da se predmet c1 ne nalazi u listi nepolozenih predmeta datog studenta
-					//sad ispitujemo da li se predemet c1 nalazi u listi polozenih ispita
+			
+			//drugi slucaj: ako je prazna lista remainingExams kod studenta
+			if(s.getRemainingExams().size() == 0) {
+				for(Course c1 : this.courseList) {
 					int j = 0;
 					for(Grade g : s.getPassedExams()) {
 						j++;
@@ -210,7 +162,7 @@ public class CourseBase {
 							break;
 						}
 						if(j == s.getPassedExams().size()) {
-							//ako se nalazimo na ovoj tacki znaci da se predmet c1 ne nalazi ni u listi polozenih ispita
+							//ako se nalazimo na ovoj tacki znaci da se predmet c1 ne nalazi u listi polozenih ispita
 							//sad jos trebamo ispitati da li predemet c1 odgovara godini studija studenta
 							if(c1.getYearOfTheCourse() > s.getCurrentYearOfStudy()) {
 								break;
@@ -220,10 +172,64 @@ public class CourseBase {
 						}
 					}
 				}
+				return retList;
 			}
-			return retList;
+			
+			//treci slicaj: ako je prazna lista passedExams kod studenta
+			if(s.getPassedExams().size() == 0) {
+				for(Course c1 : this.courseList) {
+					int i = 0;
+					for(Course c2 : s.getRemainingExams()) {
+						i++;
+						if(c1.getCode().equals(c2.getCode())) {
+							break;
+						}
+						if(i == s.getRemainingExams().size()) {
+							//ako se nalazimo na ovoj tacki znaci da se predmet c1 ne nalazi u listi nepolozenih predmeta datog studenta
+							//sad ispitujemo da li se predemet c1 nalazi u listi polozenih ispita
+							if(c1.getYearOfTheCourse() > s.getCurrentYearOfStudy()) {
+								break;
+							}else {
+								retList.add(c1);
+							}
+						}
+					}
+				}
+			}
+			
+			//cetvrti slucaj: nista od gore navedenog
+			for(Course c1 : this.courseList) {
+				int i1 = 0;
+				for(Course c2 : s.getRemainingExams()) {
+					i1++;
+					if(c1.getCode().equals(c2.getCode())) {
+						break;
+					}
+					if(i1 == s.getRemainingExams().size()) {
+						//ako se nalazimo na ovoj tacki znaci da se predmet c1 ne nalazi u listi nepolozenih predmeta datog studenta
+						//sad ispitujemo da li se predemet c1 nalazi u listi polozenih ispita
+						int j = 0;
+						for(Grade g : s.getPassedExams()) {
+							j++;
+							if(g.getCourse().getCode().equals(c1.getCode())) {
+								break;
+							}
+							if(j == s.getPassedExams().size()) {
+								//ako se nalazimo na ovoj tacki znaci da se predmet c1 ne nalazi ni u listi polozenih ispita
+								//sad jos trebamo ispitati da li predemet c1 odgovara godini studija studenta
+								if(c1.getYearOfTheCourse() > s.getCurrentYearOfStudy()) {
+									break;
+								}else {
+									retList.add(c1);
+								}
+							}
+						}
+						break;
+					}
+					
+				}
+			}
 		}
-		
 		return retList;
 	}
 	
@@ -258,30 +264,36 @@ public class CourseBase {
 	
 	public List<Course> getListOfCoursesThatSuitTheProfessor(){
 		int rowSelected = MyTabbedPane.getInstance().getPt().getSelectedRow();
-		Professor p = ProfessorBase.getInstance().getRow(rowSelected);
 		List<Course> retList = new ArrayList<>();
 		
-		for(Course c1 : this.courseList) {
+		if(rowSelected < 0) {
+			return new ArrayList<>();
+		}else {
+		
+			Professor p = ProfessorBase.getInstance().getRow(rowSelected);
 			
-			if(p.getListOfSubjects().size() == 0)
-				retList.add(c1);
-			
-			int i = 0;
-			for(Course c2 : p.getListOfSubjects()) {
-				i++;
-				if(c1.getCode().equals(c2.getCode())) {
-					break;
-				}
+			for(Course c1 : this.courseList) {
 				
-				if(i == p.getListOfSubjects().size()) {
+				if(p.getListOfSubjects().size() == 0)
 					retList.add(c1);
+				
+				int i = 0;
+				for(Course c2 : p.getListOfSubjects()) {
+					i++;
+					if(c1.getCode().equals(c2.getCode())) {
+						break;
+					}
+					
+					if(i == p.getListOfSubjects().size()) {
+						retList.add(c1);
+					}
+					
 				}
 				
 			}
-			
 		}
-
 		return retList;
+		
 	}
 
 	public Course findCourse(String id) {
@@ -291,5 +303,26 @@ public class CourseBase {
 			}
 		}
 		return null;
+	}
+	
+	public void addSelectedProfessorToCourse(Course c) {
+		int index = MyTabbedPane.getInstance().getPt().getSelectedRow();
+		Professor p = ProfessorBase.getInstance().getRow(index);
+		
+		for(Course course : this.courseList) {
+			if(course.getCode().equals(c.getCode())) {
+				course.setSubjectProfessor(p);
+				break;
+			}
+		}
+	}
+	
+	public void removeSelectedProfessorFromCourse(Course c) {
+		for(Course course : this.courseList) {
+			if(course.getCode().equals(c.getCode())) {
+				course.setSubjectProfessor(null);
+				break;
+			}
+		}
 	}
 }

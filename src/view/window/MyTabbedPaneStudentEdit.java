@@ -11,7 +11,7 @@ import view.panels.MyPanelRemainingExams;
 public class MyTabbedPaneStudentEdit extends JTabbedPane{
 	
 	private MyPanelEditStudent mpes = new MyPanelEditStudent();
-	MyPanelPassedExams mppe = MyPanelPassedExams.getInstance();
+	private MyPanelPassedExams mppe = MyPanelPassedExams.getInstance();
 	private MyPanelRemainingExams mpre = MyPanelRemainingExams.getInstance();
 	
 	private static MyTabbedPaneStudentEdit instance = null;
@@ -51,9 +51,12 @@ public class MyTabbedPaneStudentEdit extends JTabbedPane{
 	}
 
 	public void updateComponents() {
+		this.setTitleAt(0, Language.getInstance().getResourceBundle().getString("informations"));
+		this.setTitleAt(1, Language.getInstance().getResourceBundle().getString("passed"));
+		this.setTitleAt(2, Language.getInstance().getResourceBundle().getString("failed"));
 		mpes.updateComponents();
-		//mppe.updateComponents();
-		//mpre.updateComponents();
+		mppe.updateComponents();
+		mpre.updateComonents();
 	}
 
 	

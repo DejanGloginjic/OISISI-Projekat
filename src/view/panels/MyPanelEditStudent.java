@@ -623,7 +623,33 @@ public class MyPanelEditStudent extends JPanel{
 	}
 
 	public void updateComponents() {
-		// TODO Auto-generated method stub
+		nameLab.setText(Language.getInstance().getResourceBundle().getString("name"));
+		surnameLab.setText(Language.getInstance().getResourceBundle().getString("surname"));
+		dobLab.setText(Language.getInstance().getResourceBundle().getString("dateofBirth"));
+		streetLab.setText(Language.getInstance().getResourceBundle().getString("street"));
+		nosLab.setText(Language.getInstance().getResourceBundle().getString("nos"));
+		cityLab.setText(Language.getInstance().getResourceBundle().getString("city"));
+		countryLab.setText(Language.getInstance().getResourceBundle().getString("country"));
+		telLab.setText(Language.getInstance().getResourceBundle().getString("tel"));
+		mailLab.setText(Language.getInstance().getResourceBundle().getString("email"));
+		indexLab.setText(Language.getInstance().getResourceBundle().getString("indexNum"));
+		yoeLab.setText(Language.getInstance().getResourceBundle().getString("yearofEnrollment"));
+		cyosLab.setText(Language.getInstance().getResourceBundle().getString("currentYear"));
+
+		this.yearModel.removeAllElements();
+		yearModel.addElement(Language.getInstance().getResourceBundle().getString("first"));
+		yearModel.addElement(Language.getInstance().getResourceBundle().getString("second"));
+		yearModel.addElement(Language.getInstance().getResourceBundle().getString("third"));
+		yearModel.addElement(Language.getInstance().getResourceBundle().getString("fourth"));
+		yearModel.addElement(Language.getInstance().getResourceBundle().getString("fifth"));
+		yearModel.addElement(Language.getInstance().getResourceBundle().getString("sixth"));
+
+		this.statusModel.removeAllElements();
+		statusModel.addElement(Language.getInstance().getResourceBundle().getString("budget"));
+		statusModel.addElement(Language.getInstance().getResourceBundle().getString("selffinansing"));
+
+		confirm.setText(Language.getInstance().getResourceBundle().getString("confirm"));
+		cancel.setText(Language.getInstance().getResourceBundle().getString("cancel"));
 		
 	}
 	

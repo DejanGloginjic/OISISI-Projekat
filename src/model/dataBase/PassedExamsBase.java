@@ -3,10 +3,7 @@ package model.dataBase;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.dataBase.StudentBase;
-import model.entities.Course;
 import model.entities.Grade;
-import model.entities.Student;
 import view.panels.MyPanelPassedExams;
 
 public class PassedExamsBase {
@@ -39,6 +36,7 @@ public class PassedExamsBase {
 	
 	public void setGradeList(List<Grade> gradeList) {
 		this.gradeList = gradeList;
+		
 	}
 	
 	public List<String> getColumnList() {
@@ -108,4 +106,5 @@ public class PassedExamsBase {
 		}
 		
 	}
+
 }

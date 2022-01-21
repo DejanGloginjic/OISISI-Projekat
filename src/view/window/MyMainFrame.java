@@ -7,13 +7,22 @@ import java.awt.Toolkit;
 import java.util.ResourceBundle;
 
 import javax.swing.JFrame;
-import javax.swing.JTable;
 import javax.swing.WindowConstants;
 
 import localization.Language;
-import model.dataBase.StudentBase;
+import view.dialogs.AddBossOfDepartmentDialog;
+import view.dialogs.AddCourseDialog;
+import view.dialogs.AddCourseToProfessorDialog;
+import view.dialogs.AddCourseToStudentDialog;
+import view.dialogs.AddDepartmentDialog;
+import view.dialogs.AddProfessorDialog;
+import view.dialogs.AddProfessorToCourseDialog;
 import view.dialogs.AddStudentDialog;
+import view.dialogs.DepartmentDialog;
+import view.dialogs.EditCourseDialog;
+import view.dialogs.EditProfessorDialog;
 import view.dialogs.EditStudentDialog;
+import view.dialogs.GradeEntryDialog;
 import view.listeners.MyWindowListener;
 
 public class MyMainFrame extends JFrame{
@@ -65,7 +74,25 @@ public class MyMainFrame extends JFrame{
 		
 		ResourceBundle resourceBundle = Language.getInstance().getResourceBundle();
 		mb.updateComponents();
+		tb.updateComponents();
+		sb.updateComponents();
+		tp.updateComponents();
+		AddBossOfDepartmentDialog.getInstance().updateComponents();
+		MyTabbedPaneProfessorEdit.getInstance().updateComponents();
+		AddCourseDialog.getInstance().updateComponent();
+		AddCourseToProfessorDialog.getInstance().updateComponent();
+		AddCourseToStudentDialog.getInstance().updateComponent();
+		AddDepartmentDialog.getInstance().updateComponent();
+		AddProfessorDialog.getInstance().updateComponent();
+		AddProfessorToCourseDialog.getInstance().updateComponent();
 		AddStudentDialog.getInstance().updateComponents();
+		DepartmentDialog.getInstance().updateComponent();
+		EditCourseDialog.getInstance().updateComponent();
+		EditProfessorDialog.getInstance().updateComponent();
+		EditStudentDialog.getInstance().updateComponents();
+		GradeEntryDialog.getInstance().updateComponents();
+		//StudentBase.getInstance().updateComponent();
+
 	}
 	
 }

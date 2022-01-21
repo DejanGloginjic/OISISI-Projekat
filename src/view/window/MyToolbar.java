@@ -127,4 +127,13 @@ public class MyToolbar extends JToolBar{
 		MyToolbar.instance = instance;
 	}
 	
+	public void updateComponents() {
+		
+		bNew.setToolTipText(Language.getInstance().getResourceBundle().getString("new"));
+		bEdit.setToolTipText(Language.getInstance().getResourceBundle().getString("edit"));
+		bDelete.setToolTipText(Language.getInstance().getResourceBundle().getString("delete"));
+		bSearch2.setToolTipText(Language.getInstance().getResourceBundle().getString("search"));
+		bSearch.setToolTipText(Language.getInstance().getResourceBundle().getString("search"));
+	}
+	
 }

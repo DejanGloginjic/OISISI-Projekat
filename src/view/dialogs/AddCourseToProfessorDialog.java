@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
+import localization.Language;
 import model.dataBase.CourseBase;
 import model.entities.Course;
 import view.listeners.MyActionListenerConfirmAddCourseToProfessor;
@@ -53,7 +54,7 @@ public class AddCourseToProfessorDialog extends JDialog{
 	
 	private AddCourseToProfessorDialog() {
 		
-		setTitle("Dodavanje predmeta");
+		setTitle(Language.getInstance().getResourceBundle().getString("addCourseToProfessor"));
 		setSize(450, 400);
 		setLocationRelativeTo(EditProfessorDialog.getInstance());
 		setModal(true);
@@ -63,7 +64,7 @@ public class AddCourseToProfessorDialog extends JDialog{
 		centerPanel.setLayout(box1);
 		
 		labelPanel = new JPanel();
-		label = new JLabel("Predmeti");
+		label = new JLabel(Language.getInstance().getResourceBundle().getString("courses"));
 		
 		listPanel = new JPanel();
 		courseList = new JList<>();
@@ -86,9 +87,9 @@ public class AddCourseToProfessorDialog extends JDialog{
 		buttonPanel = new JPanel();
 		box2 = new BoxLayout(buttonPanel, BoxLayout.X_AXIS);
 		buttonPanel.setLayout(box2);
-		addButton = new JButton("Dodaj");
+		addButton = new JButton(Language.getInstance().getResourceBundle().getString("add"));
 		addButton.addActionListener(new MyActionListenerConfirmAddCourseToProfessor());
-		cancelButton = new JButton("Odustani");
+		cancelButton = new JButton(Language.getInstance().getResourceBundle().getString("close"));
 		
 		buttonPanel.add(Box.createHorizontalStrut(20));
 		buttonPanel.add(addButton);
@@ -227,5 +228,10 @@ public class AddCourseToProfessorDialog extends JDialog{
 		this.dlm = dlm;
 	}	
 	
-	
+	public void updateComponent() {
+		this.setTitle(Language.getInstance().getResourceBundle().getString("addCourseToProfessor"));
+		label.setText(Language.getInstance().getResourceBundle().getString("courses"));
+		addButton.setText(Language.getInstance().getResourceBundle().getString("add"));
+		cancelButton.setText(Language.getInstance().getResourceBundle().getString("close"));
+	}
 }

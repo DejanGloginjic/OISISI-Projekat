@@ -52,4 +52,12 @@ public class CourseController {
 	public Course findCourse(String id) {
 		return CourseBase.getInstance().findCourse(id);
 	}
+	
+	public void addSelectedProfessorToCourse(Course c) {
+		CourseBase.getInstance().addSelectedProfessorToCourse(c);
+	} 
+	
+	public void removeSelectedProfessorFromCourse(Course c) {
+		CourseBase.getInstance().removeSelectedProfessorFromCourse(c);
+	}
 }

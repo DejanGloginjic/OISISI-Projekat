@@ -51,10 +51,10 @@ public class Department {
 	public void setListOfProfessors(List<Professor> listOfProfessors) {
 		this.listOfProfessors = listOfProfessors;
 	}
-//e47,katedra za autimatiku,500500544
+
 	@Override
 	public String toString() {
-		return  code + ", " + name + ", " + boss;
+		return  code + ", " + name + ", " + boss.getIdNumber();
 	}
 
 	

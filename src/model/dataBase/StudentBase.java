@@ -30,7 +30,7 @@ public class StudentBase {
 	private StudentBase(){
 		
 		columnList = new ArrayList<>();
-		this.getColumnList().add("Indeks");
+		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("index"));
 		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("nameT"));
 		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("surnameT"));
 		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("currentYearT"));
@@ -217,7 +217,14 @@ public class StudentBase {
 		}
 	}
 	
-	public void addToPassedExames(Grade g,Student s) {
-		s.getPassedExams().add(g);
+	public void updateComponent() {
+		this.columnList.clear();
+		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("index"));
+		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("nameT"));
+		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("surnameT"));
+		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("currentYearT"));
+		this.getColumnList().add("Status");
+		this.getColumnList().add(Language.getInstance().getResourceBundle().getString("averageGrade"));
+		MyTabbedPane.getInstance().updateViewStudent();
 	}
 }

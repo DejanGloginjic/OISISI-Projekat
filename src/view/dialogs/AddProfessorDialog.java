@@ -665,4 +665,28 @@ public class AddProfessorDialog extends JDialog{
 	public void setStreetOfficeText(JTextField streetOfficeText) {
 		this.streetOfficeText = streetOfficeText;
 	}
+	
+	public void updateComponent() {
+		
+		this.setTitle(Language.getInstance().getResourceBundle().getString("addProfessor"));
+		nameLab.setText(Language.getInstance().getResourceBundle().getString("name"));
+		surnameLab.setText(Language.getInstance().getResourceBundle().getString("surname"));
+		dateOfBirthLab.setText(Language.getInstance().getResourceBundle().getString("dateofBirth"));
+		streetLab.setText(Language.getInstance().getResourceBundle().getString("street"));
+		nosLab.setText(Language.getInstance().getResourceBundle().getString("nos"));
+		cityLab.setText(Language.getInstance().getResourceBundle().getString("city"));
+		countryLab.setText(Language.getInstance().getResourceBundle().getString("country"));
+		telephoneNumberLab.setText(Language.getInstance().getResourceBundle().getString("tel"));
+		eMailLab.setText(Language.getInstance().getResourceBundle().getString("email"));
+		streetOfficeLab.setText(Language.getInstance().getResourceBundle().getString("streetO"));
+		nosOfficeLab.setText(Language.getInstance().getResourceBundle().getString("nosO"));
+		cityOfficeLab.setText(Language.getInstance().getResourceBundle().getString("cityO"));
+		countryOfficeLab.setText(Language.getInstance().getResourceBundle().getString("countryO"));
+		IdNumberLab.setText(Language.getInstance().getResourceBundle().getString("idNum"));
+		titleLab.setText(Language.getInstance().getResourceBundle().getString("title"));
+		yearOfTrailLab.setText(Language.getInstance().getResourceBundle().getString("years"));
+		confirm.setText(Language.getInstance().getResourceBundle().getString("confirm"));
+		cancel.setText(Language.getInstance().getResourceBundle().getString("cancel"));
+
+	}
 }

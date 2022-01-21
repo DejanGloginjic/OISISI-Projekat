@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
+import localization.Language;
 import view.abstractTableModels.AbstractTableModelProfessorCourses;
 import view.abstractTableModels.AbstractTableModelStudent;
 import view.listeners.MyActionListenerAddCourseToProfesor;
@@ -145,5 +146,10 @@ public class MyPanelProfessorCourses extends JPanel{
 		AbstractTableModelProfessorCourses model = (AbstractTableModelProfessorCourses) table.getModel();
 		model.fireTableDataChanged();
 		validate();
+	}
+	
+	public void updateComponents() {
+		btn1.setText(Language.getInstance().getResourceBundle().getString("addCourse"));
+		btn2.setText(Language.getInstance().getResourceBundle().getString("deleteCourse"));
 	}
 }

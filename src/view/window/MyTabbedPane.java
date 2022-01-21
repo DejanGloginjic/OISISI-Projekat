@@ -117,4 +117,9 @@ public class MyTabbedPane extends JTabbedPane{
 		this.ct = ct;
 	}
 	
+	public void updateComponents() {
+		this.setTitleAt(0, Language.getInstance().getResourceBundle().getString("students"));
+		this.setTitleAt(1, Language.getInstance().getResourceBundle().getString("professors"));
+		this.setTitleAt(2, Language.getInstance().getResourceBundle().getString("courses"));
+	}
 }

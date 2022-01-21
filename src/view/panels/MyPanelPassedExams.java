@@ -1,9 +1,5 @@
 package view.panels;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -14,8 +10,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import view.abstractTableModels.AbstractTableModelPassedExams;
-import view.abstractTableModels.AbstractTableModelRemainingExams;
 import view.listeners.MyActionListenerUndoGrade;
+
+import localization.Language;
+import model.dataBase.StudentBase;
+import model.entities.Grade;
+import model.entities.Student;
+
 import view.tables.TablePassedExams;
 
 public class MyPanelPassedExams extends JPanel{
@@ -59,8 +60,10 @@ public class MyPanelPassedExams extends JPanel{
 		btnPanel = new JPanel();
 		box1 = new BoxLayout(btnPanel, BoxLayout.Y_AXIS);
 		btnPanel.setLayout(box1);
-		btn1 = new JButton("Poništi ocijenu");
+
+		btn1 = new JButton(Language.getInstance().getResourceBundle().getString("cancelGrade"));
 		btn1.addActionListener(new MyActionListenerUndoGrade());
+
 		btnPanel.add(Box.createHorizontalStrut(5));
 		btnPanel.add(btn1);
 		btnPanel.add(Box.createHorizontalGlue());
@@ -71,7 +74,7 @@ public class MyPanelPassedExams extends JPanel{
 		tablePanel.add(scrollPane);
 		
 		avggPanel = new JPanel();
-		averageGrade = new JLabel("Prosječna ocjena: ");
+		averageGrade = new JLabel(Language.getInstance().getResourceBundle().getString("averageGrade*"));
 		grade = new JLabel("1");
 		box2 = new BoxLayout(avggPanel, BoxLayout.X_AXIS);
 		avggPanel.setLayout(box2);
@@ -81,7 +84,7 @@ public class MyPanelPassedExams extends JPanel{
 		avggPanel.add(Box.createHorizontalStrut(8));
 		
 		espbPanel = new JPanel();
-		espb = new JLabel("Ukupno ESPB: ");
+		espb = new JLabel(Language.getInstance().getResourceBundle().getString("espbInTotal"));
 		value = new JLabel();
 		box3 = new BoxLayout(espbPanel, BoxLayout.X_AXIS);
 		espbPanel.setLayout(box3);
@@ -227,4 +230,25 @@ public class MyPanelPassedExams extends JPanel{
 		validate();
 	}
 	
+	public void calculateAverageGrade() {
+		Student s = StudentBase.getInstance().getSelectedStudent();
+		
+		int total = 0;
+		int i = 0;
+		for(Grade g : s.getPassedExams()) {
+			i++;
+			total += g.getValue();
+		}
+		
+		if(s.getPassedExams().isEmpty())
+			this.grade.setText("0");
+		else
+			this.grade.setText(Double.toString((total / i)));
+	}
+	
+	public void updateComponents() {
+		btn1.setText(Language.getInstance().getResourceBundle().getString("cancelGrade"));
+		averageGrade.setText(Language.getInstance().getResourceBundle().getString("averageGrade*"));
+		espb.setText(Language.getInstance().getResourceBundle().getString("espbInTotal"));
+	}
 }

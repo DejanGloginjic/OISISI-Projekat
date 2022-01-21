@@ -66,7 +66,7 @@ public class AddCourseDialog extends JDialog{
 	
 	private AddCourseDialog() {
 		
-		setTitle(Language.getInstance().getResourceBundle().getString("courseAdd"));
+		setTitle( Language.getInstance().getResourceBundle().getString("courseAdd"));
 		setSize(350, 250);
 		setLocationRelativeTo(MyMainFrame.getInstance());
 		setModal(true);
@@ -331,5 +331,26 @@ public class AddCourseDialog extends JDialog{
 		AddCourseDialog.instance = instance;
 	}
 	
-	
+	public void updateComponent() {
+		
+		this.setTitle( Language.getInstance().getResourceBundle().getString("courseAdd"));
+		codeLab.setText(Language.getInstance().getResourceBundle().getString("courseCode*"));
+		nameLab.setText(Language.getInstance().getResourceBundle().getString("courseName*"));
+		yearOfTheCourseLab.setText(Language.getInstance().getResourceBundle().getString("courseYear*"));
+		codeLab.setText(Language.getInstance().getResourceBundle().getString("courseCode*"));
+		codeLab.setText(Language.getInstance().getResourceBundle().getString("courseCode*"));
+		this.yearOfTheCourseModel.removeAllElements();
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("first"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("second"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("third"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("fourth"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("fifth"));
+		yearOfTheCourseModel.addElement(Language.getInstance().getResourceBundle().getString("sixth"));
+		semesterLab.setText(Language.getInstance().getResourceBundle().getString("semester"));
+		cancel.setText(Language.getInstance().getResourceBundle().getString("cancel"));
+		confirm.setText(Language.getInstance().getResourceBundle().getString("confirm"));
+		this.semesterModel.removeAllElements();
+		semesterModel.addElement(Language.getInstance().getResourceBundle().getString("summer"));
+		semesterModel.addElement(Language.getInstance().getResourceBundle().getString("winter"));
+	}
 }

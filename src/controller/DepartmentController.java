@@ -44,4 +44,9 @@ public class DepartmentController {
 	public boolean codeValidation(String code) {
 		return DepartmentBase.getInstance().codeValidation(code);
 	}
+	
+	public void deleteDepartment(Department d) {
+		DepartmentBase.getInstance().deleteDepartment(d);
+		DepartmentDialog.getInstance().updateViewDepartment();
+	}
 }
