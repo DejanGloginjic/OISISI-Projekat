@@ -11,7 +11,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+
 import localization.Language;
+import view.dialogs.AboutDialog;
+import view.dialogs.HelpDialog;
 import view.listeners.MyActionListenerAddStudent;
 import view.listeners.MyActionListenerClose;
 import view.listeners.MyActionListenerDeleteFromMenu;
@@ -118,7 +121,12 @@ public class MyMenuBar extends JMenuBar{
 		miProfesori.setMnemonic('P');
 		miPredmeti.setMnemonic('r');
 		miKatedre.setMnemonic('K');
+		language.setMnemonic('L');
+		serbian.setMnemonic('S');
+		english.setMnemonic('E');
 		
+		serbian.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+		english.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 		miNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		miSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
 		miClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
@@ -139,7 +147,51 @@ public class MyMenuBar extends JMenuBar{
 		miSave.addActionListener(new MyActionListenerSave());
 		miDelete.addActionListener(new MyActionListenerDeleteFromMenu());
 		miKatedre.addActionListener(new view.listeners.MyActionListenerDepartmentDialog());
+		miHelp.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				HelpDialog.getInstance().setVisible(true);
+				
+			}
+		});
 		
+		miStudenti.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					MyTabbedPane.getInstance().setSelectedIndex(0);
+				
+			}	
+		});
+		
+		miProfesori.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					MyTabbedPane.getInstance().setSelectedIndex(1);
+				
+			}
+		});
+		
+		miPredmeti.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					MyTabbedPane.getInstance().setSelectedIndex(2);
+				
+			}
+		});
+		
+		
+		miAbout.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AboutDialog.getInstance().setVisible(true);
+				
+			}
+		});
 		add(file);
 		add(edit);
 		add(help);

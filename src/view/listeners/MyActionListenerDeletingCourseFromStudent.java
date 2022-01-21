@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import controller.CourseController;
 import controller.RemainingExamsController;
 import controller.StudentController;
+import localization.Language;
 import model.dataBase.CourseBase;
 import model.dataBase.RemainingExamsBase;
 import model.entities.Course;
@@ -19,7 +20,7 @@ public class MyActionListenerDeletingCourseFromStudent implements ActionListener
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		int dialogResult = JOptionPane.showConfirmDialog(EditStudentDialog.getInstance(), "Da li ste sigurni da želite da uklonite predmet?", "Uklanjenje predmeta", JOptionPane.YES_NO_OPTION);
+		int dialogResult = JOptionPane.showConfirmDialog(EditStudentDialog.getInstance(), Language.getInstance().getResourceBundle().getString("deletee"), Language.getInstance().getResourceBundle().getString("deletingCourse"), JOptionPane.YES_NO_OPTION);
 		if(dialogResult == JOptionPane.YES_OPTION){
 			int rowSelected = MyPanelRemainingExams.getInstance().getTable().getSelectedRow();
 			Course c = RemainingExamsBase.getInstance().getRow(rowSelected);

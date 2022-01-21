@@ -272,31 +272,39 @@ public class CourseBase {
 		
 			Professor p = ProfessorBase.getInstance().getRow(rowSelected);
 			
+			List<Course> pomList = new ArrayList<>();
+			for(Professor prof : ProfessorBase.getInstance().getProfessorList()) {
+				for(Course c : prof.getListOfSubjects()) {
+					pomList.add(c);
+				}
+			}
+			
+			
+			if(ProfessorBase.getInstance().getProfessorList().isEmpty()){
+				System.out.println("aaaaaa");
+			}
 			for(Course c1 : this.courseList) {
-				
-				if(p.getListOfSubjects().size() == 0)
-					retList.add(c1);
-				
 				int i = 0;
-				for(Course c2 : p.getListOfSubjects()) {
+				for(Course c2 : pomList) {
 					i++;
 					if(c1.getCode().equals(c2.getCode())) {
 						break;
 					}
-					
-					if(i == p.getListOfSubjects().size()) {
-						retList.add(c1);
-					}
-					
 				}
-				
+				if(i == pomList.size()) {
+					retList.add(c1);
+				}
 			}
+			
 		}
 		return retList;
 		
 	}
 
 	public Course findCourse(String id) {
+		if(id.equals("")) {
+			return null;
+		}
 		for(int i = 0; i < this.courseList.size(); i++) {
 			if (this.courseList.get(i).getCode().equals(id)) {
 				return this.courseList.get(i);
@@ -327,11 +335,24 @@ public class CourseBase {
 	}
 	
 	public void addProfessorToCourse(Professor p, Course c) {
-        for(Course course : this.courseList) {
-            if(course.getCode().equals(c.getCode())) {
-                course.setSubjectProfessor(p);
-                break;
-            }
-        }
-    }
+		
+		if(c == null) 
+			return;
+		
+		for(Course course : this.courseList) {
+			if(course.getCode().equals(c.getCode())) {
+				course.setSubjectProfessor(p);
+				break;
+			}
+		}
+	}
+
+	
+	public void unlinkProfessorFromCourse(Professor p, Course c) {
+		for(Course course : this.getCourseList()) {
+			if(course.getCode().equals(c.getCode())) {
+				course.setSubjectProfessor(null);
+			}
+		}
+	}
 }

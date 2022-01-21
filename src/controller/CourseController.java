@@ -65,4 +65,8 @@ public class CourseController {
 	public void addProfessorToCourse(Professor p, Course c) {
 		CourseBase.getInstance().addProfessorToCourse(p, c);
     }
+	
+	public void unlinkProfessorFromCourse(Professor p, Course c) {
+		CourseBase.getInstance().unlinkProfessorFromCourse(p, c);
+	}
 }

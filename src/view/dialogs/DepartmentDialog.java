@@ -8,17 +8,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import localization.Language;
-import view.abstractTableModels.AbstractTableModelCourse;
 import view.abstractTableModels.AbstractTableModelDepartment;
-import view.abstractTableModels.AbstractTableModelProfessor;
-import view.abstractTableModels.AbstractTableModelProfessorCourses;
 import view.listeners.MyActionListenerAddBossOfDepartment;
 import view.listeners.MyActionListenerAddDepartment;
-import view.listeners.MyActionListenerDeleteCourseFromProfessor;
 import view.listeners.MyActionListenerDeleteDepartment;
-import view.panels.MyPanelProfessorCourses;
 import view.tables.DepartmentTable;
-import view.tables.TableProfessorCourses;
 import view.window.MyMainFrame;
 
 public class DepartmentDialog extends JDialog{

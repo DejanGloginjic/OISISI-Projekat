@@ -5,6 +5,7 @@ import java.util.List;
 
 import localization.Language;
 import model.entities.Course;
+import model.entities.Department;
 import model.entities.Professor;
 import view.window.MyTabbedPane;
 
@@ -223,6 +224,22 @@ public class ProfessorBase {
 		for(Professor prof : this.professorList) {
 			if(p.getIdNumber().equals(prof.getIdNumber())) {
 				prof.getListOfSubjects().add(c);
+			}
+		}
+	}
+	
+//	public List<Professor> findProfessorsThatSuitDepartment() {
+//		List<Professor> retList = new ArrayList<>();
+//		
+//		for(Professor p : this.professorList) {
+//			
+//		}
+//	}
+	
+	public void unlinkCourseFromProfessor(Professor p, Course c) {
+		for(Professor prof : this.professorList) {
+			if(prof.getIdNumber().equals(p.getIdNumber())) {
+				prof.getListOfSubjects().remove(c);
 			}
 		}
 	}

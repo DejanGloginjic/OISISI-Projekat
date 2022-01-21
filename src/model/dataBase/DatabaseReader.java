@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import controller.CourseController;
+import controller.DepartmentController;
 import controller.ProfessorController;
 import controller.StudentController;
 import enumerations.Semester;
@@ -118,8 +119,10 @@ public class DatabaseReader {
 		while(scanner.hasNextLine()){
 			String departmentInfo = scanner.nextLine();
 			String[] departmentData = trimData(departmentInfo.split(","));
-
-			departments.add(new Department(departmentData[0], departmentData[1], ProfessorController.getInstance().findProfessor(departmentData[2])));
+			Professor p = ProfessorController.getInstance().findProfessor(departmentData[2]);
+			Department dep = new Department(departmentData[0], departmentData[1], p);
+			DepartmentController.getInstance().addProfessorToDepartment(p, dep);
+			departments.add(dep);
 		}
 		scanner.close();
 		return departments;
@@ -165,9 +168,11 @@ public class DatabaseReader {
 			Professor p = ProfessorController.getInstance().findProfessor(subjData[0]);
 			Course c = CourseController.getInstance().findCourse(subjData[1]);
 			ProfessorController.getInstance().linkCourseToProfessor(p, c);
+			CourseController.getInstance().addProfessorToCourse(p, c);
 		}
 		scanner.close();
 		
 	}
+	
 	
 }

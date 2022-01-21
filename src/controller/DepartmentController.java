@@ -49,4 +49,8 @@ public class DepartmentController {
 		DepartmentBase.getInstance().deleteDepartment(d);
 		DepartmentDialog.getInstance().updateViewDepartment();
 	}
+	
+	public void addProfessorToDepartment(Professor p, Department dep) {
+		DepartmentBase.getInstance().addProfessorToDepartment(p, dep);
+	}
 }

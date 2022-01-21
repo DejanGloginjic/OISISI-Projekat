@@ -34,6 +34,7 @@ public class MyActionListenerConfirmAddProfessorToCourse implements ActionListen
 		
 		Professor professor = ProfessorController.getInstance().findProfessor(idNum);
 		CourseController.getInstance().addProfessorToCourse(professor, c);
+		ProfessorController.getInstance().linkCourseToProfessor(professor, c);
 		
 		EditCourseDialog.getInstance().getSubjectProfessorText().setText(professor.toString());
 		

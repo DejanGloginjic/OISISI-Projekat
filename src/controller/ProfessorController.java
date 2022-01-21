@@ -55,4 +55,8 @@ public class ProfessorController {
 	public void linkCourseToProfessor(Professor p, Course c) {
 		ProfessorBase.getInstance().linkCourseToProfessor(p, c);
 	}
+	
+	public void unlinkCourseFromProfessor(Professor p, Course c) {
+		ProfessorController.getInstance().unlinkCourseFromProfessor(p, c);
+	}
 }

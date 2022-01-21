@@ -36,7 +36,7 @@ public class PassedExamsBase {
 	
 	public void setGradeList(List<Grade> gradeList) {
 		this.gradeList = gradeList;
-		
+		MyPanelPassedExams.getInstance().updateViewPassedExams();
 	}
 	
 	public List<String> getColumnList() {

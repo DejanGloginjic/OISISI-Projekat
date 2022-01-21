@@ -5,6 +5,8 @@ import java.util.List;
 
 import model.entities.Course;
 import model.entities.Grade;
+import model.entities.Professor;
+import view.panels.MyPanelProfessorCourses;
 import model.dataBase.PassedExamsBase;
 
 public class ProfesorCoursesBase {
@@ -37,6 +39,7 @@ public class ProfesorCoursesBase {
 	
 	public void setCourseList(List<Course> courseList) {
 		this.courseList = courseList;
+		MyPanelProfessorCourses.getInstance().updateViewProfessorCourses();
 	}
 	
 	public List<String> getColumnList() {
@@ -86,4 +89,6 @@ public class ProfesorCoursesBase {
 			}
 		}
 	}
+	
+	
 }

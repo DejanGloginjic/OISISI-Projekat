@@ -67,7 +67,7 @@ public class DepartmentBase {
 		case 1:
 			return dep.getName();
 		case 2:
-			if(dep.getBoss().getName() == null)
+			if(dep.getBoss() == null)
 				return "/";
 			else
 				return dep.getBoss().getName() + " " + dep.getBoss().getSurname();
@@ -121,6 +121,15 @@ public class DepartmentBase {
 		for(Department dep : this.depList) {
 			if(dep.getCode().equals(d.getCode())) {
 				this.depList.remove(d);
+				break;
+			}
+		}
+	}
+	
+	public void addProfessorToDepartment(Professor p, Department dep) {
+		for(Department d : this.depList) {
+			if(dep.getCode().equals(d.getCode())) {
+				dep.getListOfProfessors().add(p);
 				break;
 			}
 		}
