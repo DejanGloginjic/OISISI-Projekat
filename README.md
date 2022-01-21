@@ -48,6 +48,6 @@ Tamara Antic implementirala funkcionalnosti:
 #dio lokalizacije
 #serijalizacija
 
-#Verzija JDK,Eclipse okruzenja - Dejan :
+#Verzija JDK,Eclipse okruzenja - Dejan : jdk:15.0.1, Eclipse version: 2020-09 (4.17.0)
 #Verzija JDK,Eclipse okruzenja - Tamara : Version: 2020-09 (4.17.0)
 
